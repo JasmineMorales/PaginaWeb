@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+
+<head th:replace="Plantillas/plantilla :: head">
+    <style>
+        nav>li {
+            color: #feffff;
+            font-weight: bold;
+            background-color: cadetblue;
+        }
+    </style>
+    <title>Compras</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Gilda Rivera">
+    <meta name="description" content="Index de Compras">
+    <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+    <header th:replace="Plantillas/plantilla :: header">
+    </header>
+    <div class="conteiner">
+        <section>
+            <h1>Compras</h1>
+        </section>
+    </div><br>
+    <div class="conteiner">
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+                <a class="nav-link active" href="#">Principal</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Carrito</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Pago</a>
+            </li>
+        </ul>
+
+    </div>
+    <footer th:replace="Plantillas/plantilla :: footer"></footer>
+</body>
+
+</html>
