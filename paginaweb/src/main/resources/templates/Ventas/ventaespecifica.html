@@ -26,7 +26,7 @@
                 color:#2b7a78;
             }
         </style>
-        <title>Ventas en espera</title>
+        <title>Ventas</title>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="Gilda Rivera">
@@ -45,23 +45,23 @@
     </header>
     <div class="conteiner">
         <section>
-            <h1 class="aps-color-1">Ventas en espera</h1>
+            <h1 class="aps-color-1">Ventas</h1>
         </section>
     </div><br>
     <div class="conteiner">
         <section>
             <ul class="nav nav-pills aps-bg-2" id="lista">
                 <li class="nav-item">
-                    <a class=" nav-link  aps-color-5" href="index">Todas</a>
+                    <a class=" nav-link  aps-color-5 active" href="#" style="background-color: #53aca9;">Todas</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link aps-color-5" href="canceladas">Cancelados</a>
+                    <a class="nav-link aps-color-5" href="canceladas">Canceladas</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link aps-color-5" href="entregadas">Entregados</a>
+                    <a class="nav-link aps-color-5" href="entregadas">Entregadas</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link aps-color-5 active" href="#" style="background-color: #53aca9;">En espera</a>
+                    <a class="nav-link aps-color-5" href="enespera">En espera</a>
                 </li>
             </ul>
         </section>
@@ -69,51 +69,12 @@
     <div class="container">
         <section>
             <h3 class="aps-color-1" style="text-align: left;">
-                Todas tus ventas en espera
+                Venta seleccionada
             </h3>
         </section>
     </div><br><br>
-    <div class="container-fluid">
-        <section class="container">
-            <table class="table table-striped" id="tabla">
-                <thead id="ht1">
-                    <tr>
-                        <th class="th1" scope="col">Fecha</th>
-                        <th class="th1" scope="col">Estado</th>
-                        <th class="th1" scope="col">Repartidor</th>
-                        <th class="th1" scope="col">Sub total</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Mark                       
-                        </td>
-                        <td>Otsssssto</td>
-                        <td>@mdo</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <td>Mark</td>
-                        <td>Otsssssto</td>
-                        <td>@mdo</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <td>Mark</td>
-                        <td>Otsssssto</td>
-                        <td>@mdo</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <td>Mark</td>
-                        <td>Otsssssto</td>
-                        <td>@mdo</td>
-                        <td>@mdo</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-    </div><br><br><br>
+
+
     <footer th:replace="Plantillas/plantilla :: footer"></footer>
 </body>
 

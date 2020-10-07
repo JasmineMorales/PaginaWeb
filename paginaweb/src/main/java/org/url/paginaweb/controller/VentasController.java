@@ -34,5 +34,8 @@ public class VentasController {
     public String getVentaPageentregada(){
         return("/Ventas/entregadas");
     }
-    
+                @GetMapping("/Ventas/seleccionada")
+    public String getVentaSeleccionada(){
+        return("/Ventas/ventaespecifica");
+    }
     }
