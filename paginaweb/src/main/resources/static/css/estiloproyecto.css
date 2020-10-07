@@ -44,3 +44,43 @@ and open the template in the editor.
 .aps-color-6{
     color: #f5f5f5;
 }
+/* CSS PARA TABLAS DE COMPRA Y VENTA */
+.ht1 .th1 {
+    
+    border: 5px solid #2b7a78;
+    ;
+    border-bottom-style: solid;
+    border-top-style: none;
+    border-right-style: none;
+    border-left-style: none;
+
+}
+
+.tabla1 tr:nth-child(even) {
+    background-color: #DEF2F1;
+}
+.tabla1 tr:nth-child(odd) {
+    background-color: #f5f5f5;
+}
+.mm{
+    color:#2b7a78;
+}
+.tabla2 tr:nth-child(even) {
+    background-color: #DEF2F1;
+}
+.ht2 .th2 {
+
+    border: 3px solid #2b7a78;
+    background-color: #2b7a78;
+    border-style: solid;
+}
+.box {
+    float: left;
+    width: 33.33%;
+    padding: 50px;
+}
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
