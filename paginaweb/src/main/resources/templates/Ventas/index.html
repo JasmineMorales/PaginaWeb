@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+
+<head th:replace="Plantillas/plantilla :: head">
+
+
+    <title>Ventas</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Gilda Rivera">
+    <meta name="description" content="Index de Ventas">
+    <link rel="stylesheet" href="../static/estilosproyecto.css">
+</head>
+
+<body>
+    <header th:replace="Plantillas/plantilla :: header">
+    </header>
+    <div class="conteiner">
+        <section>
+            <h1 class="aps-color-1">Ventas</h1>
+        </section>
+    </div><br>
+    <div class="conteiner">
+        <section>
+            <ul class="nav nav-pills aps-bg-2" id="lista">
+                <li class="nav-item">
+                    <a class=" nav-link  aps-color-5 active" href="#" style="background-color: #53aca9;">Todas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link aps-color-5" href="#">Cancelados</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link aps-color-5" href="#">Entregados</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link aps-color-5" href="#">En espera</a>
+                </li>
+            </ul>
+        </section>
+    </div>
+    <footer th:replace="Plantillas/plantilla :: footer"></footer>
+</body>
+
+</html>
