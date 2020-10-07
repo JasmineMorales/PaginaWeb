@@ -20,5 +20,19 @@ public class VentasController {
         return("/Ventas/index");
     }
 
+            @GetMapping("/Ventas/canceladas")
+    public String getVentaCanceladaPage(){
+        return("/Ventas/canceladas");
+    }
+    
+            @GetMapping("/Ventas/enespera")
+    public String getVentaenesperaPage(){
+        return("/Ventas/enespera");
+    }
+    
+            @GetMapping("/Ventas/entregadas")
+    public String getVentaPageentregada(){
+        return("/Ventas/entregadas");
+    }
     
     }
