@@ -2,15 +2,39 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
     xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
 
-<head th:replace="Plantillas/plantilla :: head">
+<head>
+    <style>
+        #ht1 .th1 {
 
+            border: 5px solid #2b7a78;
+            ;
+            border-bottom-style: solid;
+            border-top-style: none;
+            border-right-style: none;
+            border-left-style: none;
 
+        }
+
+        #tabla tr:nth-child(even) {
+            background-color: #DEF2F1;
+        }
+
+        #tabla tr:nth-child(odd) {
+            background-color: #f5f5f5;
+        }
+    </style>
     <title>Carro de compra</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Gilda Rivera">
     <meta name="description" content="Index de Compras">
-    <link rel="stylesheet" href="../static/estilosproyecto.css">
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    <link rel="stylesheet" href="/css/estiloproyecto.css" />
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}" />
+    <script src="https://kit.fontawesome.com/d69832d361.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -22,20 +46,102 @@
         </section>
     </div><br>
     <div class="conteiner">
-        <ul class="nav nav-pills aps-bg-2" id="lista">
-            <li class="nav-item" >
-                <a class=" nav-link aps-color-5  "  href="index">Principal</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link aps-color-5 active" style="background-color: #53aca9;"  href="#">Carrito</a>
-            </li>
-            <li  class="nav-item">
-                <a class="nav-link aps-color-5" href="pago">Pago</a>
-            </li>
-        </ul>
+        <section>
+            <ul class="nav nav-pills aps-bg-2" id="lista">
+                <li class="nav-item">
+                    <a class=" nav-link aps-color-5  " href="index">Principal</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link aps-color-5 active" style="background-color: #53aca9;" href="#">Carrito</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link aps-color-5" href="pago">Pago</a>
+                </li>
+            </ul>
+        </section>
+    </div><br>
+    <div class="container">
+        <section>
+            <h3 class="aps-color-1" style="text-align: center;">
+                Productos de carrito
+            </h3>
+        </section>
+    </div><br><br>
 
-    </div>
+    <div class="container-fluid">
+        <section class="container">
+            <table class="table table-striped" id="tabla">
+                <thead id="ht1">
+                    <tr>
+                        <th class="th1" scope="col">Producto</th>
+                        <th class="th1" scope="col">Cantidad</th>
+                        <th class="th1" scope="col">Precio por unidad</th>
+                        <th class="th1" scope="col">Sub total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Mark</td>
+                        <td>
+                            <i class="fas fa-minus"></i> &nbsp;
+                            Otsssssto &nbsp;
+                            <i class="fas fa-plus"></i>
+                        </td>
+                        <td>@mdo</td>
+                        <td>@mdo</td>
+                    </tr>
+                    <tr>
+                        <td>Jacob</td>
+                        <td>
+                            <i class="fas fa-minus"></i> &nbsp;
+                            Thornton &nbsp;
+                            <i  class="fas fa-plus"></i>
+                        </td>
+                        <td>@fat</td>
+                        <td>@mdo</td>
+                    </tr>
+                    <tr>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                        <td>@twitter</td>
+                        <td>@mdo</td>
+                    </tr>
+                    <tr>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                        <td>@twitter</td>
+                        <td>@mdo</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section>
+            <div class="container">
+                <p style="position: absolute; left: 67%;">
+                    <samp>Total</samp>
+                </p><br>
+            </div>
+            <div class="container">
+                <canvas class="aps-color-2 container" height="0" style="border: 2px solid">
+
+                </canvas>
+            </div>
+        </section>
+    </div><br><br><br>
+    <div class="container">
+        <section class="container">
+            <nav style="text-align: center;">
+                <button type="button" style="position: absolute; left: 17%;" class="btn btn-outline-primary">Continuar
+                    comprando</button>
+                <button type="button" style="position: absolute; left: 57%;"
+                    class="btn btn-outline-danger">Cancelar</button>
+                <button type="button" style="position: absolute; left: 67%;"
+                    class="btn btn-outline-success">Checkout</button>
+            </nav>
+        </section>
+    </div><br><br><br>
     <footer th:replace="Plantillas/plantilla :: footer"></footer>
 </body>
+
 
 </html>
