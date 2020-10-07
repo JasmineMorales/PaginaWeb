@@ -2,39 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
     xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
 
-<head>
-    <style>
-        .ht1 .th1 {
-
-            border: 3px solid #2b7a78;
-            background-color: #2b7a78;
-            border-style: solid;
-
-
-        }
-
-        #tabla tr:nth-child(even) {
-            background-color: #DEF2F1;
-        }
-
-
-
-        .mm {
-            color: #2b7a78;
-        }
-    </style>
-    <title>Ventas</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Gilda Rivera">
-    <meta name="description" content="Ventas index">
-    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
-    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
-    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
-    <link rel="stylesheet" href="/css/estiloproyecto.css" />
-    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
-    <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}" />
-    <script src="https://kit.fontawesome.com/d69832d361.js" crossorigin="anonymous"></script>
+<head th:replace="Plantillas/plantilla :: head">
 </head>
 
 <body>
@@ -49,7 +17,7 @@
         <section>
             <ul class="nav nav-pills aps-bg-2" id="lista">
                 <li class="nav-item">
-                    <a class=" nav-link  aps-color-5 active" href="#" style="background-color: #53aca9;">Todas</a>
+                    <a class=" nav-link  aps-color-5 " href="index" >Todas</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link aps-color-5" href="canceladas">Canceladas</a>
@@ -73,16 +41,16 @@
 
     <div class="container ">
         <table class="table aps-bg-4" style="width: 250px;">
-            <thead class="ht1 aps-color-5">
-                <tr class="th1">
+            <thead class="ht2 aps-color-5">
+                <tr class="th2">
                     <th scope="col">Productos vendidos</th>
                 </tr>
             </thead>
         </table>
         <div>
-            <table class="table table-striped" id="tabla">
-                <thead class="ht1">
-                    <tr class="th1 aps-color-5">
+            <table class="table table-striped tabla2">
+                <thead class="ht2">
+                    <tr class="th2 aps-color-5">
                         <th scope="col">Nombre</th>
                         <th scope="col"> Cantidad</th>
                         <th scope="col">Sub total</th>
@@ -125,8 +93,8 @@
 
     <div class="container ">
         <table class="table aps-bg-4" style="width: 250px;">
-            <thead class="ht1 aps-color-5">
-                <tr class="th1">
+            <thead class="ht2 aps-color-5">
+                <tr class="th2">
                     <th scope="col">Total de venta</th>
                     <th scope="col"></th>
                 </tr>
@@ -142,20 +110,17 @@
                 </tr>
             </tbody>
         </table>
-        <form>
-
-        </form>
     </div><br>
     <div class="container ">
         <table class="table aps-bg-4" style="width: 400px;">
-            <thead class="ht1 aps-color-5">
-                <tr class="th1">
+            <thead class="ht2 aps-color-5">
+                <tr class="th2">
                     <th scope="col">Informacion general de venta</th>
                 </tr>
             </thead>
         </table>
         <div>
-            <table class="table table-striped" id="tabla" style="max-width: 400px;">
+            <table class="table table-striped tabla1" style="max-width: 400px;">
                 <tbody>
                     <tr>
                         <td>Codigo</td>

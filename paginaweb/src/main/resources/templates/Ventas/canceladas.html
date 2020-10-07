@@ -3,43 +3,7 @@
     xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
 
 
-<head>
-    <style>
-        #ht1 .th1 {
-
-            border: 5px solid #2b7a78;
-            ;
-            border-bottom-style: solid;
-            border-top-style: none;
-            border-right-style: none;
-            border-left-style: none;
-
-        }
-
-        #tabla tr:nth-child(even) {
-            background-color: #DEF2F1;
-        }
-
-        #tabla tr:nth-child(odd) {
-            background-color: #f5f5f5;
-        }
-
-        .mm {
-            color: #2b7a78;
-        }
-    </style>
-    <title>Ventas canceladas</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Gilda Rivera">
-    <meta name="description" content="Ventas canceladas">
-    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
-    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
-    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
-    <link rel="stylesheet" href="/css/estiloproyecto.css" />
-    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
-    <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}" />
-    <script src="https://kit.fontawesome.com/d69832d361.js" crossorigin="anonymous"></script>
+<head  th:replace="Plantillas/plantilla :: head">
 </head>
 
 <body>
@@ -79,7 +43,7 @@
         <form>
             <div class="container  ">
 
-                <select class="custom-select aps-color-2 " id="orden">
+                <select class="custom-select aps-color-1 aps-bg-5 " id="orden">
                     <option selected>Ordenar por</option>
                     <option value="1">Mas recientes</option>
                     <option value="2">Mas antiguas</option>
@@ -90,8 +54,8 @@
             </div>
         </form>
         <section class="container">
-            <table class="table table-striped" id="tabla">
-                <thead id="ht1">
+            <table class="table table-striped tabla1">
+                <thead class="ht1">
                     <tr>
                         <th class="th1" scope="col">Fecha</th>
                         <th class="th1" scope="col">Estado</th>
