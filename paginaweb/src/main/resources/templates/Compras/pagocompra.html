@@ -2,15 +2,58 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
     xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
 
-<head th:replace="Plantillas/plantilla :: head">
+<head>
+    <style>
+        .ht1 .th1 {
 
+            border: 3px solid #2b7a78;
+            background-color: #2b7a78;
+            border-style: solid;
+
+
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        #tabla tr:nth-child(even) {
+            background-color: #DEF2F1;
+        }
+
+
+
+        .mm {
+            color: #2b7a78;
+        }
+
+        .box {
+            float: left;
+            width: 33.33%;
+            padding: 50px;
+        }
+
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+    </style>
 
     <title>Pago de compra</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Gilda Rivera">
-    <meta name="description" content="Index de Compras">
-    <link rel="stylesheet" href="../static/estilosproyecto.css">
+    <meta name="description" content="Pago Compras">
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    <link rel="stylesheet" href="/css/estiloproyecto.css" />
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}" />
+    <script src="https://kit.fontawesome.com/d69832d361.js" crossorigin="anonymous"></script>
+
+
 </head>
 
 <body>
@@ -35,7 +78,120 @@
                 </li>
             </ul>
         </section>
+    </div><br>
+    <div class="container">
+        <section>
+            <h3 class="aps-color-1" style="text-align: center;">
+                Pago de compra
+            </h3>
+        </section>
+    </div><br><br>
+    <div class="container-fluid clearfix" style="padding-left: 200px ;">
+
+        <div class=" box">
+            <table class="table table-striped" id="tabla">
+                <thead class="ht1">
+                    <tr class="th1 aps-color-5">
+                        <th scope="col">Producto</th>
+                        <th scope="col"> </th>
+                        <th scope="col">Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Mark</td>
+                        <td><i class="fas fa-minus-circle"></i></td>
+                        <td> Otsssssto</td>
+
+                    </tr>
+                    <tr>
+                        <td>Mark</td>
+                        <td><i class="fas fa-minus-circle"></i></td>
+                        <td> Otsssssto</td>
+
+                    </tr>
+                    <tr>
+                        <td>Mark</td>
+                        <td><i class="fas fa-minus-circle"></i></td>
+                        <td> Otsssssto</td>
+
+                    </tr>
+                    <tr>
+                        <td>Mark</td>
+                        <td><i class="fas fa-minus-circle"></i></td>
+                        <td> Otsssssto</td>
+
+                    </tr>
+                    <td>@twitter</td>
+                    <td><i class="fas fa-minus-circle"></i></td>
+                    <td>@mdo</td>
+                    </tr>
+                </tbody>
+                <tfoot class="aps-bg-4" style="border-top-style: solid; border-color: #2b7a78; font-weight: bold;">
+                    <tr>
+                        <td>
+                            Total
+                        </td>
+                        <td> </td>
+                        <td>0.00</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <div class=" box" style="padding-left: 300px ; width: 600px;">
+            <table class="table aps-bg-4" style="padding-right: 100px;">
+                <thead class="ht1 aps-color-5">
+                    <tr class="th1">
+                        <th scope="col">Su informacion</th>
+                    </tr>
+                </thead>
+            </table>
+            <div>
+                <form class="aps-bg-4" style="padding:10px;">
+                    <div class="form-group">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" class="form-control" id="nombre" aria-describedby="emailHelp"
+                            placeholder="Enter name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter email">
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="mastercard" value="mastercard">
+                        <label class="form-check-label" for="mastercard">
+                            <i class="fab fa-cc-mastercard"></i></label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="visa" value="visa">
+                        <label class="form-check-label" for="visa">
+                            <i class="fab fa-cc-visa"></i></label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="paypal" value="paypal">
+                        <label class="form-check-label" for="paypal">
+                            <i class="fab fa-cc-paypal"></i></label>
+                    </div>
+                    <div class="form-group">
+                        <label for="tarjeta">No tarjeta</label>
+                        <input type="text" class="form-control" id="tarjeta" placeholder="no">
+                    </div>
+                    <div class="form-group">
+                        <label for="mmaa">MM/AA</label>
+                        <input type="password" class="form-control" id="mmaa" placeholder="MM/AA">
+                    </div>
+                    <div class="form-group">
+                        <label for="csc">CSC</label>
+                        <input type="password" class="form-control" id="csc" placeholder="csc">
+                    </div>
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your info with anyone
+                        else.</small>
+                    <button type="submit" class="btn btn-outline-success">Submit</button>
+                </form>
+            </div>
+        </div>
     </div>
+
     <footer th:replace="Plantillas/plantilla :: footer"></footer>
 </body>
 
