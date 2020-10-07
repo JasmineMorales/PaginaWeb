@@ -2,55 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
     xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
 
-<head>
-    <style>
-        .ht1 .th1 {
-
-            border: 3px solid #2b7a78;
-            background-color: #2b7a78;
-            border-style: solid;
-
-
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        #tabla tr:nth-child(even) {
-            background-color: #DEF2F1;
-        }
-
-
-
-        .mm {
-            color: #2b7a78;
-        }
-
-        .box {
-            float: left;
-            width: 33.33%;
-            padding: 50px;
-        }
-
-        .clearfix::after {
-            content: "";
-            clear: both;
-            display: table;
-        }
-    </style>
-
-    <title>Pago de compra</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Gilda Rivera">
-    <meta name="description" content="Pago Compras">
-    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
-    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
-    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
-    <link rel="stylesheet" href="/css/estiloproyecto.css" />
-    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
-    <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}" />
+<head th:replace="Plantillas/plantilla :: head">
     <script src="https://kit.fontawesome.com/d69832d361.js" crossorigin="anonymous"></script>
 
 
@@ -89,9 +41,9 @@
     <div class="container-fluid clearfix" style="padding-left: 200px ;">
 
         <div class=" box">
-            <table class="table table-striped" id="tabla">
-                <thead class="ht1">
-                    <tr class="th1 aps-color-5">
+            <table class="table table-striped tabla2">
+                <thead class="ht2">
+                    <tr class="th2 aps-color-5">
                         <th scope="col">Producto</th>
                         <th scope="col"> </th>
                         <th scope="col">Total</th>
@@ -140,8 +92,8 @@
         </div>
         <div class=" box" style="padding-left: 300px ; width: 600px;">
             <table class="table aps-bg-4" style="padding-right: 100px;">
-                <thead class="ht1 aps-color-5">
-                    <tr class="th1">
+                <thead class="ht2 aps-color-5">
+                    <tr class="th2">
                         <th scope="col">Su informacion</th>
                     </tr>
                 </thead>
