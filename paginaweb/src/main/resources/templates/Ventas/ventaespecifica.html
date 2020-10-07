@@ -2,43 +2,40 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
     xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
 
-    <head>
-        <style>
-            #ht1 .th1 {
-    
-                border: 5px solid #2b7a78;
-                ;
-                border-bottom-style: solid;
-                border-top-style: none;
-                border-right-style: none;
-                border-left-style: none;
-    
-            }
-    
-            #tabla tr:nth-child(even) {
-                background-color: #DEF2F1;
-            }
-    
-            #tabla tr:nth-child(odd) {
-                background-color: #f5f5f5;
-            }
-            .mm{
-                color:#2b7a78;
-            }
-        </style>
-        <title>Ventas</title>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="author" content="Gilda Rivera">
-        <meta name="description" content="Ventas index">
-        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
-        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
-        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
-        <link rel="stylesheet" href="/css/estiloproyecto.css" />
-        <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
-        <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}" />
-        <script src="https://kit.fontawesome.com/d69832d361.js" crossorigin="anonymous"></script>
-    </head>
+<head>
+    <style>
+        .ht1 .th1 {
+
+            border: 3px solid #2b7a78;
+            background-color: #2b7a78;
+            border-style: solid;
+
+
+        }
+
+        #tabla tr:nth-child(even) {
+            background-color: #DEF2F1;
+        }
+
+
+
+        .mm {
+            color: #2b7a78;
+        }
+    </style>
+    <title>Ventas</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Gilda Rivera">
+    <meta name="description" content="Ventas index">
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    <link rel="stylesheet" href="/css/estiloproyecto.css" />
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}" />
+    <script src="https://kit.fontawesome.com/d69832d361.js" crossorigin="anonymous"></script>
+</head>
 
 <body>
     <header th:replace="Plantillas/plantilla :: header">
@@ -73,6 +70,132 @@
             </h3>
         </section>
     </div><br><br>
+
+    <div class="container ">
+        <table class="table aps-bg-4" style="width: 250px;">
+            <thead class="ht1 aps-color-5">
+                <tr class="th1">
+                    <th scope="col">Productos vendidos</th>
+                </tr>
+            </thead>
+        </table>
+        <div>
+            <table class="table table-striped" id="tabla">
+                <thead class="ht1">
+                    <tr class="th1 aps-color-5">
+                        <th scope="col">Nombre</th>
+                        <th scope="col"> Cantidad</th>
+                        <th scope="col">Sub total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Mark</td>
+                        <td>Cantidad</td>
+                        <td> Otsssssto</td>
+
+                    </tr>
+                    <tr>
+                        <td>Mark</td>
+                        <td>Cantidad</td>
+                        <td> Otsssssto</td>
+
+                    </tr>
+                    <tr>
+                        <td>Mark</td>
+                        <td>Cantidad</td>
+                        <td> Otsssssto</td>
+
+                    </tr>
+                    <tr>
+                        <td>Mark</td>
+                        <td>Cantidad</td>
+                        <td> Otsssssto</td>
+
+                    </tr>
+                    <td>@twitter</td>
+                    <td>Cantidad</td>
+                    <td>@mdo</td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div><br>
+
+    <div class="container ">
+        <table class="table aps-bg-4" style="width: 250px;">
+            <thead class="ht1 aps-color-5">
+                <tr class="th1">
+                    <th scope="col">Total de venta</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Descuento</td>
+                    <td>---</td>
+                </tr>
+                <tr>
+                    <td>Total</td>
+                    <td>--</td>
+                </tr>
+            </tbody>
+        </table>
+        <form>
+
+        </form>
+    </div><br>
+    <div class="container ">
+        <table class="table aps-bg-4" style="width: 400px;">
+            <thead class="ht1 aps-color-5">
+                <tr class="th1">
+                    <th scope="col">Informacion general de venta</th>
+                </tr>
+            </thead>
+        </table>
+        <div>
+            <table class="table table-striped" id="tabla" style="max-width: 400px;">
+                <tbody>
+                    <tr>
+                        <td>Codigo</td>
+                        <td>---</td>
+                    </tr>
+                    <tr>
+                        <td>Direccion</td>
+                        <td>av</td>
+                    </tr>
+                    <tr>
+                        <td>Fecha</td>
+                        <td>xx/xx/xxxx</td>
+                    </tr>
+                    <tr>
+                        <td>Descuento</td>
+                        <td>0.00</td>
+                    </tr>
+                    <td>Estado</td>
+                    <td>entregado</td>
+                    </tr>
+                    </tr>
+                    <td>Total</td>
+                    <td>d</td>
+                    </tr>
+                    </tr>
+                    <td>Usuario</td>
+                    <td>-</td>
+                    </tr>
+                    </tr>
+                    <td>Repartidor</td>
+                    <td>--</td>
+                    </tr>
+                    </tr>
+                    <td>Forma de pago</td>
+                    <td>--</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 
 
     <footer th:replace="Plantillas/plantilla :: footer"></footer>
