@@ -18,4 +18,8 @@ public class PagosController {
     public String getMetodoPago(){
         return ("pagos/metodoPago");
     };
+     @GetMapping("pagos/agregar-tarjeta")
+    public String getAgregarTarjeta(){
+        return ("pagos/agregarTarjeta");
+    };
 }

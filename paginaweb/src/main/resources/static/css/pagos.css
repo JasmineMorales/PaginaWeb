@@ -30,7 +30,7 @@ h1 {
   }
 
   .contenedor-titulo h2 {
-      font-weight: 700;
+      font-weight: 600;
       font-size: xx-large;
   } 
   .seccion-btn {
@@ -47,4 +47,27 @@ h1 {
     height: 60px;
     text-align: center;
     padding-top: 10px;
+}
+.contenedor-campos {
+    color: #2B7A78;
+    margin: 20px 30px;
+    font-size: large;
+    font-weight: 600;
+}
+.seccion-btn {
+    text-align: right;
+    margin: 10px 30px;
+}
+.contenedor-tipo{
+    text-align: center;
+}
+
+.contenedor-tipo input {
+    margin-top: 5px 0;
+}
+
+.metodo-pago {
+    background-color: #DEF2F1;
+    border-radius: 5px;
+    height: 28px;
 }
