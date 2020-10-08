@@ -22,4 +22,8 @@ public class PagosController {
     public String getAgregarTarjeta(){
         return ("pagos/agregarTarjeta");
     };
+       @GetMapping("pagos/devolucion")
+    public String getDevolucion(){
+        return ("pagos/devoluciones");
+    }; 
 }
