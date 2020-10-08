@@ -15,8 +15,12 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @Controller
 public class EnviosController {
-    @GetMapping("/envios/envio")
+    @GetMapping("/envios/estado-envio")
     public String getEnviosEstados() {
         return("/envios/envio");
+    };
+    @GetMapping("/envios/estado-envio-repartidor")
+    public String getEnviosEstadosRepartidor() {
+        return("/envios/envioRepartidor");
     };
 }
