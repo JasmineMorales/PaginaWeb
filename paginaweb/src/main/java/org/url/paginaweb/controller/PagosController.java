@@ -26,4 +26,8 @@ public class PagosController {
     public String getDevolucion(){
         return ("pagos/devoluciones");
     }; 
+          @GetMapping("pagos/devolucion-aceptada")
+    public String getDevolucionAceptada(){
+        return ("pagos/devolucionAceptada");
+    }; 
 }
