@@ -131,3 +131,33 @@ h1 {
       text-align: right;
       margin: 10px 10px;
   }
+
+  .search-icono {
+    width: 40px;
+    height: 40px;
+  }
+  .contenedor-busqueda {
+      text-align: end;
+      margin: 10px 0px;
+  }
+  .contenedor-titulo {
+    background-color: #333333;
+    color: #DEF2F1;
+    border-radius: 25px;
+    height: 75px;
+    margin: 20px 30px;
+    text-align: center;
+    padding-top: 15px;
+  }
+
+  .contenedor-titulo h2 {
+      font-weight: 700;
+      font-size: xx-large;
+  }
+
+  .barra-busqueda {
+
+    margin: 50px 30px ;
+
+  }
+   

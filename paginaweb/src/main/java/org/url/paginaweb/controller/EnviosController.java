@@ -23,4 +23,8 @@ public class EnviosController {
     public String getEnviosEstadosRepartidor() {
         return("/envios/envioRepartidor");
     };
+    @GetMapping("/envios/busqueda")
+    public String getBusqueda() {
+        return("/envios/busqueda");
+    };
 }
