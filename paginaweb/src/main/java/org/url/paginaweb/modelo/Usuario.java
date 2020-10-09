@@ -20,7 +20,7 @@ import lombok.Data;
 public class Usuario implements Serializable {
     
     @NotNull
-    private Integer idUsuario;
+    private Integer id;
     
     @NotEmpty
     @Size(max = 30)
@@ -35,7 +35,9 @@ public class Usuario implements Serializable {
     private String correo;
     
     @NotEmpty
-    private String password;
+    private String contrasena;
+    
+    private String token;
     
     private ArrayList<Direccion> direcciones;
     
