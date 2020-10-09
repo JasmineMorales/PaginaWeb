@@ -14,15 +14,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class ProductosController {
     
-    @GetMapping("/producto")
+    @GetMapping("/Productos/productos")
     public String getProductPage(){
-        return("/Productos/producto");
+        return("/Productos/vistaProductos");
     }
-
+    
+        @GetMapping("Productos/modificar_producto")
+    public String getEditProductPage(){
+        return("/Productos/modificarProducto");
+    }
     
             @GetMapping("/Productos/agregar_producto")
     public String getAddProductPage(){
-        return("/Productos/agregar_producto");}
+        return("/Productos/agregarProducto");}
 
         
             @GetMapping("/Productos/producto")
