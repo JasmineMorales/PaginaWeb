@@ -24,6 +24,7 @@ and open the template in the editor.
                     </div>
                     <div class="card-body">
                         <form method="POST" th:action="@{/login}">
+                            <input type="hidden" name="authorities" id="authorities" value="1"/>
                             <div class="form-group">
                                 <label style="color: #3AAFA9" for="username">
                                     Usuario
