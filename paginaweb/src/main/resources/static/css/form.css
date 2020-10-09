@@ -1,0 +1,73 @@
+body {
+    background-color: #f5f5f5;
+}
+
+h1 {
+    font-size: 10rem;
+}
+.icono-usuario {
+    width: 50px;
+    height: 40px;
+}
+.cuenta{
+    background-color: rgba(43, 122, 120, .8);
+    border-radius: 25px;
+    color: #feffff;
+    text-align: center;
+    padding-top: 5px;
+    margin-right: 15px;
+    margin-bottom: 10px;
+}
+
+.contenedor-titulo {
+    background-color: #333333;
+    color: #DEF2F1;
+    border-radius: 25px;
+    height: 75px;
+    margin: 20px 30px;
+    text-align: center;
+    padding-top: 15px;
+  }
+
+  .contenedor-titulo h2 {
+      font-weight: 600;
+      font-size: xx-large;
+  } 
+  .seccion-btn {
+    text-align: right;
+    margin: 10px 10px;
+}
+.radiobtn {
+    background-color: #DEF2F1;
+    margin: 20px 0;
+    font-size: x-large;
+    border-radius: 25px;
+    font-weight: 600;
+    width: 500px;
+    height: 60px;
+    text-align: center;
+    padding-top: 10px;
+}
+.contenedor-campos {
+    color: #2B7A78;
+    margin: 20px 30px;
+    font-size: large;
+    font-weight: 600;
+}
+.seccion-btn {
+    text-align: right;
+    margin: 10px 30px;
+}
+.contenedor-tipo{
+    text-align: center;
+}
+
+.contenedor-tipo input {
+    margin-top: 5px 0;
+}
+
+.metodo-pago {
+    background-color: #DEF2F1;
+    border-radius: 5px;
+    height: 28px;
+}
