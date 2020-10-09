@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.client.RestTemplate;
+import org.url.paginaweb.modelo.ArregloUsuario;
 import org.url.paginaweb.modelo.Usuario;
 
 /**
@@ -31,11 +32,11 @@ public class MainSiteController {
         String url = "http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/usuarios/1/";
         Usuario respuesta = restTemplate.getForObject(url, Usuario.class);
         log.info(respuesta.toString());
-        /*
+        
         String url1 = "http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/usuarios/";
-        Usuario response1 = restTemplate.getForObject(url1, Usuario.class);
+        ArregloUsuario response1 = restTemplate.getForObject(url1, ArregloUsuario.class);
         log.info(response1.toString());
-*/
+        
         return("/MainSite/index");
     }
 }

@@ -1,4 +1,4 @@
-    /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -6,8 +6,7 @@
 package org.url.paginaweb.modelo;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import javax.validation.constraints.NotNull;
+import java.util.List;
 import lombok.Data;
 
 /**
@@ -15,16 +14,13 @@ import lombok.Data;
  * @author marcos
  */
 @Data
-public class Carrito implements Serializable{
+public class ArregloDetalleVenta implements Serializable {
     
-    @NotNull
-    private Integer id;
+    private int count;
     
-    private Integer usuario;
+    private String next;
     
-    private Usuario usuarioO;
+    private String previous;
     
-    private ArrayList<DetalleCarro> detallesCarro;
-    
-    
+    private List<DetalleVenta> results;
 }

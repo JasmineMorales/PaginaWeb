@@ -19,7 +19,7 @@ import lombok.Data;
 public class TipoProducto implements Serializable{
     
     @NotNull
-    private Integer idTipoProducto;
+    private Integer id;
     
     @NotEmpty
     @Size(max = 45)
