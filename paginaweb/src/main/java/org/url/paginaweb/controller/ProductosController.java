@@ -14,19 +14,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class ProductosController {
     
-    @GetMapping("/Productos/productos")
+    @GetMapping("/producto")
     public String getProductPage(){
         return("/Productos/producto");
     }
 
     
             @GetMapping("/Productos/agregar_producto")
-    public String getCarritoPage(){
+    public String getAddProductPage(){
         return("/Productos/agregar_producto");}
 
         
             @GetMapping("/Productos/producto")
-    public String getPagoCompraPage(){
+    public String getProductListPage(){
         return("/Productos/producto");
     }
 }

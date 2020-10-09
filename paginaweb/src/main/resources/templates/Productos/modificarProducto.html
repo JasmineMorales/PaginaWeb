@@ -2,7 +2,7 @@
 <html>
     <head th:replace="Plantillas/plantilla :: head">
        <link rel="stylesheet" href="">
-        <title>Agregar Producto</title>
+        <title>Modificar Producto</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">       
         <style>
@@ -13,7 +13,7 @@
         <div  class="container">
        
     <div class="contenedor-titulo">
-           <h2>AGREGAR PRODUCTO</h2>
+           <h2>MODIFICAR PRODUCTO</h2>
         </div>
         <div class= "contenedor-campos">
             <form>
@@ -34,6 +34,21 @@
                     <label for="exampleFormControlInput1">Unidades</label>
                     <input type="number" class="form-control" id="Fecha" placeholder="Ingrese unidades" style="background-color: #DEF2F1;" >
                 </div>
+                <div class= "contenedor-tipo row justify-content-around">
+                    
+                    <div class="metodo-pago form-check col-4">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="1" checked >
+                        <label class="form-check-label" for="exampleRadios1">
+                          HABILITADO
+                        </label>
+                      </div>
+                      <div class="metodo-pago form-check col-4">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="2">
+                        <label class="form-check-label" for="exampleRadios2">
+                          DESHABILITADO
+                        </label>
+                      </div>
+                      </div>
                 
               </form>
        </div>
