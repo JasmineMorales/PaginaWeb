@@ -20,7 +20,7 @@ import lombok.Data;
 public class Comentario implements Serializable{
 
     @NotNull
-    private Integer idComentario;
+    private Integer id;
     
     @NotEmpty
     @Size(max = 90)
@@ -28,7 +28,11 @@ public class Comentario implements Serializable{
     
     private Date fecha;
     
-    private Producto producto;
+    private Integer producto;
     
-    private Usuario usuario;
+    private Producto productoO;
+    
+    private Integer usuario;
+    
+    private Usuario usuarioO;
 }

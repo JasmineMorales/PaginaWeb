@@ -19,7 +19,7 @@ import lombok.Data;
 public class FormaPago implements Serializable {
     
     @NotNull
-    private Integer idFormaPago;
+    private Integer id;
     
     @NotEmpty
     @Size(max = 15)
