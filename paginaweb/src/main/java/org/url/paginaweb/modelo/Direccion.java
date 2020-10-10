@@ -21,13 +21,15 @@ public class Direccion implements Serializable{
 
     
     @NotNull
-    private Integer idDireccion;
+    private Integer id;
     
     @NotEmpty
     @Size(max = 45)
     private String direccion;
     
-    private Usuario usuario;
+    private Integer usuario;
+    
+    private Usuario usuarioO;
     
    
 }

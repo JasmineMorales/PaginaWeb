@@ -19,7 +19,7 @@ import lombok.Data;
 public class Proveedor implements Serializable{
     
     @NotNull
-    private Integer idProveedor;
+    private Integer id;
     
     @NotEmpty
     @Size(max=30)
