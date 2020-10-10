@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
     xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
 
-<head  th:replace="Plantillas/plantilla :: head">
+<head th:replace="Plantillas/plantilla :: head">
 </head>
 
 <body>
@@ -42,12 +42,13 @@
         <form>
             <div class="container  ">
 
-                <select class="custom-select aps-color-1 aps-bg-5 " id="orden">
+
+                <select class="custom-select aps-color-1 aps-bg-5" id="orden">
                     <option selected>Ordenar por</option>
-                    <option value="1">Mas recientes</option>
-                    <option value="2">Mas antiguas</option>
-                    <option value="3">Mayor-menor</option>
-                    <option value="3">Menor-mayor</option>
+                    <option value="1" onclick="sortTableDate(1,'hl')">Mas recientes</option>
+                    <option value="2" onclick="sortTableDate(1,'lh')">Mas antiguas</option>
+                    <option value="3" onclick="sortTableVAL(4,'hl')">Mayor-menor</option>
+                    <option value="3" onclick="sortTableVAL(4,'lh')">Menor-mayor</option>
                 </select>
 
             </div>
@@ -66,32 +67,31 @@
                 <tbody>
                     <tr>
                         <td>1</td>
-                        <td>Mark                       
-                        </td>
+                        <td>10/10/2020</td>
                         <td>Otsssssto</td>
                         <td>@mdo</td>
-                        <td>@mdo</td>
+                        <td>200</td>
                     </tr>
                     <tr>
                         <td>2</td>
-                        <td>Mark</td>
+                        <td>10/10/2021</td>
                         <td>Otsssssto</td>
                         <td>@mdo</td>
-                        <td>@mdo</td>
+                        <td>100</td>
                     </tr>
                     <tr>
                         <td>3</td>
-                        <td>Mark</td>
+                        <td>10/10/2010</td>
                         <td>Otsssssto</td>
                         <td>@mdo</td>
-                        <td>@mdo</td>
+                        <td>2200</td>
                     </tr>
                     <tr>
                         <td>4</td>
-                        <td>Mark</td>
+                        <td>10/10/2020</td>
                         <td>Otsssssto</td>
                         <td>@mdo</td>
-                        <td>@mdo</td>
+                        <td>1200</td>
                     </tr>
                 </tbody>
             </table>
@@ -103,7 +103,7 @@
         function Select_row() {
             var table = document.getElementById('Tabla');
             var cells = table.getElementsByTagName('td');
-        
+
             for (var i = 0; i < cells.length; i++) {
                 // Take each cell
                 var cell = cells[i];
@@ -111,7 +111,7 @@
                 cell.onclick = function () {
                     // Get the row id where the cell exists
                     var rowId = this.parentNode.rowIndex;
-        
+
                     var rowsNotSelected = table.getElementsByTagName('tr');
                     for (var row = 0; row < rowsNotSelected.length; row++) {
                         rowsNotSelected[row].style.backgroundColor = "";
@@ -121,15 +121,67 @@
                     //rowSelected.style.backgroundColor = "yellow";
                     rowSelected.className += " selected";
                     var seleccionado = parseInt(rowSelected.cells[0].innerHTML);
-                   // msg = 'The ID of the company is: ' + rowSelected.cells[0].innerHTML;
+                    // msg = 'The ID of the company is: ' + rowSelected.cells[0].innerHTML;
                     // sel el val sel row msg += '\nThe cell value is: ' + this.innerHTML;
                     //alert(typeof(seleccionado));
-                    location.replace("seleccionada/?variable1="+seleccionado)
+                    location.replace("seleccionada/?variable1=" + seleccionado)
                 }
             }
-        
+
         }
-        </script>
+        function sortTableVAL(n, tipo) {
+            var table, rows, switching, i, x, y, shouldSwitch;
+            table = document.getElementById("Tabla");
+            switching = true;
+            var res = 0;
+            res = tipo.localeCompare('hl')
+            /*Make a loop that will continue until
+            no switching has been done:*/
+            while (switching) {
+                //start by saying: no switching is done:
+                switching = false;
+                rows = table.rows;
+                /*Loop through all table rows (except the
+                first, which contains table headers):*/
+                for (i = 1; i < (rows.length - 1); i++) {
+                    //start by saying there should be no switching:
+                    shouldSwitch = false;
+                    /*Get the two elements you want to compare,
+                    one from current row and one from the next:*/
+                    x = rows[i].getElementsByTagName("TD")[n];
+                    y = rows[i + 1].getElementsByTagName("TD")[n];
+                    //check if the two rows should switch place:
+
+                    if (res == 0) {
+                        if (Number(x.innerHTML) < Number(y.innerHTML)) {
+                            //if so, mark as a switch and break the loop:
+                            shouldSwitch = true;
+                            break;
+                        }
+                    }
+                    else {
+                        if (Number(x.innerHTML) > Number(y.innerHTML)) {
+                            //if so, mark as a switch and break the loop:
+                            shouldSwitch = true;
+                            break;
+                        }
+                    }
+
+
+                }
+                if (shouldSwitch) {
+                    /*If a switch has been marked, make the switch
+                    and mark that a switch has been done:*/
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                    switching = true;
+                }
+            }
+        }
+        function sortTableDate(n, tipo) {
+            var table, rows, switching, i, x, y, shouldSwitch;
+
+        }
+    </script>
 </body>
 
 </html>

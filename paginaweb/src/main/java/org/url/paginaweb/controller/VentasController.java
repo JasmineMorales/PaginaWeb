@@ -38,4 +38,8 @@ public class VentasController {
     public String getVentaSeleccionada(){
         return("/Ventas/ventaespecifica");
     }
+
+    public void GetVenta(int id){
+        
+    }
     }
