@@ -22,7 +22,7 @@ import lombok.Data;
 public class Venta implements Serializable{
     
     @NotNull
-    private Integer idVenta;
+    private Integer id;
     
     @NotEmpty
     @Size(max = 15)

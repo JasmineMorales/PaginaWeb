@@ -19,7 +19,7 @@ import lombok.Data;
 public class Repartidor implements Serializable {
     
     @NotNull
-    private Integer idRepartidor;
+    private Integer id;
     
     @NotEmpty
     @Size(max = 30)
