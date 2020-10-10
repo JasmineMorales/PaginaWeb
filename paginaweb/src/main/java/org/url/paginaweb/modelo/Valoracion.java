@@ -17,7 +17,7 @@ import lombok.Data;
 public class Valoracion implements Serializable{
     
     @NotNull
-    private Integer idValoracion;
+    private Integer id;
     
     @NotNull
     private Integer Valoracion;
