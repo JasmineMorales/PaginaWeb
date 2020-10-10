@@ -5,7 +5,7 @@
 <head th:replace="Plantillas/plantilla :: head">
 </head>
 
-<body>
+<body onload="Getparametro()">
     <header th:replace="Plantillas/plantilla :: header">
     </header>
     <div class="conteiner">
@@ -17,16 +17,16 @@
         <section>
             <ul class="nav nav-pills aps-bg-2" id="lista">
                 <li class="nav-item">
-                    <a class=" nav-link  aps-color-5 " href="index" >Todas</a>
+                    <a class=" nav-link  aps-color-5 " href="../index">Todas</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link aps-color-5" href="canceladas">Canceladas</a>
+                    <a class="nav-link aps-color-5" href="../canceladas">Canceladas</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link aps-color-5" href="entregadas">Entregadas</a>
+                    <a class="nav-link aps-color-5" href="../entregadas">Entregadas</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link aps-color-5" href="enespera">En espera</a>
+                    <a class="nav-link aps-color-5" href="../enespera">En espera</a>
                 </li>
             </ul>
         </section>
@@ -164,6 +164,15 @@
 
 
     <footer th:replace="Plantillas/plantilla :: footer"></footer>
+    <script>
+        // function Getparametro() {
+        //     const queryString = window.location.search;
+        //     const urlParams = new URLSearchParams(queryString);
+        //     const variable = urlParams.get('variable1')
+        //     //console.log(variable);
+        //     //alert(variable);
+        // }   
+    </script>
 </body>
 
 </html>

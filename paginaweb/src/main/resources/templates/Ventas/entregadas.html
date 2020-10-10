@@ -53,9 +53,10 @@
             </div>
         </form>
         <section class="container">
-            <table class="table table-striped tabla1">
+            <table class="table table-striped tabla1" id="Tabla">
                 <thead class="ht1">
                     <tr>
+                        <th class="th1" scope="col">ID</th>
                         <th class="th1" scope="col">Fecha</th>
                         <th class="th1" scope="col">Estado</th>
                         <th class="th1" scope="col">Repartidor</th>
@@ -64,25 +65,29 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Mark
+                        <td>1</td>
+                        <td>Mark                       
                         </td>
                         <td>Otsssssto</td>
                         <td>@mdo</td>
                         <td>@mdo</td>
                     </tr>
                     <tr>
+                        <td>2</td>
                         <td>Mark</td>
                         <td>Otsssssto</td>
                         <td>@mdo</td>
                         <td>@mdo</td>
                     </tr>
                     <tr>
+                        <td>3</td>
                         <td>Mark</td>
                         <td>Otsssssto</td>
                         <td>@mdo</td>
                         <td>@mdo</td>
                     </tr>
                     <tr>
+                        <td>4</td>
                         <td>Mark</td>
                         <td>Otsssssto</td>
                         <td>@mdo</td>
@@ -93,6 +98,38 @@
         </section>
     </div><br><br><br>
     <footer th:replace="Plantillas/plantilla :: footer"></footer>
+    <script>
+        Select_row();
+        function Select_row() {
+            var table = document.getElementById('Tabla');
+            var cells = table.getElementsByTagName('td');
+        
+            for (var i = 0; i < cells.length; i++) {
+                // Take each cell
+                var cell = cells[i];
+                // do something on onclick event for cell
+                cell.onclick = function () {
+                    // Get the row id where the cell exists
+                    var rowId = this.parentNode.rowIndex;
+        
+                    var rowsNotSelected = table.getElementsByTagName('tr');
+                    for (var row = 0; row < rowsNotSelected.length; row++) {
+                        rowsNotSelected[row].style.backgroundColor = "";
+                        rowsNotSelected[row].classList.remove('selected');
+                    }
+                    var rowSelected = table.getElementsByTagName('tr')[rowId];
+                    //rowSelected.style.backgroundColor = "yellow";
+                    rowSelected.className += " selected";
+                    var seleccionado = parseInt(rowSelected.cells[0].innerHTML);
+                   // msg = 'The ID of the company is: ' + rowSelected.cells[0].innerHTML;
+                    // sel el val sel row msg += '\nThe cell value is: ' + this.innerHTML;
+                    //alert(typeof(seleccionado));
+                    location.replace("seleccionada/?variable1="+seleccionado)
+                }
+            }
+        
+        }
+        </script>
 </body>
 
 </html>
