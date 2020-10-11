@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.url.paginaweb.modelo.ArregloUsuario;
+import org.url.paginaweb.modelo.ArregloVenta;
 import org.url.paginaweb.modelo.Usuario;
 
 /**
@@ -33,9 +34,10 @@ public class MainsiteService {
 
     }
 
-    public ArregloUsuario getAllUsuarios() {
-        String url1 = "http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/usuarios/";
-        ArregloUsuario response1 = restTemplate.getForObject(url1, ArregloUsuario.class);
+    public ArregloVenta getAllUsuarios() {
+        String url1 = "http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/ventas/";
+        ArregloVenta response1 = restTemplate.getForObject(url1, ArregloVenta.class);
+        log.info(response1.toString());
         if (response1.getCount() == 0) {
             return null;
         }
