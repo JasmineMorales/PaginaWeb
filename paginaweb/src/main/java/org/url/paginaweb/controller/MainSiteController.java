@@ -27,6 +27,7 @@ public class MainSiteController {
     
     @GetMapping("/")
     public String getMainPage(Model model){
+        mainsiteService.getAllUsuarios();
         return("MainSite/index");
     }
 }
