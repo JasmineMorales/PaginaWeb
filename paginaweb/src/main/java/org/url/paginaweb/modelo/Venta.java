@@ -44,11 +44,17 @@ public class Venta implements Serializable{
     @Min(value = 0)
     private Float total;
     
-    private Usuario usuario;
+    private Integer cliente;
     
-    private Repartidor repartidor;
+    private Usuario clienteO;
     
-    private FormaPago formaPago;
+    private Repartidor repartidorO;
+    
+    private Integer repartidor;
+    
+    private Integer formaPago;
+    
+    private FormaPago formaPagoO;
     
     private ArrayList<DetalleVenta> detallesVenta;
 }
