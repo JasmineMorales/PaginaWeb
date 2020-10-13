@@ -21,7 +21,7 @@ import lombok.Data;
 public class Producto implements Serializable {
     
     @NotNull
-    private Integer idProducto;
+    private Integer id;
     
     @NotEmpty
     @Size(max = 90)
@@ -40,9 +40,13 @@ public class Producto implements Serializable {
     @NotNull
     private Boolean disponibilidad;
     
-    private TipoProducto tipoProducto;
+    private Integer tipoProducto;
     
-    private Proveedor proveedor;
+    private Integer proveedor;
+    
+    private TipoProducto tipoProductoObjeto;
+    
+    private Proveedor proveedorObjeto;
     
     private ArrayList<Comentario> comentarios;
     
