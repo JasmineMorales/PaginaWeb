@@ -5,14 +5,21 @@
  */
 package org.url.paginaweb.controller;
 
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.url.paginaweb.service.ProductService;
 /**
  *
  * @author jasmine
  */
 @Controller
+@Slf4j
 public class ProductosController {
+    int id;
+    @Autowired
+    private ProductService productService;
     
     @GetMapping("/Productos/productos")
     public String getProductPage(){
@@ -31,6 +38,7 @@ public class ProductosController {
         
             @GetMapping("/Productos/producto")
     public String getProductListPage(){
+        //productService.getAllProducts();
         return("/Productos/producto");
     }
 }
