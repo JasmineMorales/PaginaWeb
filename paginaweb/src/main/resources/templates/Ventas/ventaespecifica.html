@@ -56,9 +56,9 @@
                         <th scope="col">Sub total</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody th:each="ven : ${detalle}">
                     <tr>
-                        <td>Mark</td>
+                        <td th:text="${ven}">Mark</td>
                         <td>Cantidad</td>
                         <td> Otsssssto</td>
 
@@ -99,21 +99,21 @@
                     <th scope="col"></th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody th:each="ven : ${venta}">
                 <tr>
                     <td>Descuento</td>
-                    <td>---</td>
+                    <td th:text=${ven.descuento}></td>
                 </tr>
                 <tr>
                     <td>Total</td>
-                    <td>--</td>
+                    <td th:text=${ven.total}></td>
                 </tr>
             </tbody>
         </table>
     </div><br>
     <div class="container ">
         <table class="table aps-bg-4" style="width: 400px;">
-            <thead class="ht2 aps-color-5">
+            <thead class="ht2 aps-color-5" >
                 <tr class="th2">
                     <th scope="col">Informacion general de venta</th>
                 </tr>
@@ -121,41 +121,41 @@
         </table>
         <div>
             <table class="table table-striped tabla1" style="max-width: 400px;">
-                <tbody>
+                <tbody th:each="ven : ${venta}" each="client : ${cliente}" >
                     <tr>
                         <td>Codigo</td>
-                        <td>---</td>
+                        <td th:text=${id}></td>
                     </tr>
                     <tr>
                         <td>Direccion</td>
-                        <td>av</td>
+                        <td th:text=${ven.direccion}></td>
                     </tr>
                     <tr>
                         <td>Fecha</td>
-                        <td>xx/xx/xxxx</td>
+                        <td th:text=${ven.fecha}></td>
                     </tr>
                     <tr>
                         <td>Descuento</td>
-                        <td>0.00</td>
+                        <td th:text=${ven.descuento}></td>
                     </tr>
                     <td>Estado</td>
-                    <td>entregado</td>
+                    <td th:text=${ven.estado}></td>
                     </tr>
                     </tr>
                     <td>Total</td>
-                    <td>d</td>
+                    <td th:text=${ven.total}></td>
                     </tr>
                     </tr>
                     <td>Usuario</td>
-                    <td>-</td>
+                    <td th:text=${ven.cliente}></td>
                     </tr>
                     </tr>
                     <td>Repartidor</td>
-                    <td>--</td>
+                    <td th:text=${ven.repartidor}></td>
                     </tr>
                     </tr>
                     <td>Forma de pago</td>
-                    <td>--</td>
+                    <td th:text=${ven.formaPago}></td>
                     </tr>
                 </tbody>
             </table>
@@ -165,14 +165,29 @@
 
     <footer th:replace="Plantillas/plantilla :: footer"></footer>
     <script>
-        function Getparametro() {
-            const queryString = window.location.search;
-            const urlParams = new URLSearchParams(queryString);
-            const variable = urlParams.get('variable1')
-            //console.log(variable);
-            //alert(variable);
-            
-        }   
+        // function Getparametro() {
+        //     const queryString = window.location.search;
+        //     const urlParams = new URLSearchParams(queryString);
+        //     const variable = urlParams.get('variable1')
+        //     CargarData(variable);
+        //     //console.log(variable);
+        //     //alert(variable);
+
+        // }
+        // function CargarData(variable1) {
+        //     $.get("http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/ventas/1/",
+        //         function () {
+        //             alert("success");
+        //         })
+        //         .done(function () {
+        //             alert("second success");
+        //         })
+        //         .fail(function () {
+        //             alert("error");
+        //         })
+
+        // }
+
     </script>
 </body>
 
