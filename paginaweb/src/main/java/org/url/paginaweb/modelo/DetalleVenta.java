@@ -17,24 +17,24 @@ import lombok.Data;
 @Data
 public class DetalleVenta implements Serializable {
     
-    @NotNull
-    private Integer id;
+   // @NotNull
+    //public Integer id;
     
-    @NotNull
-    @Min(value = 0)
+    //@NotNull
+    //@Min(value = 0)
     private Integer cantidad;
     
-    @NotNull
-    @Min(value = 0)
+    //@NotNull
+    //@Min(value = 0)
     private Float subtotal;
     
     private Integer venta;
     
-    private Venta ventaO;
+    //private Venta ventaO;
     
     private Integer producto;
-
-    private Producto productoO;
+    private String nombre;
+    //private Producto productoO;
     
     
 }

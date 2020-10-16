@@ -22,7 +22,7 @@ import lombok.Data;
 public class Venta implements Serializable{
     
     @NotNull
-    private Integer id;
+    public Integer id;
     
     @NotEmpty
     @Size(max = 15)
@@ -56,5 +56,5 @@ public class Venta implements Serializable{
     
     private FormaPago formaPagoO;
     
-    private ArrayList<DetalleVenta> detallesVenta;
+    public ArrayList<DetalleVenta> detallesVenta;
 }

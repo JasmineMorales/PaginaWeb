@@ -17,7 +17,8 @@
         <section>
             <ul class="nav nav-pills aps-bg-2">
                 <li class="nav-item">
-                    <a class=" nav-link  aps-color-5 active" href="#" style="background-color: #53aca9;">Todas</a>
+                    <a class=" nav-link  aps-color-5 active" href="#" 
+                    style="background-color: #53aca9;">Todas</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link aps-color-5" href="canceladas">Canceladas</a>
@@ -63,40 +64,18 @@
                         <th class="th1" scope="col">Sub total</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody th:each="ven : ${ventas}">
                     <tr>
-                        <td>1</td>
-                        <td>10/10/2020</td>
-                        <td>Otsssssto</td>
-                        <td>@mdo</td>
-                        <td>200</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>10/10/2021</td>
-                        <td>Otsssssto</td>
-                        <td>@mdo</td>
-                        <td>100</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>10/10/2010</td>
-                        <td>Otsssssto</td>
-                        <td>@mdo</td>
-                        <td>2200</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>10/10/2020</td>
-                        <td>Otsssssto</td>
-                        <td>@mdo</td>
-                        <td>1200</td>
+                        <td th:text="${ven.id}"></td>
+                        <td  th:text="${ven.fecha}"></td>
+                        <td  th:text="${ven.estado}"></td>
+                        <td  th:text="${ven.repartidor}"></td>
+                        <td  th:text="${ven.total}"></td>
                     </tr>
                 </tbody>
             </table>
         </section>
     </div><br><br><br>
-
     <footer th:replace="Plantillas/plantilla :: footer"></footer>
     <script>
         Select_row();

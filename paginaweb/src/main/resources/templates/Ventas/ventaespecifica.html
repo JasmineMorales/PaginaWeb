@@ -58,39 +58,15 @@
                 </thead>
                 <tbody th:each="ven : ${detalle}">
                     <tr>
-                        <td th:text="${ven}">Mark</td>
-                        <td>Cantidad</td>
-                        <td> Otsssssto</td>
-
-                    </tr>
-                    <tr>
-                        <td>Mark</td>
-                        <td>Cantidad</td>
-                        <td> Otsssssto</td>
-
-                    </tr>
-                    <tr>
-                        <td>Mark</td>
-                        <td>Cantidad</td>
-                        <td> Otsssssto</td>
-
-                    </tr>
-                    <tr>
-                        <td>Mark</td>
-                        <td>Cantidad</td>
-                        <td> Otsssssto</td>
-
-                    </tr>
-                    <td>@twitter</td>
-                    <td>Cantidad</td>
-                    <td>@mdo</td>
+                        <td th:text="${ven.producto}"></td>
+                        <td th:text="${ven.cantidad}"></td>
+                        <td th:text="${ven.subtotal}"></td>
                     </tr>
                 </tbody>
-
             </table>
         </div>
     </div><br>
-
+    
     <div class="container ">
         <table class="table aps-bg-4" style="width: 250px;">
             <thead class="ht2 aps-color-5">

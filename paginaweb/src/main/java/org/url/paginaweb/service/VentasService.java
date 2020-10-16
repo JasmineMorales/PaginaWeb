@@ -5,6 +5,8 @@
  */
 package org.url.paginaweb.service;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -28,11 +30,18 @@ public class VentasService{
         Venta response1 = restTemplate.getForObject(url, Venta.class);
         return response1;
     }
-
-    public ArregloDetalleVenta GetDetalleVenta(int id){
-        String url = "http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/detalleventa/"+ id +"/";
+        public List GetVentas(){
+        String url = "http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/venta/";
+        ArregloVenta response1 = restTemplate.getForObject(url, ArregloVenta.class);
+        List<Venta> respuesta = response1.getResults();
+        return respuesta;
+    }
+    public List GetDetalleVenta(){
+        String url = "http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/detalleventa/";
         ArregloDetalleVenta response1 = restTemplate.getForObject(url, ArregloDetalleVenta.class);
-        return response1;
+        System.out.println(response1);
+        List<DetalleVenta> respuesta = response1.getResults();
+        return respuesta;
     }
 
         public Usuario GetVentaUser(int id){

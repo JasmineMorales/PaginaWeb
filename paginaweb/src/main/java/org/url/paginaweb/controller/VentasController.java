@@ -5,6 +5,7 @@
  */
 package org.url.paginaweb.controller;
 
+import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.url.paginaweb.modelo.ArregloDetalleVenta;
 import org.url.paginaweb.modelo.Usuario;
+
 /**
  *
  * @author Gilda
@@ -29,24 +31,30 @@ public class VentasController {
     private VentasService ventaService;
 
     @GetMapping("/Ventas/index")
-    public String getVentaPage() {
+    public String getVentaPage(Model model) {
+        List ventas = ventaService.GetVentas();
+        model.addAttribute("ventas", ventas);
         return ("/Ventas/index");
     }
 
-    
-
     @GetMapping("/Ventas/canceladas")
-    public String getVentaCanceladaPage() {
+    public String getVentaCanceladaPage(Model model) {
+        List ventas = ventaService.GetVentas();
+        model.addAttribute("ventas", ventas);
         return ("/Ventas/canceladas");
     }
 
     @GetMapping("/Ventas/enespera")
-    public String getVentaenesperaPage() {
+    public String getVentaenesperaPage(Model model) {
+        List ventas = ventaService.GetVentas();
+        model.addAttribute("ventas", ventas);
         return ("/Ventas/enespera");
     }
 
     @GetMapping("/Ventas/entregadas")
-    public String getVentaPageentregada() {
+    public String getVentaPageentregada(Model model) {
+        List ventas = ventaService.GetVentas();
+        model.addAttribute("ventas", ventas);
         return ("/Ventas/entregadas");
     }
 
@@ -56,19 +64,17 @@ public class VentasController {
     //     log.info(venta.toString());
     //     return ("/Ventas/ventaespecifica");
     // }
-
     @GetMapping("/Ventas/seleccionada")
-    public String getVentaSeleccionada(@RequestParam(name="variable1", required=true, defaultValue="1") 
-    int id, Model model) {
+    public String getVentaSeleccionada(@RequestParam(name = "variable1", required = true, defaultValue = "1") int id, Model model) {
         model.addAttribute("id", id);
         Venta venta = ventaService.GetVenta(id);
-        model.addAttribute("venta",venta);
-        ArregloDetalleVenta detalle = ventaService.GetDetalleVenta(id);
-        System.out.println(detalle);
+        model.addAttribute("venta", venta);
+        //ArregloDetalleVenta detalle = ventaService.GetDetalleVenta(id);
+        List detalle = ventaService.GetDetalleVenta();
         //DetalleVenta detalle = ventaService.GetDetalle(id);
-        model.addAttribute("detalle",detalle);
+        model.addAttribute("detalle", detalle);
         //Usuario user = ventaService.GetVentaUser(1);
         //model.addAttribute("cliente",user);
-		return ("/Ventas/ventaespecifica");
-	}
+        return ("/Ventas/ventaespecifica");
+    }
 }
