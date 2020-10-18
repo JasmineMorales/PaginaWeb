@@ -36,5 +36,4 @@ public class DetalleVenta implements Serializable {
     private String nombre;
     //private Producto productoO;
     
-    
 }

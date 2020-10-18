@@ -13,6 +13,7 @@ import org.springframework.web.client.RestTemplate;
 import org.url.paginaweb.modelo.ArregloDetalleVenta;
 import org.url.paginaweb.modelo.ArregloVenta;
 import org.url.paginaweb.modelo.DetalleVenta;
+import org.url.paginaweb.modelo.Producto;
 import org.url.paginaweb.modelo.Usuario;
 import org.url.paginaweb.modelo.Venta;
 
@@ -36,24 +37,24 @@ public class VentasService{
         List<Venta> respuesta = response1.getResults();
         return respuesta;
     }
-    public List GetDetalleVenta(){
+    public List<DetalleVenta> GetDetalleVenta(){
         String url = "http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/detalleventa/";
         ArregloDetalleVenta response1 = restTemplate.getForObject(url, ArregloDetalleVenta.class);
-        System.out.println(response1);
         List<DetalleVenta> respuesta = response1.getResults();
         return respuesta;
     }
-
-        public Usuario GetVentaUser(int id){
-        String url = "http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/usuarios/" + id + "/";
-        Usuario response1 = restTemplate.getForObject(url, Usuario.class);
-        return response1;
-    }
-        
        public DetalleVenta GetDetalle(int id){
         String url = "http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/detalleventa/"+ id +"/";
         DetalleVenta response1 = restTemplate.getForObject(url, DetalleVenta.class);
         return response1;
     }
+       
+       //SERVICE PARA NOMBRES DE PRODUCTOS
+        public Producto GetProducto(int id){
+        String url = "http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/producto/" + id + "/";
+        Producto response1 = restTemplate.getForObject(url, Producto.class);
+        return response1;
+    }
+        
 
 }
