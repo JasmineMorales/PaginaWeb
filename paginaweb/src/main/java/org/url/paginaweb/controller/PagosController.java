@@ -6,6 +6,7 @@
 package org.url.paginaweb.controller;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Email;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.url.paginaweb.modelo.MetodoPago;
 import org.url.paginaweb.modelo.ModeloDevolucion;
+import org.url.paginaweb.service.EmailService;
 import org.url.paginaweb.service.PagosService;
 
 /**
@@ -30,6 +32,9 @@ import org.url.paginaweb.service.PagosService;
 public class PagosController {
     @Autowired
     private PagosService service;
+    
+    @Autowired
+    private EmailService emailService;
     
     @GetMapping("pagos/metodo-pago")
     public String getMetodoPago(Model model){
@@ -60,10 +65,12 @@ public class PagosController {
     public String postDevolucion(@ModelAttribute ModeloDevolucion modeloDevolucion, Model model){
         model.addAttribute("modeloDevolucion", modeloDevolucion);
         
+        emailService.sendEmail(modeloDevolucion.getCorreo(), modeloDevolucion.getTelefono(), modeloDevolucion.getFactura(), modeloDevolucion.getRazon()); 
         System.out.println(modeloDevolucion.getCorreo());
         System.out.println(modeloDevolucion.getTelefono());
         System.out.println(modeloDevolucion.getFactura());
         System.out.println(modeloDevolucion.getRazon());
+        
         
         return ("pagos/devoluciones");
     }; 

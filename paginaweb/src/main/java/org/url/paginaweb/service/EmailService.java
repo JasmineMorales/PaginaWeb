@@ -5,27 +5,46 @@
  */
 package org.url.paginaweb.service;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author ali
  */
-
-@Component
-public class EmailService implements EmailService{
-    @Autowired
-    private JavaMailSender emailSender;
-    
-    public void sendMessage(Sting to, String Subject, String Text){
-        SimpleMailMessage message = new SimpleMailMessage(); 
-        message.setFrom("noreply@baeldung.com");
-        message.setTo(to); 
-        message.setSubject(subject); 
-        message.setText(text);
-        emailSender.send(message);
-    }
-}
-
+@Service
+public class EmailService{
 	
+	@Autowired
+        private JavaMailSender javaMailSender;
+
+	public void sendEmail(String email, String telefono, String factura, String razon) {
+            System.out.println("sending");
+
+            SimpleMailMessage msg = new SimpleMailMessage();
+            msg.setFrom("cuenteretes.url@gmail.com");
+            msg.setTo("cuenteretes.url@gmail.com");
+
+            msg.setSubject("SOLICITUD DE DEVOLUCION: " + factura);
+            msg.setText("FACTURA: "+ factura+ "\nCORREO: " + email + "\nRAZON: " + razon);
+
+            javaMailSender.send(msg);
+            
+            msg = new SimpleMailMessage();
+            msg.setFrom("cuenteretes.url@gmail.com");
+            msg.setTo(email);
+
+            msg.setSubject("SOLICITUD DE DEVOLUCION: " + factura);
+            msg.setText("FACTURA: "+ factura+ "\nCORREO: " + email + "/\nRAZON: " + razon);
+
+            javaMailSender.send(msg);
+        }	
+}
