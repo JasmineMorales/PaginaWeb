@@ -26,7 +26,6 @@ public class PagosService {
     public PagosLista getMetodoPago() {
         String url = "http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/formadepago/";
         PagosLista respuesta = restTemplate.getForObject(url, PagosLista.class);
-        log.info(respuesta.toString());
         return respuesta;
     }
 }

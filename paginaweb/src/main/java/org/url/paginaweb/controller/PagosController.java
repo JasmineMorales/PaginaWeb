@@ -5,12 +5,18 @@
  */
 package org.url.paginaweb.controller;
 
+import javax.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.url.paginaweb.modelo.MetodoPago;
 import org.url.paginaweb.service.PagosService;
 
 /**
@@ -40,4 +46,16 @@ public class PagosController {
     public String getDevolucionAceptada(){
         return ("pagos/devolucionAceptada");
     }; 
+    
+    @RequestMapping(value ="pagos/addMetodoPago", method = RequestMethod.PATCH)
+    public void submit(@Valid @ModelAttribute("metodoPago") MetodoPago metodoPago,
+            BindingResult result, ModelMap model){
+        
+//        if (result.hasErrors()){
+//            return "error";
+//        }
+        
+        System.out.println(metodoPago.getDisponibilidad());
+        
+    }
 }
