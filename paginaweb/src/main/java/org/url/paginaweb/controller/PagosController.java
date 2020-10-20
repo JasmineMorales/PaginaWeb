@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.url.paginaweb.modelo.MetodoPago;
+import org.url.paginaweb.modelo.ModeloDevolucion;
 import org.url.paginaweb.service.PagosService;
 
 /**
@@ -35,25 +36,6 @@ public class PagosController {
         model.addAttribute("metodos", service.getMetodoPago().getResults());
         return ("pagos/metodoPago");
     };
-     @GetMapping("pagos/agregar-tarjeta")
-    public String getAgregarTarjeta(){
-        return ("pagos/agregarTarjeta");
-    };
-        @GetMapping("pagos/devolucion")
-    public String getDevolucion(){
-        return ("pagos/devoluciones");
-    }; 
-          @GetMapping("pagos/devolucion-aceptada")
-    public String getDevolucionAceptada(){
-        return ("pagos/devolucionAceptada");
-    }; 
-    
-    @GetMapping("pagos/agregar-metodo-pago")
-    public String getAgregarMetodoPago(Model model){
-        model.addAttribute("metodoPago", new MetodoPago());
-        return ("pagos/agregarMetodoPago");
-    };
-    
     @PostMapping("pagos/metodo-pago")
     public String postAgregarMetodoPago(@ModelAttribute MetodoPago metodoPago, Model model){
         model.addAttribute("metodoPago", metodoPago);
@@ -65,6 +47,37 @@ public class PagosController {
         model.addAttribute("metodos", service.getMetodoPago().getResults());
         return("pagos/metodoPago");
     }
+     @GetMapping("pagos/agregar-tarjeta")
+    public String getAgregarTarjeta(){
+        return ("pagos/agregarTarjeta");
+    };
+    @GetMapping("pagos/devolucion")
+    public String getDevolucion(@ModelAttribute ModeloDevolucion modeloDevolucion, Model model){
+        model.addAttribute("modeloDevolucion", modeloDevolucion);
+        return ("pagos/devoluciones");
+    }; 
+    @PostMapping("pagos/devolucion")
+    public String postDevolucion(@ModelAttribute ModeloDevolucion modeloDevolucion, Model model){
+        model.addAttribute("modeloDevolucion", modeloDevolucion);
+        
+        System.out.println(modeloDevolucion.getCorreo());
+        System.out.println(modeloDevolucion.getTelefono());
+        System.out.println(modeloDevolucion.getFactura());
+        System.out.println(modeloDevolucion.getRazon());
+        
+        return ("pagos/devoluciones");
+    }; 
+    @GetMapping("pagos/devolucion-aceptada")
+    public String getDevolucionAceptada(){
+        return ("pagos/devolucionAceptada");
+    }; 
+    
+    @GetMapping("pagos/agregar-metodo-pago")
+    public String getAgregarMetodoPago(Model model){
+        model.addAttribute("metodoPago", new MetodoPago());
+        return ("pagos/agregarMetodoPago");
+    };
+    
     
     @RequestMapping(value ="pagos/addMetodoPago", method = RequestMethod.PATCH)
     public void submit(@Valid @ModelAttribute("metodoPago") MetodoPago metodoPago,

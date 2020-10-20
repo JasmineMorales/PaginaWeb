@@ -22,28 +22,28 @@ and open the template in the editor.
            <h2>FORMULARIO DE DEVOLUCIÓN</h2>
         </div>
         <div  class= "contenedor-campos">
-            <form>
+            <form action="#" th:action="@{/pagos/devolucion}" th:object="${modeloDevolucion}" method="post">
                 <div class="form-group">
                   <label for="exampleFormControlInput1">Correo Electrónico:</label>
-                  <input type="email" class="form-control" id="correo" placeholder="cuenteretes@correo.com" style="background-color: #DEF2F1;">
+                  <input type="email" class="form-control" id="correo" placeholder="cuenteretes@correo.com" style="background-color: #DEF2F1;" th:field="*{correo}" required/>
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Número Telefóno:</label>
-                    <input type="text" class="form-control" id="telefono" style="background-color: #DEF2F1;" >
+                    <input type="text" class="form-control" id="telefono" style="background-color: #DEF2F1;" th:field="*{telefono}" required/>
                 </div>
                 <label for="exampleFormControlInput1">Número de Factura:</label>
-                  <input type="text" class="form-control" id="no.Factura"style="background-color: #DEF2F1;" >
+                <input type="text" class="form-control" id="no.Factura"style="background-color: #DEF2F1;" th:field="*{factura}" required/>
                 
-                  <div class="form-group">
-                    <label for="exampleFormControlTextarea1">Razón:</label >
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" style="background-color: #DEF2F1;" ></textarea >
-                  </div>
+                <div class="form-group">
+                  <label for="exampleFormControlTextarea1">Razón:</label >
+                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" style="background-color: #DEF2F1;" th:field="*{razon}" required></textarea >
+                </div>
                 
-              </form>
-       </div>
-       <div class="seccion-btn">
-         <button type="button" class="btn btn-outline-danger">CANCELAR</button>
-         <button type="button" class="btn btn-outline-success">GUARDAR</button>
+                <div class="seccion-btn">
+                  <input type="submit" class="btn btn-outline-success" value="GUARDAR"/>
+                  <input type="reset" class="btn btn-outline-danger" value="CANCELAR">
+                </div>
+            </form>
        </div>
     </div>
         <footer th:replace="Plantillas/plantilla :: footer"></footer>
