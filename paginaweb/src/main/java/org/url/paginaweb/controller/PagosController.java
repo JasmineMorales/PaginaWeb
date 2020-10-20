@@ -14,6 +14,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.url.paginaweb.modelo.MetodoPago;
@@ -47,13 +48,28 @@ public class PagosController {
         return ("pagos/devolucionAceptada");
     }; 
     
+    @GetMapping("pagos/agregar-metodo-pago")
+    public String getAgregarMetodoPago(Model model){
+        model.addAttribute("metodoPago", new MetodoPago());
+        return ("pagos/agregarMetodoPago");
+    };
+    
+    @PostMapping("pagos/metodo-pago")
+    public String postAgregarMetodoPago(@ModelAttribute MetodoPago metodoPago, Model model){
+        model.addAttribute("metodoPago", metodoPago);
+        System.out.println(metodoPago.getTipo());
+        System.out.println(metodoPago.getDisponibilidad());
+        
+        service.postMetodoPago(metodoPago);
+        
+        model.addAttribute("metodos", service.getMetodoPago().getResults());
+        return("pagos/metodoPago");
+    }
+    
     @RequestMapping(value ="pagos/addMetodoPago", method = RequestMethod.PATCH)
     public void submit(@Valid @ModelAttribute("metodoPago") MetodoPago metodoPago,
             BindingResult result, ModelMap model){
         
-//        if (result.hasErrors()){
-//            return "error";
-//        }
         
         System.out.println(metodoPago.getDisponibilidad());
         

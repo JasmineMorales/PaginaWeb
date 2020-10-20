@@ -8,6 +8,7 @@ package org.url.paginaweb.modelo;
 import java.io.Serializable;
 import javax.validation.constraints.NotNull;
 import lombok.Data;
+import org.springframework.lang.Nullable;
 
 /**
  *
@@ -15,7 +16,6 @@ import lombok.Data;
  */
 @Data
 public class MetodoPago implements Serializable{
-    @NotNull
     private Integer id;
     
     @NotNull
@@ -24,4 +24,26 @@ public class MetodoPago implements Serializable{
     @NotNull
     private Boolean disponibilidad;
     
+    
+    public void setId(Integer id){
+        this.id = id;
+    }
+    public void setTipo(String tipo){
+        this.tipo = tipo;
+    }
+    public void setDisponibilidad(Boolean disponibilidad){
+        this.disponibilidad = disponibilidad;
+    }
+    
+    public Integer getId(){
+        return this.id;
+    }
+    
+    public String getTipo(){
+        return this.tipo;
+    }
+    
+    public Boolean getDisponibilidad(){
+        return this.disponibilidad;
+    }
 }

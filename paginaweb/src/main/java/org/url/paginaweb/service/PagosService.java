@@ -5,8 +5,11 @@
  */
 package org.url.paginaweb.service;
 
+import javax.json.Json;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.url.paginaweb.modelo.MetodoPago;
@@ -27,5 +30,13 @@ public class PagosService {
         String url = "http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/formadepago/";
         PagosLista respuesta = restTemplate.getForObject(url, PagosLista.class);
         return respuesta;
+    }
+    
+    public void postMetodoPago(MetodoPago metodoPago) {
+        String url = "http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/formadepago/";
+       
+        MetodoPago result = restTemplate.postForObject(url, metodoPago, MetodoPago.class);
+        
+        System.out.println(result);
     }
 }
