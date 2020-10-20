@@ -22,22 +22,17 @@ and open the template in the editor.
            <h2>FORMULARIO DE DEVOLUCIÓN ACEPTADA:</h2>
         </div>
         <div  class= "contenedor-campos">
-            <form>
+            <form action="#" th:action="@{/pagos/devolucion-aceptada}" th:object="${devolucion}" method="post">
                
-                <div class="form-group">
-                    <label for="exampleFormControlInput1">Fecha:</label>
-                    <input type="text" class="form-control" id="telefono" style="background-color: #DEF2F1;" >
-                </div>
                 <label for="exampleFormControlInput1">Número de Factura:</label>
-                  <input type="text" class="form-control" id="no.Factura"style="background-color: #DEF2F1;" >
+                <input type="number" class="form-control" id="no-Factura" style="background-color: #DEF2F1;" th:field="*{venta}">
                 
-                  
+                <div class="seccion-btn">
+                  <input type="submit" class="btn btn-outline-success" value="REGISTRAR"/>
+                  <input type="reset" class="btn btn-outline-danger" value="CANCELAR"/>
+                </div>
                 
               </form>
-       </div>
-       <div class="seccion-btn">
-         <button type="button" class="btn btn-outline-danger">CANCELAR</button>
-         <button type="button" class="btn btn-outline-success">REGISTRAR</button>
        </div>
     </div>
 

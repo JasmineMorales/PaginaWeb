@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.url.paginaweb.modelo.MetodoPago;
 import org.url.paginaweb.modelo.ModeloDevolucion;
+import org.url.paginaweb.modelo.ModeloDevolucionAceptada;
 import org.url.paginaweb.service.EmailService;
 import org.url.paginaweb.service.PagosService;
 
@@ -66,16 +67,21 @@ public class PagosController {
         model.addAttribute("modeloDevolucion", modeloDevolucion);
         
         emailService.sendEmail(modeloDevolucion.getCorreo(), modeloDevolucion.getTelefono(), modeloDevolucion.getFactura(), modeloDevolucion.getRazon()); 
-        System.out.println(modeloDevolucion.getCorreo());
-        System.out.println(modeloDevolucion.getTelefono());
-        System.out.println(modeloDevolucion.getFactura());
-        System.out.println(modeloDevolucion.getRazon());
-        
-        
+
         return ("pagos/devoluciones");
     }; 
     @GetMapping("pagos/devolucion-aceptada")
-    public String getDevolucionAceptada(){
+    public String getDevolucionAceptada(@ModelAttribute ModeloDevolucionAceptada devolucion, Model model){
+        model.addAttribute("devolucion", devolucion);
+        return ("pagos/devolucionAceptada");
+    }; 
+    
+    @PostMapping("pagos/devolucion-aceptada")
+    public String postDevolucionAceptada(@ModelAttribute ModeloDevolucionAceptada devolucion, Model model){
+        model.addAttribute("devolucion", devolucion);
+        
+        service.postDevolucion(devolucion);
+        
         return ("pagos/devolucionAceptada");
     }; 
     

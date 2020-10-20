@@ -13,6 +13,7 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.url.paginaweb.modelo.MetodoPago;
+import org.url.paginaweb.modelo.ModeloDevolucionAceptada;
 import org.url.paginaweb.modelo.PagosLista;
 
 /**
@@ -36,6 +37,14 @@ public class PagosService {
         String url = "http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/formadepago/";
        
         MetodoPago result = restTemplate.postForObject(url, metodoPago, MetodoPago.class);
+        
+        System.out.println(result);
+    }
+    
+    public void postDevolucion(ModeloDevolucionAceptada devolucion){
+        String url = "http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/devolucion/";
+        
+        ModeloDevolucionAceptada result = restTemplate.postForObject(url, devolucion, ModeloDevolucionAceptada.class);
         
         System.out.println(result);
     }
