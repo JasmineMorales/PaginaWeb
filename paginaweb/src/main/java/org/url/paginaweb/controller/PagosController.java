@@ -51,7 +51,7 @@ public class PagosController {
         service.postMetodoPago(metodoPago);
         
         model.addAttribute("metodos", service.getMetodoPago().getResults());
-        return("pagos/metodoPago");
+        return("pagos/metodoCreado");
     }
      @GetMapping("pagos/agregar-tarjeta")
     public String getAgregarTarjeta(){
@@ -68,7 +68,7 @@ public class PagosController {
         
         emailService.sendEmail(modeloDevolucion.getCorreo(), modeloDevolucion.getTelefono(), modeloDevolucion.getFactura(), modeloDevolucion.getRazon()); 
 
-        return ("pagos/devoluciones");
+        return ("pagos/correoEnviado");
     }; 
     @GetMapping("pagos/devolucion-aceptada")
     public String getDevolucionAceptada(@ModelAttribute ModeloDevolucionAceptada devolucion, Model model){
@@ -82,7 +82,7 @@ public class PagosController {
         
         service.postDevolucion(devolucion);
         
-        return ("pagos/devolucionAceptada");
+        return ("pagos/solicitudAceptada");
     }; 
     
     @GetMapping("pagos/agregar-metodo-pago")

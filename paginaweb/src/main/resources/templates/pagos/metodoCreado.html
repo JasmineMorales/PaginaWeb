@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To chan0ge this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+       
+    <head th:replace="Plantillas/plantilla :: head">
+        <title>New Froma Pago</title>
+        <link href="<c:url value="/static/css/pagos.css" />" rel="stylesheet">
+        <meta charset="UTF-8" />
+    </head>
+    <body>
+        <header th:replace="Plantillas/plantilla :: header">
+        </header>
+        
+        <div  class="container">
+            <div class="contenedor-titulo">
+                   <h2>AGREGAR MÉTODO DE PAGO</h2>
+            </div>
+            <div class= "contenedor-campos" style="text-align: center;">
+                <h3>Se ha creado el método de pago</h3>
+                
+                <a type="button" class="btn btn-outline-secondary" href="/pagos/agregar-metodo-pago">Crear otro método</a>
+                <a type="button" class="btn btn-outline-secondary" href="/pagos/metodo-pago">Ver métodos<a>
+           </div>
+        </div>
+        <footer th:replace="Plantillas/plantilla :: footer"></footer>

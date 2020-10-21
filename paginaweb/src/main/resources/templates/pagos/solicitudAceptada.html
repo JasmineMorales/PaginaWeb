@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To chan0ge this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+       
+    <head th:replace="Plantillas/plantilla :: head">
+        <title>Busqueda</title>
+        <link href="<c:url value="/static/css/pagos.css" />" rel="stylesheet">
+        <meta charset="UTF-8" />
+    </head>
+    <body>
+        <header th:replace="Plantillas/plantilla :: header">
+        </header>
+           <div  class="container">
+       
+        <div  class= "contenedor-titulo">
+           <h2>FORMULARIO DE DEVOLUCIÓN ACEPTADA:</h2>
+        </div>
+               <div  class= "contenedor-campos" style="text-align: center">
+            <h3>Ha aceptado la solicitud de devolución!</h3>
+               
+            <a type="button" class="btn btn-outline-secondary" href="/pagos/devolucion-aceptada"> Aceptar otra Solicitud</a>
+       </div>
+    </div>
+
+        <footer th:replace="Plantillas/plantilla :: footer"></footer>
+    </body>
+</html>
