@@ -6,6 +6,7 @@
 package org.url.paginaweb.service;
 
 import java.util.ArrayList;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -22,6 +23,7 @@ import org.url.paginaweb.modelo.Usuario;
  * @author marcos
  */
 @Service
+@Slf4j
 public class LoginPService {
     private ArrayList<Repartidor> listaRepartidor;
     private ArrayList<Usuario> listaUsuario;
@@ -70,12 +72,69 @@ public class LoginPService {
     }
     
     public Usuario getInfoUsuario(String id){
+        String url1 = "http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/usuarios/";
+        ArregloUsuario usuarios = restTemplate.getForObject(url1, ArregloUsuario.class);
+        listaUsuario = (ArrayList<Usuario>) usuarios.getResults();
+        
+        if(!listaUsuario.isEmpty()){
+            for(Usuario u : listaUsuario){
+                if(id.equals(u.getId().toString())){
+                    return u;
+                }
+            }
+        }
         return null;
     }
     public Repartidor getInfoRepartidor(String id){
+        String url3 = "http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/repartidor/";
+        ArregloRepartidor repartidores = restTemplate.getForObject(url3, ArregloRepartidor.class);
+        listaRepartidor = (ArrayList<Repartidor>) repartidores.getResults();
+        if(!listaRepartidor.isEmpty()){
+            for(Repartidor repartidor : listaRepartidor){
+                if(repartidor.getId().toString().equals(id)){
+                    return repartidor;
+                }
+            }
+        }
         return null;
     }
     public Admin getInfoAdmin(String id){
+        String url2 = "http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/administrador/";
+        ArregloAdmin admins = restTemplate.getForObject(url2, ArregloAdmin.class);
+        listaAdmin = (ArrayList<Admin>) admins.getResults();
+        if(!listaAdmin.isEmpty()){
+            for(Admin admin : listaAdmin){
+                if(admin.getId().toString().equals(id)){
+                    return admin;
+                }
+            }
+        }
         return null;
+    }
+    
+    public void insertarUsuario(Usuario usuario){
+    
+       String url = "http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/administrador/";
+        
+       var result = restTemplate.postForObject(url, usuario, Usuario.class);
+       
+       log.info(result.toString());
+    }
+    
+    public void insertarRepartidor(Repartidor repartidor){
+    
+       String url = "http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/administrador/";
+        
+       var result = restTemplate.postForObject(url, repartidor, Repartidor.class);
+       
+       log.info(result.toString());
+    }
+    
+    public void insertarAdmin(Admin admin){
+       String url = "http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/administrador/";
+        
+       var result = restTemplate.postForObject(url, admin, Admin.class);
+       
+       log.info(result.toString());
     }
 }
