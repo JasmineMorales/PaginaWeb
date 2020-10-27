@@ -69,4 +69,13 @@ public class LoginPService {
         return null;
     }
     
+    public Usuario getInfoUsuario(String id){
+        return null;
+    }
+    public Repartidor getInfoRepartidor(String id){
+        return null;
+    }
+    public Admin getInfoAdmin(String id){
+        return null;
+    }
 }
