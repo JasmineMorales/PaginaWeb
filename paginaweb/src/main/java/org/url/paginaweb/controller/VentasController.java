@@ -58,8 +58,8 @@ public class VentasController {
                 if (ventanueva.size() == 0) {
                     return ("/Ventas/NoHayVentas");
                 } else {
-
-                    ventas = NombresRepartidores(ventanueva);
+                    
+                    ventanueva = NombresRepartidores(ventanueva);
                     model.addAttribute("ventas", ventanueva);
                     return ("/Ventas/canceladas");
                 }
@@ -79,12 +79,13 @@ public class VentasController {
                 return ("/Ventas/NoHayVentas");
             } else {
                 List<Venta> ventanueva = VentasEspera(ventas);
+                 
                 if (ventanueva.size() == 0) {
                     return ("/Ventas/NoHayVentas");
                 } else {
 
-                    ventas = NombresRepartidores(ventanueva);
-                    model.addAttribute("ventas", ventas);
+                    ventanueva = NombresRepartidores(ventanueva);
+                    model.addAttribute("ventas", ventanueva);
                     return ("/Ventas/enespera");
                 }
             }
@@ -105,7 +106,7 @@ public class VentasController {
                     return ("/Ventas/NoHayVentas");
                 }
                 else{
-                ventas = NombresRepartidores(ventanueva);
+                ventanueva = NombresRepartidores(ventanueva);
                 model.addAttribute("ventas", ventanueva);
                 return ("/Ventas/entregadas");}
             }
@@ -130,8 +131,9 @@ public class VentasController {
             //recibe solo los detalles de la venta seleccionada
             List<DetalleVenta> detallenuevo = DetallesVentaID(detalle, id);
             List<Producto> productos = NombresProductos(detallenuevo); //AQUIII
+             
             List<DetalleVenta> detallesmodelo = ObtenerNombresProductos(productos, detallenuevo);
-
+            
             //  model.addAttribute("productos", productos);
             model.addAttribute("detalle", detallesmodelo);
             return ("/Ventas/ventaespecifica");}
@@ -163,7 +165,7 @@ public class VentasController {
         List<Venta> dnventa = new ArrayList<Venta>();
         for (int x = 0; x < dventa.size(); x++) {
             Venta v = dventa.get(x);
-            if (v.getEstado().equals("Cancelada")) {
+            if ((v.getEstado().equals("Cancelada")) || (v.getEstado().equals("Cancelado"))) {
                 dnventa.add(v);
             } else {
                 dventa.remove(x);
@@ -178,7 +180,7 @@ public class VentasController {
         List<Venta> dnventa = new ArrayList<Venta>();
         for (int x = 0; x < dventa.size(); x++) {
             Venta v = dventa.get(x);
-            if (v.getEstado().equals("Entregado")) {
+            if ((v.getEstado().equals("Entregado"))||(v.getEstado().equals("Entregada"))) {
                 dnventa.add(v);
             } else {
                 dventa.remove(x);
@@ -193,7 +195,7 @@ public class VentasController {
         List<Venta> dnventa = new ArrayList<Venta>();
         for (int x = 0; x < dventa.size(); x++) {
             Venta v = dventa.get(x);
-            if (v.getEstado().equals("En espera")) {
+            if ((v.getEstado().equals("En espera")) || (v.getEstado().equals("Espera"))){
                 dnventa.add(v);
             } else {
                 dventa.remove(x);
@@ -223,6 +225,7 @@ public class VentasController {
         for (int x = 0; x < producto.size(); x++) {
             Producto p = producto.get(x);
             String nombre = p.getNombre();
+             
             DetalleVenta d = venta.get(x);
             d.setNombre(nombre);
             venta.set(x, d);
