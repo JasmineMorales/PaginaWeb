@@ -34,71 +34,95 @@ public class VentasController {
     private VentasService ventaService;
 
     @GetMapping("/Ventas/index")
-    public String getVentaPage(Model model) {
-        List ventas = ventaService.GetVentas();
-        ventas = NombresRepartidores(ventas);
-        model.addAttribute("ventas", ventas);
-        return ("/Ventas/index");
+    public String getVentaPage(Model model) { //recibe el modelo
+        // creo una lista que recibira lo que devuelva el service
+        try {
+            List ventas = ventaService.GetVentas();
+            ventas = NombresRepartidores(ventas);// este metodo lo use para obtener los nombres de los repartidores ignoralo
+            model.addAttribute("ventas", ventas);//agrego al modelo la lista ventas
+            return ("/Ventas/index");
+        } catch (Exception e) {
+            List ventas = new ArrayList<Venta>();
+            model.addAttribute("ventas", ventas);
+            return ("/Ventas/index");
+        }
+
     }
 
     @GetMapping("/Ventas/canceladas")
     public String getVentaCanceladaPage(Model model) {
-        List ventas = ventaService.GetVentas();
-        ventas = NombresRepartidores(ventas);
-        List<Venta> ventanueva = VentasCanceladas(ventas);
-        model.addAttribute("ventas", ventanueva);
-        return ("/Ventas/canceladas");
+        try {
+            List ventas = ventaService.GetVentas();
+            ventas = NombresRepartidores(ventas);
+            List<Venta> ventanueva = VentasCanceladas(ventas);
+            model.addAttribute("ventas", ventanueva);
+            return ("/Ventas/canceladas");
+        } catch (Exception e) {
+            List ventas = new ArrayList<Venta>();
+            model.addAttribute("ventas", ventas);
+            return ("/Ventas/canceladas");
+        }
+
     }
 
     @GetMapping("/Ventas/enespera")
     public String getVentaenesperaPage(Model model) {
-        List ventas = ventaService.GetVentas();
-        ventas = NombresRepartidores(ventas);
-        List<Venta> ventanueva = VentasEspera(ventas);
-        model.addAttribute("ventas", ventas);
-        return ("/Ventas/enespera");
+        try {
+            List ventas = ventaService.GetVentas();
+            ventas = NombresRepartidores(ventas);
+            List<Venta> ventanueva = VentasEspera(ventas);
+            model.addAttribute("ventas", ventas);
+            return ("/Ventas/enespera");
+        } catch (Exception e) {
+            List ventas = new ArrayList<Venta>();
+            model.addAttribute("ventas", ventas);
+            return ("/Ventas/enespera");
+        }
     }
 
     @GetMapping("/Ventas/entregadas")
     public String getVentaPageentregada(Model model) {
-        List ventas = ventaService.GetVentas();
-        ventas = NombresRepartidores(ventas);
-        List<Venta> ventanueva = VentasEntregadas(ventas);
-        model.addAttribute("ventas", ventanueva);
-        return ("/Ventas/entregadas");
+        try {
+            List ventas = ventaService.GetVentas();
+            ventas = NombresRepartidores(ventas);
+            List<Venta> ventanueva = VentasEntregadas(ventas);
+            model.addAttribute("ventas", ventanueva);
+            return ("/Ventas/entregadas");
+        } catch (Exception e) {
+            List ventas = new ArrayList<Venta>();
+            model.addAttribute("ventas", ventas);
+            return ("/Ventas/entregadas");
+        }
     }
-
 
     @GetMapping("/Ventas/seleccionada")
     public String getVentaSeleccionada(@RequestParam(name = "variable1", required = true, defaultValue = "1") int id, Model model) {
-        model.addAttribute("id", id);
-        Venta venta = ventaService.GetVenta(id);
-        venta = NombresUsuario(venta);
-        model.addAttribute("venta", venta);
-        //obtiene todos los detalles
-        List<DetalleVenta> detalle = ventaService.GetDetalleVenta();
-        //recibe solo los detalles de la venta seleccionada
-        List<DetalleVenta> detallenuevo = DetallesVentaID(detalle, id);
-        //agrega 
-        //  model.addAttribute("detalle", detallenuevo);
-        //productos
-        List<Producto> productos = NombresProductos(detallenuevo);
-        List<DetalleVenta> detallesmodelo = ObtenerNombresProductos(productos, detallenuevo);
-        
-        //  model.addAttribute("productos", productos);
-        model.addAttribute("detalle", detallesmodelo);
-        return ("/Ventas/ventaespecifica");
+        try {
+            model.addAttribute("id", id);
+            Venta venta = ventaService.GetVenta(id);
+            venta = NombresUsuario(venta);
+            model.addAttribute("venta", venta);
+            //obtiene todos los detalles
+            List<DetalleVenta> detalle = ventaService.GetDetalleVenta();
+            //recibe solo los detalles de la venta seleccionada
+            List<DetalleVenta> detallenuevo = DetallesVentaID(detalle, id);
+            List<Producto> productos = NombresProductos(detallenuevo); //AQUIII
+            List<DetalleVenta> detallesmodelo = ObtenerNombresProductos(productos, detallenuevo);
+
+            //  model.addAttribute("productos", productos);
+            model.addAttribute("detalle", detallesmodelo);
+            return ("/Ventas/ventaespecifica");
+        } catch (Exception e) {
+            model.addAttribute("id", id);
+            Venta venta = new Venta();
+            model.addAttribute("venta", venta);
+            List<DetalleVenta> detallesmodelo = new ArrayList<DetalleVenta>();
+            model.addAttribute("detalle", detallesmodelo);
+            
+            return ("/Ventas/ventaespecifica");
+        }
     }
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
     //METODOS PARA FILTRAR POR INFORMACION ESPECIFICA
     //DETALLES DE VENTA ESPECIFICA, SI ES DETALLE DE LA VENTA SELECCIONADA SE AGREGA A LA LISTA
     public List<DetalleVenta> DetallesVentaID(List<DetalleVenta> dventa, int id) {
@@ -115,8 +139,8 @@ public class VentasController {
         }
         return (dnventa);
     }
-    
-        //VENTA CANCELADOS
+
+    //VENTA CANCELADOS
     public List<Venta> VentasCanceladas(List<Venta> dventa) {
         List<Venta> dnventa = new ArrayList<Venta>();
         for (int x = 0; x < dventa.size(); x++) {
@@ -126,12 +150,12 @@ public class VentasController {
             } else {
                 dventa.remove(x);
             }
-            
+
         }
         return (dnventa);
     }
-    
-            //VENTA ENTREGADOS
+
+    //VENTA ENTREGADOS
     public List<Venta> VentasEntregadas(List<Venta> dventa) {
         List<Venta> dnventa = new ArrayList<Venta>();
         for (int x = 0; x < dventa.size(); x++) {
@@ -141,11 +165,12 @@ public class VentasController {
             } else {
                 dventa.remove(x);
             }
-            
+
         }
         return (dnventa);
     }
-                //VENTA ESPERA
+    //VENTA ESPERA
+
     public List<Venta> VentasEspera(List<Venta> dventa) {
         List<Venta> dnventa = new ArrayList<Venta>();
         for (int x = 0; x < dventa.size(); x++) {
@@ -155,30 +180,10 @@ public class VentasController {
             } else {
                 dventa.remove(x);
             }
-            
+
         }
         return (dnventa);
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 
     //OBTENER LOS  PRODUCTOS
     public List<Producto> NombresProductos(List<DetalleVenta> dventa) {
@@ -217,20 +222,18 @@ public class VentasController {
         dventa.setNombreRepartidor(r.getNombre());
         return dventa;
     }
-    
-    
-    
-        //OBTENER el nombre de repartidor lisa ventas
+
+    //OBTENER el nombre de repartidor lisa ventas
     public List<Venta> NombresRepartidores(List<Venta> dventa) {
         for (int x = 0; x < dventa.size(); x++) {
             Venta v = dventa.get(x);
             int rep = v.getRepartidor();
-            Repartidor r = ventaService.GetRepartidor(rep);         
+            Repartidor r = ventaService.GetRepartidor(rep);
             String nombre = r.getNombre();
             v.setNombreRepartidor(nombre);
             dventa.set(x, v);
         }
-        
+
         return dventa;
     }
 

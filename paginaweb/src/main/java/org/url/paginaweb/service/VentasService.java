@@ -35,9 +35,9 @@ public class VentasService {
     }
 
     public List GetVentas() {
-        String url = "http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/venta/";
-        ArregloVenta response1 = restTemplate.getForObject(url, ArregloVenta.class);
-        List<Venta> respuesta = response1.getResults();
+        String url = "http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/venta/"; // Obtiene todas las ventas
+        ArregloVenta response1 = restTemplate.getForObject(url, ArregloVenta.class); //El arregloventa lo recibe
+        List<Venta> respuesta = response1.getResults();// creo una lista de tipo venta para trabajar con objeto venta
         return respuesta;
     }
 
