@@ -64,8 +64,8 @@
                         <th class="th1" scope="col">Sub total</th>
                     </tr>
                 </thead>
-                <tbody th:each="ven : ${ventas}">
-                    <tr>
+                <tbody >
+                    <tr th:each="ven : ${ventas}">
                         <td th:text="${ven.id}"></td>
                         <td  th:text="${ven.fecha}"></td>
                         <td  th:text="${ven.estado}"></td>

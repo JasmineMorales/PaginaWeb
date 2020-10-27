@@ -131,10 +131,8 @@ public class VentasController {
             //recibe solo los detalles de la venta seleccionada
             List<DetalleVenta> detallenuevo = DetallesVentaID(detalle, id);
             List<Producto> productos = NombresProductos(detallenuevo); //AQUIII
-             
             List<DetalleVenta> detallesmodelo = ObtenerNombresProductos(productos, detallenuevo);
-            
-            //  model.addAttribute("productos", productos);
+            //model.addAttribute("productos", productos);
             model.addAttribute("detalle", detallesmodelo);
             return ("/Ventas/ventaespecifica");}
         } catch (Exception e) {
