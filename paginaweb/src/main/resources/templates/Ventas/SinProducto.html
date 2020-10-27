@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+
+<head th:replace="Plantillas/plantilla :: head">
+</head>
+
+<body onload="Getparametro()">
+    <header th:replace="Plantillas/plantilla :: header">
+    </header>
+    <div class="conteiner">
+        <section>
+            <h1 class="aps-color-1">Ventas</h1>
+        </section>
+    </div><br>
+    <div class="conteiner">
+        <section>
+            <ul class="nav nav-pills aps-bg-2" id="lista">
+                <li class="nav-item">
+                    <a class=" nav-link  aps-color-5 " href="../index">Todas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link aps-color-5" href="../canceladas">Canceladas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link aps-color-5" href="../entregadas">Entregadas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link aps-color-5" href="../enespera">En espera</a>
+                </li>
+            </ul>
+        </section>
+    </div><br>
+    <div class="container">
+        <section>
+            <h3 class="aps-color-1" style="text-align: left;">
+                Venta seleccionada
+            </h3>
+        </section>
+    </div><br><br>
+
+    <div class="container ">
+        <table class="table aps-bg-4" style="width: 250px;">
+            <thead class="ht2 aps-color-5">
+                <tr class="th2">
+                    <th scope="col">Productos vendidos</th>
+                </tr>
+            </thead>
+        </table>
+        <div>
+            <table class="table table-striped tabla2">
+                <thead class="ht2">
+                    <tr class="th2 aps-color-5">
+                        <th scope="col">Nombre</th>
+                        <th scope="col"> Cantidad</th>
+                        <th scope="col">Sub total</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div><br>
+    
+    <div class="container ">
+        <table class="table aps-bg-4" style="width: 250px;">
+            <thead class="ht2 aps-color-5">
+                <tr class="th2">
+                    <th scope="col">Total de venta</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody th:each="ven : ${venta}">
+                <tr>
+                    <td>Descuento</td>
+                    <td th:text=${ven.descuento}></td>
+                </tr>
+                <tr>
+                    <td>Total</td>
+                    <td th:text=${ven.total}></td>
+                </tr>
+            </tbody>
+        </table>
+    </div><br>
+    <div class="container ">
+        <table class="table aps-bg-4" style="width: 400px;">
+            <thead class="ht2 aps-color-5" >
+                <tr class="th2">
+                    <th scope="col">Informacion general de venta</th>
+                </tr>
+            </thead>
+        </table>
+        <div>
+            <table class="table table-striped tabla1" style="max-width: 400px;">
+                <tbody th:each="ven : ${venta}" each="client : ${cliente}" >
+                    <tr>
+                        <td>Codigo</td>
+                        <td th:text=${id}></td>
+                    </tr>
+                    <tr>
+                        <td>Direccion</td>
+                        <td th:text=${ven.direccion}></td>
+                    </tr>
+                    <tr>
+                        <td>Fecha</td>
+                        <td th:text=${ven.fecha}></td>
+                    </tr>
+                    <tr>
+                        <td>Descuento</td>
+                        <td th:text=${ven.descuento}></td>
+                    </tr>
+                    <td>Estado</td>
+                    <td th:text=${ven.estado}></td>
+                    </tr>
+                    </tr>
+                    <td>Total</td>
+                    <td th:text=${ven.total}></td>
+                    </tr>
+                    </tr>
+                    <td>Usuario</td>
+                    <td th:text=${ven.nombreUsuario}></td>
+                    </tr>
+                    </tr>
+                    <td>Repartidor</td>
+                    <td th:text=${ven.nombreRepartidor}></td>
+                    </tr>
+                    </tr>
+                    <td>Forma de pago</td>
+                    <td th:text=${ven.formaPago}></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <footer th:replace="Plantillas/plantilla :: footer"></footer>
+    <script>
+        // function Getparametro() {
+        //     const queryString = window.location.search;
+        //     const urlParams = new URLSearchParams(queryString);
+        //     const variable = urlParams.get('variable1')
+        //     CargarData(variable);
+        //     //console.log(variable);
+        //     //alert(variable);
+
+        // }
+        // function CargarData(variable1) {
+        //     $.get("http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/ventas/1/",
+        //         function () {
+        //             alert("success");
+        //         })
+        //         .done(function () {
+        //             alert("second success");
+        //         })
+        //         .fail(function () {
+        //             alert("error");
+        //         })
+
+        // }
+
+    </script>
+</body>
+
+</html>

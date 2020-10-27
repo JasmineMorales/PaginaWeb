@@ -42,9 +42,7 @@ public class VentasController {
             model.addAttribute("ventas", ventas);//agrego al modelo la lista ventas
             return ("/Ventas/index");
         } catch (Exception e) {
-            List ventas = new ArrayList<Venta>();
-            model.addAttribute("ventas", ventas);
-            return ("/Ventas/index");
+            return ("/Ventas/NoHayVentas");
         }
 
     }
@@ -58,9 +56,7 @@ public class VentasController {
             model.addAttribute("ventas", ventanueva);
             return ("/Ventas/canceladas");
         } catch (Exception e) {
-            List ventas = new ArrayList<Venta>();
-            model.addAttribute("ventas", ventas);
-            return ("/Ventas/canceladas");
+            return ("/Ventas/NoHayVentas");
         }
 
     }
@@ -74,9 +70,7 @@ public class VentasController {
             model.addAttribute("ventas", ventas);
             return ("/Ventas/enespera");
         } catch (Exception e) {
-            List ventas = new ArrayList<Venta>();
-            model.addAttribute("ventas", ventas);
-            return ("/Ventas/enespera");
+            return ("/Ventas/NoHayVentas");
         }
     }
 
@@ -89,9 +83,7 @@ public class VentasController {
             model.addAttribute("ventas", ventanueva);
             return ("/Ventas/entregadas");
         } catch (Exception e) {
-            List ventas = new ArrayList<Venta>();
-            model.addAttribute("ventas", ventas);
-            return ("/Ventas/entregadas");
+            return ("/Ventas/NoHayVentas");
         }
     }
 
@@ -113,13 +105,8 @@ public class VentasController {
             model.addAttribute("detalle", detallesmodelo);
             return ("/Ventas/ventaespecifica");
         } catch (Exception e) {
-            model.addAttribute("id", id);
-            Venta venta = new Venta();
-            model.addAttribute("venta", venta);
-            List<DetalleVenta> detallesmodelo = new ArrayList<DetalleVenta>();
-            model.addAttribute("detalle", detallesmodelo);
-            
-            return ("/Ventas/ventaespecifica");
+
+            return ("/Ventas/SinProducto");
         }
     }
 
