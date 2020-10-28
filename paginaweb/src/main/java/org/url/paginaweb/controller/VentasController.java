@@ -38,9 +38,19 @@ public class VentasController {
         // creo una lista que recibira lo que devuelva el service
         try {
             List ventas = ventaService.GetVentas();
-            ventas = NombresRepartidores(ventas);// este metodo lo use para obtener los nombres de los repartidores ignoralo
-            model.addAttribute("ventas", ventas);//agrego al modelo la lista ventas
-            return ("/Ventas/index");
+
+            if (ventas.size() == 0) {
+                return ("/Ventas/NoHayVentas");
+            } else {
+                try {
+                    ventas = NombresRepartidores(ventas);// este metodo lo use para obtener los nombres de los repartidores ignoralo
+                    
+                    model.addAttribute("ventas", ventas);//agrego al modelo la lista ventas
+                    return ("/Ventas/index");
+                } catch (Exception e) {
+                    return ("/Ventas/NoHayVentas");
+                }
+            }
         } catch (Exception e) {
             return ("/Ventas/NoHayVentas");
         }
@@ -51,6 +61,7 @@ public class VentasController {
     public String getVentaCanceladaPage(Model model) {
         try {
             List ventas = ventaService.GetVentas();
+            System.out.println("*******************" + ventas);
             if (ventas.size() == 0) {
                 return ("/Ventas/NoHayVentas");
             } else {
@@ -58,7 +69,7 @@ public class VentasController {
                 if (ventanueva.size() == 0) {
                     return ("/Ventas/NoHayVentas");
                 } else {
-                    
+
                     ventanueva = NombresRepartidores(ventanueva);
                     model.addAttribute("ventas", ventanueva);
                     return ("/Ventas/canceladas");
@@ -79,7 +90,7 @@ public class VentasController {
                 return ("/Ventas/NoHayVentas");
             } else {
                 List<Venta> ventanueva = VentasEspera(ventas);
-                 
+
                 if (ventanueva.size() == 0) {
                     return ("/Ventas/NoHayVentas");
                 } else {
@@ -104,11 +115,11 @@ public class VentasController {
                 List<Venta> ventanueva = VentasEntregadas(ventas);
                 if (ventanueva.size() == 0) {
                     return ("/Ventas/NoHayVentas");
+                } else {
+                    ventanueva = NombresRepartidores(ventanueva);
+                    model.addAttribute("ventas", ventanueva);
+                    return ("/Ventas/entregadas");
                 }
-                else{
-                ventanueva = NombresRepartidores(ventanueva);
-                model.addAttribute("ventas", ventanueva);
-                return ("/Ventas/entregadas");}
             }
         } catch (Exception e) {
             return ("/Ventas/NoHayVentas");
@@ -124,17 +135,17 @@ public class VentasController {
             model.addAttribute("venta", venta);
             //obtiene todos los detalles
             List<DetalleVenta> detalle = ventaService.GetDetalleVenta();
-            if(detalle.size() == 0){
+            if (detalle.size() == 0) {
                 return ("/Ventas/SinProducto");
+            } else {
+                //recibe solo los detalles de la venta seleccionada
+                List<DetalleVenta> detallenuevo = DetallesVentaID(detalle, id);
+                List<Producto> productos = NombresProductos(detallenuevo); //AQUIII
+                List<DetalleVenta> detallesmodelo = ObtenerNombresProductos(productos, detallenuevo);
+                //model.addAttribute("productos", productos);
+                model.addAttribute("detalle", detallesmodelo);
+                return ("/Ventas/ventaespecifica");
             }
-            else{
-            //recibe solo los detalles de la venta seleccionada
-            List<DetalleVenta> detallenuevo = DetallesVentaID(detalle, id);
-            List<Producto> productos = NombresProductos(detallenuevo); //AQUIII
-            List<DetalleVenta> detallesmodelo = ObtenerNombresProductos(productos, detallenuevo);
-            //model.addAttribute("productos", productos);
-            model.addAttribute("detalle", detallesmodelo);
-            return ("/Ventas/ventaespecifica");}
         } catch (Exception e) {
 
             return ("/Ventas/SinProducto");
@@ -178,7 +189,7 @@ public class VentasController {
         List<Venta> dnventa = new ArrayList<Venta>();
         for (int x = 0; x < dventa.size(); x++) {
             Venta v = dventa.get(x);
-            if ((v.getEstado().equals("Entregado"))||(v.getEstado().equals("Entregada"))) {
+            if ((v.getEstado().equals("Entregado")) || (v.getEstado().equals("Entregada"))) {
                 dnventa.add(v);
             } else {
                 dventa.remove(x);
@@ -193,7 +204,7 @@ public class VentasController {
         List<Venta> dnventa = new ArrayList<Venta>();
         for (int x = 0; x < dventa.size(); x++) {
             Venta v = dventa.get(x);
-            if ((v.getEstado().equals("En espera")) || (v.getEstado().equals("Espera"))){
+            if ((v.getEstado().equals("En espera")) || (v.getEstado().equals("En bodega"))) {
                 dnventa.add(v);
             } else {
                 dventa.remove(x);
@@ -210,8 +221,15 @@ public class VentasController {
         for (int x = 0; x < dventa.size(); x++) {
             detalle = dventa.get(x);
             int idproducto = detalle.getProducto();
+            try{
             Producto producto = ventaService.GetProducto(idproducto);
             nproductos.add(producto);
+            }
+            catch(Exception e ){
+            Producto producto = new Producto();
+            nproductos.add(producto);
+        }
+            
 
         }
         return nproductos;
@@ -223,7 +241,7 @@ public class VentasController {
         for (int x = 0; x < producto.size(); x++) {
             Producto p = producto.get(x);
             String nombre = p.getNombre();
-             
+
             DetalleVenta d = venta.get(x);
             d.setNombre(nombre);
             venta.set(x, d);
@@ -234,11 +252,23 @@ public class VentasController {
     //OBTENER El usuario y repartidor para venta especifica
     public Venta NombresUsuario(Venta dventa) {
         int usuario = dventa.getCliente();
+        try{
         Usuario u = ventaService.GetUsuario(usuario);
-        dventa.setNombreUsuario(u.getNombre());
+         dventa.setNombreUsuario(u.getNombre());
+        }
+        catch(Exception e){
+         dventa.setNombreUsuario("No ingresado");   
+        }
+       
         int rep = dventa.getRepartidor();
+        try{
         Repartidor r = ventaService.GetRepartidor(rep);
-        dventa.setNombreRepartidor(r.getNombre());
+         dventa.setNombreRepartidor(r.getNombre());
+        }
+        catch(Exception e){
+             dventa.setNombreRepartidor("No ingresado");
+        }
+       
         return dventa;
     }
 
@@ -247,10 +277,16 @@ public class VentasController {
         for (int x = 0; x < dventa.size(); x++) {
             Venta v = dventa.get(x);
             int rep = v.getRepartidor();
+            try{
             Repartidor r = ventaService.GetRepartidor(rep);
-            String nombre = r.getNombre();
-            v.setNombreRepartidor(nombre);
+                String nombre = r.getNombre();
+                v.setNombreRepartidor(nombre);}
+            catch(Exception e){
+                
+                v.setNombreUsuario("No ingresado");
+            }
             dventa.set(x, v);
+            
         }
 
         return dventa;
