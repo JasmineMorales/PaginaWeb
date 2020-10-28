@@ -64,12 +64,49 @@
     <div class="comentarios" style="clear:both;">
         <h1 class="titulo">Comentarios</h1>
     <div class="comentario">
-        <textarea class="textarea-inicial" placeholder="¡Nos encantaría saber tu opinión sobre este producto!"></textarea>
-        <textarea class="textarea-secundarios" placeholder="¡Nos encantaría saber tu opinión sobre este producto!"></textarea>
+        <textarea class="textarea-inicial" onclick="MostrarBotones()" placeholder="¡Nos encantaría saber tu opinión sobre este producto!"></textarea>
+        <span class="sub-com">
+            <button type="button" id="btn" onclick="OcultarBotones()" class="btn btn-outline-info btn-sm" style="margin-right: 8px">CANCELAR</button>
+            <button type="button" id="btn2" class="btn btn-outline-secondary btn-sm" style="margin-right: 8px">COMENTAR</button>            
+        </span>
+        <div disabled class="textarea-secundarios" th:each='comentario: ${comentarios}'>
+            <h4 class="user">User[[${comentario.usuario}]]</h4>
+            <h4 class="date">[[${comentario.fecha}]]</h4>
+            <h4 class="text">[[${comentario.texto}]]</h4>
+        </div>
     </div>
     </div>
   </div>
 
   <footer th:replace="Plantillas/plantilla :: footer"></footer>
+  <script> 
+      
+      $(document).ready(function(){
+       var fecha = document.getElementsByClassName('date');
+          for(var i=0; i<fecha.length; i++){
+              var fecha_select=new Date(fecha[i].innerHTML); 
+             // console.log(fecha_select);
+              var dd = String(fecha_select.getDate()).padStart(2,'0');
+              var mm = String(fecha_select.getMonth()+1).padStart(2,'0');
+              var yyyy = String(fecha_select.getFullYear());
+              var new_date= dd + '/' + mm + '/' + yyyy;
+              document.getElementsByClassName('date')[i].innerHTML = new_date;
+              //console.log(new_date);
+          }
+    });
+    
+    $(document).ready = OcultarBotones();
+    
+    function OcultarBotones(){
+        document.getElementById('btn').style.display = 'none';
+        document.getElementById('btn2').style.display = 'none';
+    };
+    
+    function MostrarBotones(){
+        document.getElementById('btn').style.display = 'inline';
+        document.getElementById('btn2').style.display = 'inline';
+    };
+    
+  </script>
    </body>
 </html>

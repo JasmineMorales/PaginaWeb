@@ -21,7 +21,7 @@ import org.url.paginaweb.service.ProductService;
 @Controller
 @Slf4j
 public class ProductosController {
-    int id;
+    //int id;
     @Autowired
     private ProductService productService;
     
@@ -57,6 +57,8 @@ public class ProductosController {
         model.addAttribute("id", id);
         Producto producto = productService.getProductID(id);
         model.addAttribute("producto", producto);
+       List comentarios = productService.getAllComentarios();
+       model.addAttribute("comentarios", comentarios);
         return("/Productos/producto");
     }
 }
