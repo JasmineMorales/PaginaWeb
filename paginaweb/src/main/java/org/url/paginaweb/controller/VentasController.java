@@ -274,16 +274,19 @@ public class VentasController {
 
     //OBTENER el nombre de repartidor lisa ventas
     public List<Venta> NombresRepartidores(List<Venta> dventa) {
+          
         for (int x = 0; x < dventa.size(); x++) {
             Venta v = dventa.get(x);
             int rep = v.getRepartidor();
+            System.out.println("***************" + v.getNombreRepartidor() + "---");
             try{
             Repartidor r = ventaService.GetRepartidor(rep);
                 String nombre = r.getNombre();
                 v.setNombreRepartidor(nombre);}
             catch(Exception e){
                 
-                v.setNombreUsuario("No ingresado");
+                v.setNombreRepartidor("No indicado");
+              
             }
             dventa.set(x, v);
             

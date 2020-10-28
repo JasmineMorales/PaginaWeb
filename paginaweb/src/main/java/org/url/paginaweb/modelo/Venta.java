@@ -56,7 +56,10 @@ public class Venta implements Serializable{
     
     private FormaPago formaPagoO;
     
-    public ArrayList<DetalleVenta> detallesVenta;
     private String nombreRepartidor;
     private String nombreUsuario;
+    
+    public ArrayList<DetalleVenta> detallesVenta;
+
+    
 }
