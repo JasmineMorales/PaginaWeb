@@ -38,7 +38,11 @@ public class ProductosController {
     }
     
     @GetMapping("/Productos/agregar_producto")
-    public String getAddProductPage(){
+    public String getAddProductPage(Model model){
+        List proveedores = productService.getAllProveedores();
+        model.addAttribute("proveedores", proveedores);
+        List tipoproductos = productService.getAllTipos();
+        model.addAttribute("tipoproductos", tipoproductos);
         return("/Productos/agregarProducto");
     }
     

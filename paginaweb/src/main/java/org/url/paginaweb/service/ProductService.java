@@ -7,8 +7,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.url.paginaweb.modelo.ArregloComentario;
 import org.url.paginaweb.modelo.ArregloProducto;
+import org.url.paginaweb.modelo.ArregloTipoProducto;
 import org.url.paginaweb.modelo.Comentario;
 import org.url.paginaweb.modelo.Producto;
+import org.url.paginaweb.modelo.Proveedor;
+import org.url.paginaweb.modelo.ProveedorArreglo;
+import org.url.paginaweb.modelo.TipoProducto;
 
 /**
  *
@@ -31,6 +35,20 @@ public class ProductService {
         String url1 = "http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/producto/";
         ArregloProducto response1 = restTemplate.getForObject(url1, ArregloProducto.class);
         List<Producto> respuesta = response1.getResults();
+        return respuesta;
+    }
+
+    public List getAllProveedores() {
+        String url1 = "http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/proveedores/";
+        ProveedorArreglo response1 = restTemplate.getForObject(url1, ProveedorArreglo.class);
+        List<Proveedor> respuesta = response1.getResults();
+        return respuesta;
+    }
+
+    public List getAllTipos() {
+        String url1 = "http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/tipodeproducto/";
+        ArregloTipoProducto response1 = restTemplate.getForObject(url1, ArregloTipoProducto.class);
+        List<TipoProducto> respuesta = response1.getResults();
         return respuesta;
     }
     
