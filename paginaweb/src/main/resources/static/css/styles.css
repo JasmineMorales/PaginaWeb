@@ -204,11 +204,57 @@ body{
     margin-top: 24px;
   }
   
+  :root {
+    --color-inactivo: #5f5050;
+    --color-hover: #ffa400;
+}
+  
   .valoraciones-p{
       position: absolute;
       bottom:40%;
       left: 40%;
+      display: flex;
+      flex-direction: row-reverse;
   }  
+  
+  .valoraciones-p button {
+    background-color: initial;
+    border: 0;
+    color: var(--color-inactivo);
+    transition: 1s all;
+}
+
+.valoraciones-p button:hover {
+    cursor: pointer;
+    color: var(--color-hover);
+    transform: rotate(360deg);
+}
+
+.valoraciones-p button:focus{
+    outline: none;
+}
+
+button:nth-child(1):hover ~ button {
+    color: var(--color-hover);
+    transform: rotate(360deg);
+}
+button:nth-child(2):hover ~ button {
+    color: var(--color-hover);
+    transform: rotate(360deg);
+}
+button:nth-child(3):hover ~ button {
+    color: var(--color-hover);
+    transform: rotate(360deg);
+}
+button:nth-child(4):hover ~ button {
+    color: var(--color-hover);
+    transform: rotate(360deg);
+}
+button:nth-child(5):hover ~ button {
+    color: var(--color-hover);
+    transform: rotate(360deg);
+}
+
   
   .nombre-p{
     color: #17252A;
