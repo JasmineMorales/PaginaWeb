@@ -115,15 +115,24 @@
     function changeColor(x)
     {
         x.style.color="#ffa400";
-        console.log(x.className);
-        if(x.className === 'star2'){
+        //console.log(x.className);
+        var s1=document.getElementsByClassName('star1')[0];
+        var s2=document.getElementsByClassName('star2')[0];
+        var s3=document.getElementsByClassName('star3')[0];
+        var s4=document.getElementsByClassName('star4')[0];
+        var s5=document.getElementsByClassName('star5')[0];
+        //console.log(window.getComputedStyle(s3, null).getPropertyValue('color'));
+        if(x.className === 'star1' && window.getComputedStyle(s2, null).getPropertyValue('color')==="rgb(95, 80, 80)"){
             document.getElementsByClassName('star1')[0].style.color="#ffa400";
         }
-        else if(x.className === 'star3'){
+        else if(x.className === 'star2' && window.getComputedStyle(s3, null).getPropertyValue('color')==="rgb(95, 80, 80)"){
+            document.getElementsByClassName('star1')[0].style.color="#ffa400";
+        }
+        else if(x.className === 'star3' && window.getComputedStyle(s4, null).getPropertyValue('color')==="rgb(95, 80, 80)"){
             document.getElementsByClassName('star1')[0].style.color="#ffa400";
             document.getElementsByClassName('star2')[0].style.color="#ffa400";
         }
-        else if(x.className === 'star4'){
+        else if(x.className === 'star4' && window.getComputedStyle(s5, null).getPropertyValue('color')==="rgb(95, 80, 80)"){
             document.getElementsByClassName('star1')[0].style.color="#ffa400";
             document.getElementsByClassName('star2')[0].style.color="#ffa400";
             document.getElementsByClassName('star3')[0].style.color="#ffa400";
@@ -133,6 +142,30 @@
             document.getElementsByClassName('star2')[0].style.color="#ffa400";
             document.getElementsByClassName('star3')[0].style.color="#ffa400";
             document.getElementsByClassName('star4')[0].style.color="#ffa400";
+        }
+        else if(x.className === 'star1'){
+            document.getElementsByClassName('star2')[0].style.color="#5f5050";
+            document.getElementsByClassName('star3')[0].style.color="#5f5050";
+            document.getElementsByClassName('star4')[0].style.color="#5f5050";
+            document.getElementsByClassName('star5')[0].style.color="#5f5050";
+        }
+        else if(x.className === 'star2'){
+            document.getElementsByClassName('star1')[0].style.color="#ffa400";
+            document.getElementsByClassName('star3')[0].style.color="#5f5050";
+            document.getElementsByClassName('star4')[0].style.color="#5f5050";
+            document.getElementsByClassName('star5')[0].style.color="#5f5050";
+        }
+        else if(x.className === 'star3'){
+            document.getElementsByClassName('star1')[0].style.color="#ffa400";
+            document.getElementsByClassName('star2')[0].style.color="#ffa400";
+            document.getElementsByClassName('star4')[0].style.color="#5f5050";
+            document.getElementsByClassName('star5')[0].style.color="#5f5050";
+        }
+        else if(x.className === 'star4'){
+            document.getElementsByClassName('star1')[0].style.color="#ffa400";
+            document.getElementsByClassName('star2')[0].style.color="#ffa400";
+            document.getElementsByClassName('star3')[0].style.color="#ffa400";
+            document.getElementsByClassName('star5')[0].style.color="#5f5050";
         }
     }
     
