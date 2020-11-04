@@ -6,8 +6,10 @@
 package org.url.paginaweb.service;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.url.paginaweb.modelo.Admin;
@@ -28,6 +30,8 @@ public class LoginPService {
     private ArrayList<Repartidor> listaRepartidor;
     private ArrayList<Usuario> listaUsuario;
     private ArrayList<Admin> listaAdmin;
+
+    
     
     @Autowired
     private RestTemplate restTemplate;
@@ -63,7 +67,7 @@ public class LoginPService {
         listaRepartidor = (ArrayList<Repartidor>) repartidores.getResults();
         if(!listaRepartidor.isEmpty()){
             for(Repartidor repartidor : listaRepartidor){
-                if(repartidor.getCorreo().equals(usuario.getNombre()) && repartidor.getPassword().equals(usuario.getPassword())){
+                if(repartidor.getCorreo().equals(usuario.getNombre()) && repartidor.getContrasena().equals(usuario.getPassword())){
                     return new LoginUserModelo(repartidor.getId().toString(), "ROLE_REPART", 1);
                 }
             }
@@ -112,22 +116,25 @@ public class LoginPService {
         return null;
     }
     
+    public String getTipoUser(Collection<?extends GrantedAuthority> autoridades){
+        String l = autoridades.toArray()[0] + "";
+        return l;
+    }
+    
     public void insertarUsuario(Usuario usuario){
     
-       String url = "http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/administrador/";
+       String url = "http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/usuarios/";
         
        var result = restTemplate.postForObject(url, usuario, Usuario.class);
        
-       log.info(result.toString());
     }
     
     public void insertarRepartidor(Repartidor repartidor){
     
-       String url = "http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/administrador/";
+       String url = "http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/repartidor/";
         
        var result = restTemplate.postForObject(url, repartidor, Repartidor.class);
        
-       log.info(result.toString());
     }
     
     public void insertarAdmin(Admin admin){
@@ -135,6 +142,5 @@ public class LoginPService {
         
        var result = restTemplate.postForObject(url, admin, Admin.class);
        
-       log.info(result.toString());
     }
 }

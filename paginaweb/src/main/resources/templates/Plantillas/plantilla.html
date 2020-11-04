@@ -36,8 +36,7 @@ and open the template in the editor.
                             <li class="nav-item mr-3 nav-item dropdown" sec:authorize="isAuthenticated()">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fas fa-user"></i>
-                                    <span >Bienvenido:</span>
-                                    <span sec:authentication="name">Usuario</span>
+                                    <span >Bienvenido</span>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdwonMenuLink">
                                     <form method="POST" th:action="@{/logout}">

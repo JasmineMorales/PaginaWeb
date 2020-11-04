@@ -17,22 +17,19 @@ and open the template in the editor.
 
         <form th:action="@{/repartidor/registrar}" method="post" th:object="${repartidor}">
 
-
-            <input type="hidden" name="puesto" th:field="*{puesto}" th:value="${rol}"/>
-            <input type="hidden" name="saldo" th:field="*{saldo}" value="0"/>
             <div class="container">
                 <div class="mx-auto mt-5">
                     <div class="card">
-                        <div class="card-header text-white text-center" style="background-color: #5b3924">
-                            <h3 class="mt-2">Registro de Usuario</h3>
+                        <div class="card-header text-white text-center" style="background-color: #2b7a78">
+                            <h3 class="mt-2">Registro de Repartidor</h3>
                         </div>
-                        <div class="card-header" style="background-color: #f2d2b3">
+                        <div class="card-header" style="background-color: #3aafa9">
                             <h4 class="mt-2">Información Usuario</h4>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body" style="background-color: #def2f1">
                             <div class="form-group">
-                                <label for="nombre" class="font-weight-bold" style="color: #5b3924">
-                                    [[#{campo.nombre}]]
+                                <label for="nombre" class="font-weight-bold" style="color: #17252a">
+                                    Nombre
                                 </label>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
@@ -43,21 +40,8 @@ and open the template in the editor.
                                 <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" class="font-italic ml-3 " style="color: #900c3f">Error Nombre</span>
                             </div> 
                             <div class="form-group">
-                                <label for="direccion" class="font-weight-bold" style="color: #5b3924">
-                                    [[#{campo.direccion}]]
-                                </label>
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="direccion1"><i class="fas fa-map-marked-alt"></i></span>
-                                    </div>
-                                    <input type="text" name="direccion" class="form-control" aria-label="Direccion" aria-describedby="direccion1" id="direccion" placeholder="calle 123" th:field="*{direccion}"/>
-                                </div>
-                                <span th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}" class="font-italic ml-3 " style="color: #900c3f" role="alert">Error Nombre</span>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="telefono" class="font-weight-bold" style="color: #5b3924">
-                                    [[#{campo.telefono}]]
+                                <label for="telefono" class="font-weight-bold" style="color: #17252a">
+                                    Teléfono
                                 </label>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
@@ -69,13 +53,13 @@ and open the template in the editor.
                             </div>
 
                         </div>
-                        <div class="card-header" style="background-color: #f2d2b3">
+                        <div class="card-header" style="background-color:  #3aafa9">
                             <h4 class="mt-2">Información de la Cuenta</h4>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body" style="background-color: #def2f1">
                             <div class="form-group">
-                                <label for="correo" class="font-weight-bold" style="color: #5b3924">
-                                    [[#{campo.correo}]]
+                                <label for="correo" class="font-weight-bold" style="color: #17252a">
+                                    Correo
                                 </label>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
@@ -86,16 +70,16 @@ and open the template in the editor.
                                 <span th:if="${#fields.hasErrors('correo')}" th:errors="*{correo}" class="font-italic ml-3 " style="color: #900c3f" >Error Nombre</span>
                             </div>
                             <div class="form-group">
-                                <label for="contrasenia" class="font-weight-bold" style="color: #5b3924">
-                                    [[#{campo.contrasenia}]]
+                                <label for="contrasenia" class="font-weight-bold" style="color: #17252a">
+                                    Contraseña
                                 </label>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="correo1"><i class="fas fa-key"></i></span>
                                     </div>
-                                    <input type="password" name="contrasenia" class="form-control" aria-label="Password" aria-describedby="password1" th:field="*{password}" />
+                                    <input type="password" name="contrasenia" class="form-control" aria-label="Password" aria-describedby="password1" th:field="*{contrasena}" />
                                 </div>
-                                <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="font-italic ml-3 " style="color: #900c3f">Error Nombre</span>
+                                <span th:if="${#fields.hasErrors('contrasena')}" th:errors="*{contrasena}" class="font-italic ml-3 " style="color: #900c3f">Error Nombre</span>
                             </div>
                         </div>
                         <div class="card-body">
