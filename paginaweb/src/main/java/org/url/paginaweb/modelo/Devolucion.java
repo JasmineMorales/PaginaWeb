@@ -16,8 +16,7 @@ import lombok.Data;
  */
 @Data
 public class Devolucion implements Serializable{
-    @NotNull
-    private Integer idDevolucion;
+    private Integer id;
     
     private Date fecha;
     
