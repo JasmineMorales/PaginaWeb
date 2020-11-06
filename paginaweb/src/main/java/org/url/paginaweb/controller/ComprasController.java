@@ -48,9 +48,10 @@ public class ComprasController {
          //Solo los detalles del carro
          List<DetalleCarro> detallesC = getDetalles(detalles, carro.getId());
         //nombres de productos
-        List<String> nombresp = DetallesCarro(detallesC);
+        detallesC= DetallesCarro(detallesC);
         model.addAttribute("detalles", detallesC);
-        model.addAttribute("nombres", nombresp);
+        float total = Calcular(detallesC);
+        model.addAttribute("total", total);
         return ("/Compras/carrito");
         }
         catch(Exception e){
@@ -74,18 +75,19 @@ public class ComprasController {
     //METODOS DE OBTENCION DE DATOS
     //obtener nombres de los productos
     public List DetallesCarro(List<DetalleCarro> detalle) {
-        List<String> nombres = new ArrayList();
         int size = detalle.size();
+        List<DetalleCarro> detalle1 = new ArrayList();
         for (int x = 0; x < size; x++) {
             DetalleCarro d1 = detalle.get(x);
             //obtener id de producto
             int producto = d1.getProducto();
             //obtener el producto con ese id
             Producto p = compraService.GetProducto(producto);
-            nombres.add(p.getNombre());
+            d1.setNombreProducto(p.getNombre());
+            detalle1.add(d1);
         }
 
-        return nombres;
+        return detalle1;
     }
     //separando detalles por id de carro
     public List getDetalles(List <DetalleCarro> detalle, int id){
@@ -102,5 +104,15 @@ public class ComprasController {
         }
     }
         return det;
+    }
+    
+    public float Calcular(List <DetalleCarro> detalle){
+         int size= detalle.size();
+          float total = 0;
+        for(int x=0;x<size;x++){
+        DetalleCarro d= detalle.get(x);
+        total += d.getSubtotal();
+        }
+        return total;
     }
 }

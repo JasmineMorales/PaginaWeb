@@ -50,7 +50,7 @@
                 </thead>
                 <tbody th:each="ven : ${detalles}" >
                     <tr>
-                        <td th:text="${n}" ></td>
+                        <td th:text="${ven.nombreProducto}" ></td>
                         <td th:text="${ven.cantidad}"></td>
                         <td >total</td>
                         <td th:text="${ven.subtotal}"></td>
@@ -62,7 +62,8 @@
         <section>
             <div class="container">
                 <p style="position: absolute; left: 67%;">
-                    <samp>Total</samp>
+                    <samp>Total</samp>&nbsp &nbsp &nbsp  &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <samp th:text="${total}"></samp>
                 </p><br>
             </div>
             <div class="container">
