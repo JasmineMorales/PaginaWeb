@@ -3,7 +3,7 @@
     xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
 
 <head th:replace="Plantillas/plantilla :: head">
-<script src="https://kit.fontawesome.com/d69832d361.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/d69832d361.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -48,48 +48,15 @@
                         <th class="th1" scope="col">Sub total</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody th:each="ven : ${detalles}" >
                     <tr>
-                        <td>Mark</td>
-                        <td>
-                            <a class="fas fa-minus mm" style="position: absolute; left: 26%;"></a> &nbsp;
-                            Otsssssto &nbsp;
-                            <a class="fas fa-plus mm" style="position: absolute; left: 36%;"></a>
-                        </td>
-                        <td>@mdo</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <td>Jacob</td>
-                        <td>
-                            <a class="fas fa-minus mm" style="position: absolute; left: 26%;"></a> &nbsp;
-                            Thornton &nbsp;
-                            <a class="fas fa-plus mm" style="position: absolute; left: 36%;"></a>
-                        </td>
-                        <td>@fat</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <td>Larry</td>
-                        <td>
-                            <a class="fas fa-minus mm" style="position: absolute; left: 26%;"></a>&nbsp;
-                            the Bird&nbsp;
-                            <a class="fas fa-plus mm" style="position: absolute; left: 36%;"></a>
-                        </td>
-                        <td>@twitter</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <td>Larry</td>
-                        <td>
-                            <a class="fas fa-minus mm"  style="position: absolute; left: 26%;"></a>&nbsp;
-                            the Bird&nbsp;
-                            <a class="fas fa-plus mm" style="position: absolute; left: 36%;"></a>
-                        </td>
-                        <td>@twitter</td>
-                        <td>@mdo</td>
+                        <td th:text="${n}" ></td>
+                        <td th:text="${ven.cantidad}"></td>
+                        <td >total</td>
+                        <td th:text="${ven.subtotal}"></td>
                     </tr>
                 </tbody>
+
             </table>
         </section>
         <section>

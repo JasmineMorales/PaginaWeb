@@ -99,7 +99,7 @@
                 </thead>
             </table>
             <div>
-                <form class="aps-bg-4" style="padding:10px;">
+                <form class="aps-bg-4" style="padding:10px;" action="#" th:action="@{/Compras/pago}" th:object="${venta}" method="post">
                     <div class="form-group">
                         <label for="nombre">Nombre</label>
                         <input type="text" class="form-control" id="nombre" aria-describedby="emailHelp"
@@ -110,17 +110,17 @@
                         <input type="email" class="form-control" id="email" placeholder="Enter email">
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="mastercard" value="mastercard">
+                        <input class="form-check-input" type="checkbox" id="mastercard" value="1" th:field="*{formaPago}">
                         <label class="form-check-label" for="mastercard">
                             <i class="fab fa-cc-mastercard"></i></label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="visa" value="visa">
+                        <input class="form-check-input" type="checkbox" id="visa" value="2" th:field="*{formaPago}">
                         <label class="form-check-label" for="visa">
                             <i class="fab fa-cc-visa"></i></label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="paypal" value="paypal">
+                        <input class="form-check-input" type="checkbox" id="paypal" value="3" th:field="*{formaPago}">
                         <label class="form-check-label" for="paypal">
                             <i class="fab fa-cc-paypal"></i></label>
                     </div>

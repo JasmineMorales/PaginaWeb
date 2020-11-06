@@ -22,7 +22,7 @@ public class Carrito implements Serializable{
     
     private Integer usuario;
     
-    private ArrayList<DetalleCarro> detallesCarro;
+   // private ArrayList<DetalleCarro> detallesCarro;
     
     
 }
