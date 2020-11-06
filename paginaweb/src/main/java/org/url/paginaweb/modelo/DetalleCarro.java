@@ -30,5 +30,5 @@ public class DetalleCarro implements Serializable {
     private Integer carro;
 
     private Integer producto;
-    private String nombreProducto;
+    public String nombreProducto;
 }
