@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head th:replace="Plantillas/plantilla :: head" >
+        <title>Modificar Producto</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+    </head>
+    <header th:replace="Plantillas/plantilla :: header"></header>
+    <body>
+        <div  class="container">
+       
+    <div class="contenedor-titulo">
+           <h2>MODIFICAR PRODUCTO</h2>
+        </div>
+        <div class= "contenedor-campos">
+            <p  id="id">
+                [[${producto.id}]]
+            </p>
+            <form>
+                <div class="form-group">
+                  <label for="exampleFormControlInput1">Nombre Producto</label>
+                  <input type="text" class="form-control" id="nombre-p" placeholder="Nombre" style="background-color: #DEF2F1;">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Precio producto</label>
+                    <input type="text" class="form-control" id="precio" placeholder="Precio" style="background-color: #DEF2F1;">
+                </div>
+                <label for="exampleFormControlInput1">Descripción</label>
+                <textarea class="form-control" id="des" placeholder="Descripción de producto" style="background-color: #DEF2F1;">
+                    
+                </textarea>
+                
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Unidades</label>
+                    <input type="number" class="form-control" id="Fecha" placeholder="Ingrese unidades" style="background-color: #DEF2F1;" >
+                </div>
+                <div class= "contenedor-tipo row justify-content-around">
+                    
+                    <div class="metodo-pago form-check col-4">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="1" checked >
+                        <label class="form-check-label" for="exampleRadios1">
+                          HABILITADO
+                        </label>
+                      </div>
+                      <div class="metodo-pago form-check col-4">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="2">
+                        <label class="form-check-label" for="exampleRadios2">
+                          DESHABILITADO
+                        </label>
+                      </div>
+                      </div>
+                
+              </form>
+       </div>
+       <div class="seccion-btn">
+           <button type="button" onclick="Modificar()" class="btn btn-outline-danger">CANCELAR</button>
+         <button type="button" class="btn btn-outline-success">GUARDAR</button>
+       </div>
+    </div>
+        <footer th:replace="Plantillas/plantilla :: footer"></footer>
+        <script>
+            function Modificar(){
+        var select= parseInt(document.getElementsByTagName('p')[0].innerHTML);
+           console.log(select);
+           //window.location.assign("localhost:8080/Producto/producto/?variable1="+select);
+           window.history.back();
+    };
+        </script>
+    </body>
+</html>

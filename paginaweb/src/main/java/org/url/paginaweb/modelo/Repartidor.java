@@ -18,7 +18,6 @@ import lombok.Data;
 @Data
 public class Repartidor implements Serializable {
     
-    @NotNull
     private Integer id;
     
     @NotEmpty
@@ -34,7 +33,7 @@ public class Repartidor implements Serializable {
     private String correo;
     
     @NotEmpty
-    private String password;
+    private String contrasena;
     
     private Boolean disponibilidad;
     

@@ -20,7 +20,6 @@ import lombok.Data;
 public class Direccion implements Serializable{
 
     
-    @NotNull
     private Integer id;
     
     @NotEmpty
@@ -29,7 +28,6 @@ public class Direccion implements Serializable{
     
     private Integer usuario;
     
-    private Usuario usuarioO;
     
    
 }

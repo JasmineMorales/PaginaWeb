@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="Plantillas/plantilla :: head">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&family=Ubuntu&display=swap');
+      </style>
+</head>
+<header th:replace="Plantillas/plantilla :: header"></header>
+<body>
+  <div class="contenedor">
+    <div class="contenedor-producto" th:each='producto: ${productos}'>
+        <a href="/Productos/producto/"></a>
+        <img class="img" src="[[${producto.imagen}]]"> 
+        <p  id="id">
+           [[${producto.id}]]
+          </p>
+        <h1 class="nombre">
+           [[${producto.nombre}]]
+          </h1>
+          <td th:switch="${producto.proveedor}">
+              <h2 class="proveedor" th:case='0'>
+                  Proveedor: Importadora
+              </h2>
+              <h2 class="proveedor" th:case='1'>
+                  Proveedor: Cafetería
+              </h2>
+          </td>          
+          <h2 class="precio">
+            GTQ[[${producto.precio}]]
+          </h2>
+          <div class="valoraciones">
+            <svg style="width:24px;height:24px" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="star" class="svg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
+            </svg>
+            <svg style="width:24px;height:24px" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="star" class="svg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
+            </svg>
+            <svg style="width:24px;height:24px" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="star" class="svg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
+            </svg>
+            <svg style="width:24px;height:24px" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="star" class="svg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
+            </svg>
+            <svg style="width:24px;height:24px" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="star" class="svg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path>
+            </svg>
+          </div>
+    </div>
+  </div>
+    <div class="seccion-btn" style="clear:both"><br><a class="btn btn-outline-success" typu="button" href="/Productos/agregar_producto">AGREGAR PRODUCTO</a></div>
+
+  <footer th:replace="Plantillas/plantilla :: footer"></footer>
+  <script>
+      $(document).ready(function(){
+       $(".contenedor-producto").click(function(){
+           var select= parseInt(this.getElementsByTagName('p')[0].innerHTML);
+           console.log(select);
+           location.replace("producto/?variable1="+select);
+      });
+    });
+    //var elemento= document.getElementById('id').style.display='none';
+    /*Select_div();
+    function Select_div(){
+        var divs = document.getElementsByClassName("contenedor-producto");  
+        var select=0;
+        for(var i=0; i<divs.length; i++){
+            var div = divs[i];
+            div.onclick=function() {
+                select= parseInt(div.getElementsByTagName('p')[0].innerHTML);
+                console.log(select);
+                location.replace("producto/?variable1="+select);
+            };
+            /*div.onclick=function(){
+                var id= div.getElementById('id').innerHTML;
+                console.log(id);
+                //location.replace("Productos/producto/?variable1="+id);
+            };*/ 
+       /* }       
+      };   */ 
+         
+    
+  </script>
+</body>
+</html>

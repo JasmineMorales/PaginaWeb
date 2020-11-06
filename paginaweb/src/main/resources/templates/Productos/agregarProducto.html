@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head th:replace="Plantillas/plantilla :: head">
+        <title>Agregar Producto</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+    </head>
+    <header th:replace="Plantillas/plantilla :: header"></header>
+    <body>
+        <div  class="container">
+       
+    <div class="contenedor-titulo">
+           <h2>AGREGAR PRODUCTO</h2>
+        </div>
+        <div class= "contenedor-campos">
+            <form>
+                <div class="form-group">
+                  <label for="exampleFormControlInput1">Nombre</label>
+                  <input type="text" class="form-control" id="nombre-p" placeholder="Ingrese nombre de producto" style="background-color: #DEF2F1;">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Precio</label>
+                    <input type="text" class="form-control" id="precio" placeholder="Ingrese precio de producto" style="background-color: #DEF2F1;">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Tipo</label><br>
+                    <select class="form-control" style="background-color: #DEF2F1;">
+                        <option class="form-control" disabled selected="">Seleccione un tipo de producto</option>
+                        <option class="form-control" th:each='tipoproducto: ${tipoproductos}'>[[${tipoproducto.categoria}]]</option>                        
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Proveedor</label><br>
+                    <select class="form-control" style="background-color: #DEF2F1;">
+                        <option class="form-control" disabled selected="">Seleccione un proveedor</option>
+                        <option class="form-control" th:each='proveedor: ${proveedores}'>[[${proveedor.nombre}]]</option>                        
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Descripción</label>
+                <textarea class="form-control" id="des" placeholder="Ingrese descripción de producto" style="background-color: #DEF2F1;">
+                </textarea>
+                </div>
+                                
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Disponibilidad</label>
+                    <select class="form-control" style="background-color: #DEF2F1;">
+                        <option class="form-control" disabled selected="">Seleccione una opción</option>
+                        <option class="form-control">Habilitado</option>                        
+                        <option class="form-control">Deshabilitado</option>                        
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Imagen</label><br>
+                    <label class="nuestroinput">   
+                        Seleccionar imagen
+                        <input type="file" id="img" accept=".jpeg, .jpg, .png"/>
+                    </label>
+                    
+                </div>
+                
+              </form>
+       </div>
+       <div class="seccion-btn">
+         <a class="btn btn btn-outline-danger" type="submit" href="/Productos/productos">CANCELAR</a>
+         <button class="btn btn btn-outline-success" type="submit" href="/Productos/productos">GUARDAR</button>
+       </div>
+    </div>
+        <footer th:replace="Plantillas/plantilla :: footer"></footer>
+    </body>
+</html>
