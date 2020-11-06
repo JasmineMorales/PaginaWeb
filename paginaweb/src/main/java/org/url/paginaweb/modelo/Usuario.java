@@ -19,7 +19,6 @@ import lombok.Data;
 @Data
 public class Usuario implements Serializable {
     
-    @NotNull
     private Integer id;
     
     @NotEmpty
