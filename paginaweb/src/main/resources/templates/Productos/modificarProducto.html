@@ -13,6 +13,9 @@
            <h2>MODIFICAR PRODUCTO</h2>
         </div>
         <div class= "contenedor-campos">
+            <p  id="id">
+                [[${producto.id}]]
+            </p>
             <form>
                 <div class="form-group">
                   <label for="exampleFormControlInput1">Nombre Producto</label>
@@ -50,10 +53,18 @@
               </form>
        </div>
        <div class="seccion-btn">
-         <button type="button" class="btn btn-outline-danger">CANCELAR</button>
+           <button type="button" onclick="Modificar()" class="btn btn-outline-danger">CANCELAR</button>
          <button type="button" class="btn btn-outline-success">GUARDAR</button>
        </div>
     </div>
         <footer th:replace="Plantillas/plantilla :: footer"></footer>
+        <script>
+            function Modificar(){
+        var select= parseInt(document.getElementsByTagName('p')[0].innerHTML);
+           console.log(select);
+           //window.location.assign("localhost:8080/Producto/producto/?variable1="+select);
+           window.history.back();
+    };
+        </script>
     </body>
 </html>

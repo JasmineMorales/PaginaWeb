@@ -32,10 +32,10 @@ public class ProductosController {
         return("/Productos/vistaProductos");
     }
            
-        @GetMapping("Productos/modificar_producto")
+        /*@GetMapping("Productos/modificar_producto")
     public String getEditProductPage(){
         return("/Productos/modificarProducto");
-    }
+    }*/
     
     @GetMapping("/Productos/agregar_producto")
     public String getAddProductPage(Model model){
@@ -64,5 +64,13 @@ public class ProductosController {
        List comentarios = productService.getAllComentarios();
        model.addAttribute("comentarios", comentarios);
         return("/Productos/producto");
+    }
+    
+            @GetMapping("/Productos/producto/modificar_producto")
+    public String getModProduct(@RequestParam(name="variable1", required=true, defaultValue = "1") int id, Model model){
+        model.addAttribute("id", id);
+        Producto producto = productService.getProductID(id);
+        model.addAttribute("producto", producto);
+        return("/Productos/modificarProducto");
     }
 }
