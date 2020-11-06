@@ -31,4 +31,5 @@ public class DetalleCarro implements Serializable {
 
     private Integer producto;
     public String nombreProducto;
+    public Float precio;
 }
