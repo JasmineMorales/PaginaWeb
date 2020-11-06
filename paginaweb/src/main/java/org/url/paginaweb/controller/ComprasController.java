@@ -84,6 +84,8 @@ public class ComprasController {
             //obtener el producto con ese id
             Producto p = compraService.GetProducto(producto);
             d1.setNombreProducto(p.getNombre());
+            d1.setPrecio(p.getPrecio());
+            d1.setSubtotal(d1.getPrecio()* d1.getCantidad());
             detalle1.add(d1);
         }
 
