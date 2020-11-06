@@ -18,7 +18,7 @@ import lombok.Data;
 @Data
 public class Admin implements Serializable {
     
-    @NotNull
+
     private Integer id;
     
     @NotEmpty

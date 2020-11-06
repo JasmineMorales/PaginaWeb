@@ -14,7 +14,10 @@ and open the template in the editor.
     <body>
         <header th:replace="Plantillas/plantilla :: header">
         </header>
-        
+        <h1 sec:authorize="hasRole('ROLE_REPART')">OIE SI</h1>
+        <h1 sec:authorize="hasRole('ROLE_ADMIN')">OIE</h1>
+        <h1 sec:authorize="hasRole('ROLE_CLIENT')">NEL</h1>
+        <h1 sec:authorize="hasAnyRole('ROLE_CLIENT','ROLE_ADMIN')">uwu</h1>
         <footer th:replace="Plantillas/plantilla :: footer"></footer>
     </body>
 </html>

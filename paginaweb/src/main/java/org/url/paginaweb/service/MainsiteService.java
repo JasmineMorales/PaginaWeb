@@ -26,6 +26,11 @@ public class MainsiteService {
 
     @Autowired
     private RestTemplate restTemplate;
+    
+        public static final String ADMIN = "ROLE_ADMIN";
+    public static final String CLIENTE = "ROLE_CLIENT";
+    public static final String REPARTIDOR = "ROLE_REPART";
+    
 
     public Usuario getUsuarioID(Integer id) {
         String url = "http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/usuarios/" + id.toString() + "/";

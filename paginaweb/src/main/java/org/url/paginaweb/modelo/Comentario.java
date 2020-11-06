@@ -19,7 +19,6 @@ import lombok.Data;
 @Data
 public class Comentario implements Serializable{
 
-    @NotNull
     private Integer id;
     
     @NotEmpty
@@ -30,9 +29,6 @@ public class Comentario implements Serializable{
     
     private Integer producto;
     
-    private Producto productoO;
-    
     private Integer usuario;
-    
-    private Usuario usuarioO;
+   
 }
