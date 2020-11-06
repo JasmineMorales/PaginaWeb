@@ -16,15 +16,14 @@ import lombok.Data;
 @Data
 public class Valoracion implements Serializable{
     
-    @NotNull
     private Integer id;
     
     @NotNull
-    private Integer Valoracion;
+    private Integer valor;
     
-    private Integer contValoracion;
+    private Integer contValor;
     
-    private Producto producto;
+    private Integer producto;
     
-    private Repartidor repartidor;
+    private Integer repartidor;
 }

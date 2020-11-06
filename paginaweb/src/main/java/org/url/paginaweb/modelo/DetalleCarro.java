@@ -17,8 +17,7 @@ import lombok.Data;
 @Data
 public class DetalleCarro implements Serializable{
     
-    @NotNull
-    private Integer idDetalleCarro;
+    private Integer id;
     
     @NotNull
     @Min(value=1)
@@ -26,7 +25,9 @@ public class DetalleCarro implements Serializable{
     
     @NotNull
     @Min(value=0)
-    private Float Subtotal;
+    private Float subtotal;
     
-    private Carrito carrito;
+    private Integer carro;
+    
+    private Integer producto;
 }

@@ -20,7 +20,6 @@ import lombok.Data;
 @Data
 public class Producto implements Serializable {
     
-    @NotNull
     private Integer id;
     
     @NotEmpty

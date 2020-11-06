@@ -21,7 +21,6 @@ import lombok.Data;
 @Data
 public class Venta implements Serializable{
     
-    @NotNull
     private Integer id;
     
     @NotEmpty
@@ -55,6 +54,11 @@ public class Venta implements Serializable{
     private Integer formaPago;
     
     private FormaPago formaPagoO;
+    
+    private String nombreRepartidor;
+        
+    private String nombreUsuario;
+    
     
     private ArrayList<DetalleVenta> detallesVenta;
 }
