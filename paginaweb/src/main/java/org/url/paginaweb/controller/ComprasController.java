@@ -20,8 +20,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.url.paginaweb.modelo.ArregloDetalleCarro;
+import org.url.paginaweb.modelo.ArregloVenta;
 import org.url.paginaweb.modelo.Carrito;
 import org.url.paginaweb.modelo.DetalleCarro;
+import org.url.paginaweb.modelo.DetalleVenta;
 import org.url.paginaweb.modelo.Producto;
 import org.url.paginaweb.modelo.Venta;
 import org.url.paginaweb.modelo.VentaC;
@@ -50,13 +52,12 @@ public class ComprasController {
 
     @GetMapping("/Compras/compraRealizada")
     public String realizadaCompra() {
-             
+
         return ("/Compras/compraRealizada");
     }
 
-    
     @GetMapping("/Compras/carrito")
-    public String getCarritoPage(@RequestParam(name="variable1", required=true, defaultValue="1") int id, Model model){
+    public String getCarritoPage(@RequestParam(name = "variable1", required = true, defaultValue = "1") int id, Model model) {
         //obtengo el carro segun el id
         try {
             Carrito carro = compraService.GetCarroe(id);
@@ -77,27 +78,29 @@ public class ComprasController {
     }
 
     @PostMapping("/Compras/pago")
-    public String greetingSubmit(@RequestParam(name="variable1", required=true, defaultValue="1") int id, @ModelAttribute VentaC venta, Model model) {
+    public String greetingSubmit(@ModelAttribute VentaC venta, Model model) {
 
         try {
             //CREACION DE VENTA
-            
-            Carrito carro = compraService.GetCarroe(id);
+
+            Carrito carro = compraService.GetCarroe(venta.getId());
+
             //obtengo los detalles del carro
             List<DetalleCarro> detalles = compraService.GetDetalle();
             //Solo los detalles del carro
             List<DetalleCarro> detallesC = getDetalles(detalles, carro.getId());
             //nombres de productos
+
             detallesC = DetallesCarro(detallesC);
             float total = Calcular(detallesC);
+
             //ID DEL CLIENTE--------------------
             venta.setCliente(carro.getUsuario());
             //TOTAL
             venta.setTotal(total);
 
-            
             //REPARTIDOR
-             int re = valRepartidor();
+            int re = valRepartidor();
             venta.setRepartidor(re);
             //CODIGO
             String c = valCodigo();
@@ -110,30 +113,27 @@ public class ComprasController {
             float d = 0;
             venta.setDescuento(d);
 
-            
+            compraService.SetVenta(venta);
+            int idv = 0 ;
+            List<ArregloVenta> ventas = compraService.GetVentas();
+            idv = ventas.size();
             //CREAR DETALLE VENTA
-            
-            for(int x=0;x<detallesC.size();x++){
+            //Borrar detalle carrito
+            for (int x = 0; x < detallesC.size(); x++) {
                 compraService.deleteDetalleCarrito(detallesC.get(x));
+                DetalleVenta v = new DetalleVenta();
+                v.setProducto(detallesC.get(x).getProducto());
+                v.setCantidad(detallesC.get(x).getCantidad());
+                v.setSubtotal(detallesC.get(x).getSubtotal());
+                 v.setVenta(idv);
+                compraService.SetDetalleVenta(v);
+
             }
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
+
             //CREAR VENTA
-         compraService.SetVenta(venta);
-         //ELIMINAR EL CARRO
-         compraService.deleteCarrito(1);
+            //ELIMINAR EL CARRO
+            compraService.deleteCarrito(venta.getId());
+
             return ("/Compras/compraRealizada");
         } catch (Exception e) {
             return ("/Compras/index");
@@ -141,7 +141,7 @@ public class ComprasController {
     }
 
     @GetMapping("/Compras/pago")
-    public String getPagoCompraPage(@RequestParam(name="variable1", required=true, defaultValue="1") int id, Model model) {
+    public String getPagoCompraPage(@RequestParam(name = "variable1", required = true, defaultValue = "1") int id, Model model) {
         try {
             Carrito carro = compraService.GetCarroe(id);
             //obtengo los detalles del carro
@@ -159,9 +159,7 @@ public class ComprasController {
             return ("/Compras/NoHayCarro");
         }
 
-
     }
-
 
     //METODOS DE OBTENCION DE DATOS
     //obtener nombres de los productos
@@ -208,20 +206,18 @@ public class ComprasController {
         }
         return total;
     }
-    
-    
-    public int valRepartidor(){
+
+    public int valRepartidor() {
         List repartidor = compraService.GetRepartidor();
         int size = repartidor.size();
-         int valorDado = (int) Math.floor(Math.random()* (size+1));
+        int valorDado = (int) Math.floor(Math.random() * (size + 1));
         return valorDado;
     }
-    
-    
-        public String valCodigo(){
-         int valorDado = (int) Math.floor(Math.random()*500);
-         int valorDado1 = (int) Math.floor(Math.random()*100);
-         String c = valorDado + "" + valorDado1;
+
+    public String valCodigo() {
+        int valorDado = (int) Math.floor(Math.random() * 500);
+        int valorDado1 = (int) Math.floor(Math.random() * 100);
+        String c = valorDado + "" + valorDado1;
         return c;
     }
 }

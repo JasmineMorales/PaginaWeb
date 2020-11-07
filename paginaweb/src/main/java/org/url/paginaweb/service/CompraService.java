@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.url.paginaweb.modelo.ArregloDetalleCarro;
 import org.url.paginaweb.modelo.ArregloRepartidor;
+import org.url.paginaweb.modelo.ArregloVenta;
 import org.url.paginaweb.modelo.Carrito;
 import org.url.paginaweb.modelo.DetalleCarro;
 import org.url.paginaweb.modelo.DetalleVenta;
@@ -62,6 +63,12 @@ public class CompraService {
 
     }
 
+    public void SetDetalleVenta(DetalleVenta venta) throws JsonProcessingException {
+        String url = "http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/detalleventa/";
+        DetalleVenta result = restTemplate.postForObject(url, venta, DetalleVenta.class);
+
+    }
+
     public List GetRepartidor() {
         String url = "http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/repartidor/";
         ArregloRepartidor response1 = restTemplate.getForObject(url, ArregloRepartidor.class);
@@ -72,8 +79,15 @@ public class CompraService {
     public void deleteCarrito(int id) {
         restTemplate.delete("http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/carro/" + id + "/");
     }
-    
-        public void deleteDetalleCarrito(DetalleCarro dv) {
+
+    public void deleteDetalleCarrito(DetalleCarro dv) {
         restTemplate.delete("http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/detallecarro/" + dv.getId() + "/");
+    }
+
+    public List GetVentas() {
+        String url = "http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/venta/";
+        ArregloVenta response1 = restTemplate.getForObject(url, ArregloVenta.class);
+        List<Venta> respuesta = response1.getResults();
+        return respuesta;
     }
 }

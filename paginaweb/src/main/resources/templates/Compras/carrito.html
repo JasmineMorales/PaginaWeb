@@ -81,12 +81,24 @@
                 <button type="button" style="position: absolute; left: 57%;"
                     class="btn btn-outline-danger">Cancelar</button>
                 <a type="button" style="position: absolute; left: 67%;"
-                    class="btn btn-outline-success" href="pago/?variable1=2">Checkout</a>
+                    class="btn btn-outline-success" onclick="Getparametro()">Checkout</a>
+                    
                     
             </nav>
         </section>
     </div><br><br><br>
     <footer th:replace="Plantillas/plantilla :: footer"></footer>
+    <script>
+        function Getparametro() {
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            const variable = urlParams.get('variable1')
+            location.replace("../pago/?variable1=" + variable)
+            //console.log(variable);
+            
+            
+        }   
+    </script>
 </body>
 
 
