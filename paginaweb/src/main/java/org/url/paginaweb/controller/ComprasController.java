@@ -50,7 +50,7 @@ public class ComprasController {
 
     @GetMapping("/Compras/compraRealizada")
     public String realizadaCompra() {
-
+             
         return ("/Compras/compraRealizada");
     }
 
@@ -109,6 +109,7 @@ public class ComprasController {
 
             
          compraService.SetVenta(venta);
+         compraService.deleteCarrito(1);
             return ("/Compras/compraRealizada");
         } catch (Exception e) {
             return ("/Compras/index");

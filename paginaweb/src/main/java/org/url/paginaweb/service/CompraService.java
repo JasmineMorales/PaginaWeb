@@ -8,7 +8,9 @@ package org.url.paginaweb.service;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -56,14 +58,17 @@ public class CompraService {
     public void SetVenta(VentaC venta) throws JsonProcessingException {
         String url = "http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/venta/";
         VentaC result = restTemplate.postForObject(url, venta, VentaC.class);
-        
+
     }
-    
-        public List  GetRepartidor() {
+
+    public List GetRepartidor() {
         String url = "http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/repartidor/";
-        ArregloRepartidor  response1 = restTemplate.getForObject(url, ArregloRepartidor.class);
-         List<Repartidor> respuesta = response1.getResults();
+        ArregloRepartidor response1 = restTemplate.getForObject(url, ArregloRepartidor.class);
+        List<Repartidor> respuesta = response1.getResults();
         return respuesta;
     }
 
+    public void deleteCarrito(int id) {
+        restTemplate.delete("http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/carro/" + id + "/");
+    }
 }
