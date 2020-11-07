@@ -5,16 +5,22 @@
  */
 package org.url.paginaweb.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.url.paginaweb.modelo.ArregloDetalleCarro;
+import org.url.paginaweb.modelo.ArregloRepartidor;
 import org.url.paginaweb.modelo.Carrito;
 import org.url.paginaweb.modelo.DetalleCarro;
 import org.url.paginaweb.modelo.Producto;
+import org.url.paginaweb.modelo.Repartidor;
 import org.url.paginaweb.modelo.Venta;
+import org.url.paginaweb.modelo.VentaC;
 
 /**
  *
@@ -45,6 +51,19 @@ public class CompraService {
         String url = "http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/producto/" + id + "/";
         Producto response1 = restTemplate.getForObject(url, Producto.class);
         return response1;
+    }
+
+    public void SetVenta(VentaC venta) throws JsonProcessingException {
+        String url = "http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/venta/";
+        VentaC result = restTemplate.postForObject(url, venta, VentaC.class);
+        
+    }
+    
+        public List  GetRepartidor() {
+        String url = "http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/repartidor/";
+        ArregloRepartidor  response1 = restTemplate.getForObject(url, ArregloRepartidor.class);
+         List<Repartidor> respuesta = response1.getResults();
+        return respuesta;
     }
 
 }
