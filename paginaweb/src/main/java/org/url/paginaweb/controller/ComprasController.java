@@ -54,11 +54,12 @@ public class ComprasController {
         return ("/Compras/compraRealizada");
     }
 
+    
     @GetMapping("/Compras/carrito")
-    public String getCarritoPage(Model model) {
+    public String getCarritoPage(@RequestParam(name="variable1", required=true, defaultValue="1") int id, Model model){
         //obtengo el carro segun el id
         try {
-            Carrito carro = compraService.GetCarroe(1);
+            Carrito carro = compraService.GetCarroe(id);
             //obtengo los detalles del carro
             List<DetalleCarro> detalles = compraService.GetDetalle();
             //Solo los detalles del carro
@@ -76,10 +77,12 @@ public class ComprasController {
     }
 
     @PostMapping("/Compras/pago")
-    public String greetingSubmit(@ModelAttribute VentaC venta, Model model) {
+    public String greetingSubmit(@RequestParam(name="variable1", required=true, defaultValue="1") int id, @ModelAttribute VentaC venta, Model model) {
 
         try {
-            Carrito carro = compraService.GetCarroe(1);
+            //CREACION DE VENTA
+            
+            Carrito carro = compraService.GetCarroe(id);
             //obtengo los detalles del carro
             List<DetalleCarro> detalles = compraService.GetDetalle();
             //Solo los detalles del carro
@@ -88,7 +91,7 @@ public class ComprasController {
             detallesC = DetallesCarro(detallesC);
             float total = Calcular(detallesC);
             //ID DEL CLIENTE--------------------
-            venta.setCliente(1);
+            venta.setCliente(carro.getUsuario());
             //TOTAL
             venta.setTotal(total);
 
@@ -108,7 +111,28 @@ public class ComprasController {
             venta.setDescuento(d);
 
             
+            //CREAR DETALLE VENTA
+            
+            for(int x=0;x<detallesC.size();x++){
+                compraService.deleteDetalleCarrito(detallesC.get(x));
+            }
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            //CREAR VENTA
          compraService.SetVenta(venta);
+         //ELIMINAR EL CARRO
          compraService.deleteCarrito(1);
             return ("/Compras/compraRealizada");
         } catch (Exception e) {
@@ -117,9 +141,9 @@ public class ComprasController {
     }
 
     @GetMapping("/Compras/pago")
-    public String getPagoCompraPage(Model model) {
+    public String getPagoCompraPage(@RequestParam(name="variable1", required=true, defaultValue="1") int id, Model model) {
         try {
-            Carrito carro = compraService.GetCarroe(1);
+            Carrito carro = compraService.GetCarroe(id);
             //obtengo los detalles del carro
             List<DetalleCarro> detalles = compraService.GetDetalle();
             //Solo los detalles del carro

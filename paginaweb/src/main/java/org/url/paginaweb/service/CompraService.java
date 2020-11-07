@@ -19,6 +19,7 @@ import org.url.paginaweb.modelo.ArregloDetalleCarro;
 import org.url.paginaweb.modelo.ArregloRepartidor;
 import org.url.paginaweb.modelo.Carrito;
 import org.url.paginaweb.modelo.DetalleCarro;
+import org.url.paginaweb.modelo.DetalleVenta;
 import org.url.paginaweb.modelo.Producto;
 import org.url.paginaweb.modelo.Repartidor;
 import org.url.paginaweb.modelo.Venta;
@@ -70,5 +71,9 @@ public class CompraService {
 
     public void deleteCarrito(int id) {
         restTemplate.delete("http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/carro/" + id + "/");
+    }
+    
+        public void deleteDetalleCarrito(DetalleCarro dv) {
+        restTemplate.delete("http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/detallecarro/" + dv.getId() + "/");
     }
 }
