@@ -30,20 +30,82 @@ and open the template in the editor.
                     </button>
                     <div class="collapse navbar-collapse" id="navbarCollapse">
                         <ul class="navbar-nav ml-auto">
-                            <li class="nav-item px-2">
+                            <li class="nav-item px-2"  sec:authorize="!isAuthenticated()">
                                 <a th:href="@{/}" class="nav-link active" style="color: #17252a">Inicio</a>
                             </li>
+                            <li class="nav-item px-2"  sec:authorize="!isAuthenticated()">
+                                <a th:href="@{/usuarios/registro}" class="nav-link active" style="color: #17252a">Quiero Registrarme</a>
+                            </li>
+                            <li class="nav-item px-2"  sec:authorize="!isAuthenticated()">
+                                <a th:href="@{/repartidor/registro}" class="nav-link active" style="color: #17252a">Quiero ser repartidor</a>
+                            </li>
+                            <li class="nav-item dropdown" sec:authorize="hasAnyRole('ROLE_CLIENT')">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownVentas" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Compras
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownVentas">
+                                    <a class="dropdown-item" th:href="@{/Compras/index}">Pagina Principal</a>
+                                    <a class="dropdown-item" th:href="@{/Compras/carrito}">Carrito</a>
+                                    <a class="dropdown-item" th:href="@{/Compras/pago}">Pago</a>
+                                    <a class="dropdown-item" th:href="@{/Compras/compraRealizada}">Compras Realizadas</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown" sec:authorize="hasAnyRole('ROLE_ADMIN')">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownVentas" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Ventas
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownVentas">
+                                    <a class="dropdown-item" th:href="@{/Ventas/index}">Pagina Principal</a>
+                                    <a class="dropdown-item" th:href="@{/Ventas/canceladas}">Canceladas</a>
+                                    <a class="dropdown-item" th:href="@{/Ventas/enespera}">En Espera</a>
+                                    <a class="dropdown-item" th:href="@{/Ventas/entregadas}">Entregadas</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown" sec:authorize="hasAnyRole('ROLE_CLIENT','ROLE_ADMIN')">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownVentas" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Productos
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownVentas">
+                                    <a class="dropdown-item" th:href="@{/Productos/vistaProductos}" sec:authorize="hasAnyRole('ROLE_CLIENT','ROLE_ADMIN')">Ver Productos</a>
+                                    <a class="dropdown-item" th:href="@{/Productos/modificarProducto}"  sec:authorize="hasAnyRole('ROLE_ADMIN')">Modificar Productos</a>
+                                    <a class="dropdown-item" th:href="@{/Productos/agregarProducto}" sec:authorize="hasAnyRole('ROLE_ADMIN')">Agregar Productos</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown" sec:authorize="isAuthenticated()">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownVentas" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Envios
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownVentas">
+                                    <a class="dropdown-item" th:href="@{/envios/estado-envio}" sec:authorize="hasAnyRole('ROLE_CLIENT')">Estado Envio</a>
+                                    <a class="dropdown-item" th:href="@{/envios/estado-envio-repartidor}" sec:authorize="hasAnyRole('ROLE_REPART','ROLE_ADMIN')">Estado Envio</a>
+                                    <a class="dropdown-item" th:href="@{/envios/busqueda}" sec:authorize="isAuthenticated()">Busqueda</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown" sec:authorize="hasAnyRole('ROLE_CLIENT','ROLE_ADMIN')">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownVentas" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Pagos y Devoluciones
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownVentas">
+                                    <a class="dropdown-item" th:href="@{/pagos/metodo-pago}" sec:authorize="hasAnyRole('ROLE_ADMIN')">Metodos de pago</a>
+                                    <a class="dropdown-item" th:href="@{/pagos/agregar-metodo-pago}" sec:authorize="hasAnyRole('ROLE_ADMIN')">Agregar Metodo de Pago</a>
+                                    <a class="dropdown-item" th:href="@{/pagos/devolucion}" sec:authorize="hasAnyRole('ROLE_CLIENT')">Solicitar Devoluciones</a>
+                                    <a class="dropdown-item" th:href="@{/pagos/devolucion-aceptada}" sec:authorize="hasAnyRole('ROLE_ADMIN')">Estado de Devolucion</a>
+                                </div>
+                            </li>
+                            
                             <li class="nav-item mr-3 nav-item dropdown" sec:authorize="isAuthenticated()">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fas fa-user"></i>
                                     <span >Bienvenido</span>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdwonMenuLink">
+                                    <a class="dropdown-item" th:href="@{/administrador/registro}" sec:authorize="hasAnyRole('ROLE_ADMIN')">Registrar Administrador</a>
                                     <form method="POST" th:action="@{/logout}">
                                         <a href="#" onclick="this.parentNode.submit();" class="dropdown-item">
                                             <i class="fas fa-user-times"></i> Salir
                                         </a>
                                     </form>
+                                    
                                 </div>
                             </li>
                             <li class="nav-item px-2" sec:authorize="!isAuthenticated()">
