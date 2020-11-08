@@ -15,19 +15,21 @@ import lombok.Data;
  * @author marcos
  */
 @Data
-public class DetalleCarro implements Serializable{
-    
+public class DetalleCarro implements Serializable {
+
     private Integer id;
-    
+
     @NotNull
-    @Min(value=1)
+    @Min(value = 1)
     private Integer cantidad;
-    
+
     @NotNull
-    @Min(value=0)
+    @Min(value = 0)
     private Float subtotal;
-    
+
     private Integer carro;
-    
+
     private Integer producto;
+    public String nombreProducto;
+    public Float precio;
 }
