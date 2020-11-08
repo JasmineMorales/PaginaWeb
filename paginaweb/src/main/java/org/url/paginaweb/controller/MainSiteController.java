@@ -37,17 +37,6 @@ public class MainSiteController {
     
     @GetMapping("/")
     public String getMainPage(Model model, Authentication user){
-       log.info(user.toString());
-       String tipo = loginService.getTipoUser(user.getAuthorities());
-       if(tipo.equals(MainsiteService.ADMIN)){
-           var us = loginService.getInfoAdmin(user.getName()).toString();
-       }
-       if(tipo.equals(MainsiteService.CLIENTE)){
-           var us = loginService.getInfoUsuario(user.getName()).toString();
-       }
-        if(tipo.equals(MainsiteService.REPARTIDOR)){
-           var us = loginService.getInfoRepartidor(user.getName()).toString();
-       }
        return("MainSite/index");
     }
     
