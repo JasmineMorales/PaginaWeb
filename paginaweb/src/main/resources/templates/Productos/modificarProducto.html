@@ -16,39 +16,63 @@
             <p  id="id">
                 [[${producto.id}]]
             </p>
-            <form>
+            <form name="form">
                 <div class="form-group">
-                  <label for="exampleFormControlInput1">Nombre Producto</label>
-                  <input type="text" class="form-control" id="nombre-p" placeholder="Nombre" style="background-color: #DEF2F1;">
+                  <label for="exampleFormControlInput1">Nombre</label>
+                  <input name="nombre" type="text" class="form-control" id="nombre-p" placeholder="Nombre" style="background-color: #DEF2F1;">
                 </div>
                 <div class="form-group">
-                    <label for="exampleFormControlInput1">Precio producto</label>
-                    <input type="text" class="form-control" id="precio" placeholder="Precio" style="background-color: #DEF2F1;">
+                    <label for="exampleFormControlInput1">Precio</label>
+                    <input name="precio" type="text" class="form-control" id="precio" placeholder="Precio" style="background-color: #DEF2F1;">
                 </div>
-                <label for="exampleFormControlInput1">Descripción</label>
-                <textarea class="form-control" id="des" placeholder="Descripción de producto" style="background-color: #DEF2F1;">
-                    
-                </textarea>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Tipo</label><br>
+                    <select id="tipo" class="form-control" style="background-color: #DEF2F1;">
+                        <option class="form-control" disabled selected="">Seleccione un tipo de producto</option>
+                        <option class="form-control" th:each='tipoproducto: ${tipoproductos}'>[[${tipoproducto.categoria}]]</option>                        
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Proveedor</label><br>
+                    <select id="proveedor" class="form-control" style="background-color: #DEF2F1;">
+                        <option class="form-control" disabled selected="">Seleccione un proveedor</option>
+                        <option class="form-control" th:each='proveedor: ${proveedores}' value="[${proveedor.id}]]">[[${proveedor.nombre}]]</option>                        
+                    </select>
+                </div>
                 
                 <div class="form-group">
-                    <label for="exampleFormControlInput1">Unidades</label>
-                    <input type="number" class="form-control" id="Fecha" placeholder="Ingrese unidades" style="background-color: #DEF2F1;" >
+                    <label for="exampleFormControlInput1">Descripción</label>
+                <textarea name="descripcion" class="form-control" id="des" placeholder="Ingrese descripción de producto" style="background-color: #DEF2F1;">
+                </textarea>
                 </div>
-                <div class= "contenedor-tipo row justify-content-around">
+                
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Disponibilidad</label>
+                    <div class= "contenedor-tipo row justify-content-around">
                     
                     <div class="metodo-pago form-check col-4">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="1" checked >
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="habilitado" value="1">
                         <label class="form-check-label" for="exampleRadios1">
                           HABILITADO
                         </label>
                       </div>
                       <div class="metodo-pago form-check col-4">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="2">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="inhabilitado" value="2">
                         <label class="form-check-label" for="exampleRadios2">
                           DESHABILITADO
                         </label>
                       </div>
                       </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Imagen</label><br>
+                    <label class="nuestroinput">   
+                        Seleccionar imagen
+                        <input type="file" id="img" accept=".jpeg, .jpg, .png"/>
+                    </label>
+                    
+                </div>
                 
               </form>
        </div>
@@ -59,12 +83,61 @@
     </div>
         <footer th:replace="Plantillas/plantilla :: footer"></footer>
         <script>
+            window.onload = Cargar;
+            
             function Modificar(){
-        var select= parseInt(document.getElementsByTagName('p')[0].innerHTML);
-           console.log(select);
-           //window.location.assign("localhost:8080/Producto/producto/?variable1="+select);
-           window.history.back();
-    };
+                var select= parseInt(document.getElementsByTagName('p')[0].innerHTML);
+                console.log(select);
+                //window.location.assign("localhost:8080/Producto/producto/?variable1="+select);
+                window.history.back();
+            };
+            
+            function Cargar(){
+               document.form.nombre.value = "[[${producto.nombre}]]";
+               document.form.precio.value = "[[${producto.precio}]]";
+               document.form.descripcion.value = "[[${producto.descripcion}]]";
+               Proveedores();            
+               TipoProducto();            
+               Habilitado();
+           };
+            
+            function Habilitado(){
+                if("[[${producto.disponibilidad}]]" === "true"){
+                    document.getElementById("habilitado").checked=true;
+                }
+                else if("[[${producto.disponibilidad}]]" === "false"){
+                    document.getElementById("inhabilitado").checked=true;
+                }
+            };
+            
+            function Proveedores(){
+                var combo = document.getElementById("proveedor");
+                if(combo.length > 1){
+                    for (var i = 0; i < combo.length; i++) {
+                        if(i.toString() === "[[${producto.proveedor}]]"){
+                            combo.options.item(i).selected = 'selected';
+                        }
+                    }
+                }
+                else{
+                    combo.options.item(0).selected = 'selected';
+                }
+            };
+            
+            function TipoProducto(){
+                var tipo = document.getElementById("tipo");
+                if(tipo.length > 1){
+                    for (var j = 0; j < tipo.length; j++) {
+                        if(j.toString() === "[[${producto.tipoProducto}]]"){
+                            tipo.options.item(j).selected = 'selected';
+                        }
+                    }
+                }
+                else{
+                    tipo.options.item(0).selected = 'selected';
+                }
+            };
+            
         </script>
     </body>
 </html>

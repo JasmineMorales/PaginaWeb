@@ -12,6 +12,8 @@
 <body>
   <div class="contenedor">
     <div class="producto-vista" style="float: left;">
+        <h5 class="proveedores" th:each='proveedor: ${proveedores}'>[[${proveedor.id}]]</h5>                        
+        <h5 class="proveedores-nombre" th:each='proveedor: ${proveedores}'>[[${proveedor.nombre}]]</h5>                        
         <p  id="id">
            [[${producto.id}]]
         </p>
@@ -40,12 +42,7 @@
         GTQ[[${producto.precio}]]
       </h2>
       <td th:switch="${producto.proveedor}">
-              <h2 class="proveedor-p" th:case='0'>
-                  Proveedor: Importadora
-              </h2>
-              <h2 class="proveedor-p" th:case='1'>
-                  Proveedor: Cafetería
-              </h2>
+          <h2 id="prov" class="proveedor-p"></h2>
           </td> 
       <h3 class="unidades" th:text="${producto.disponibilidad} ? 'Disponible':'No Disponible'">     
       </h3>
@@ -105,6 +102,7 @@
     });
     
     $(document).ready = OcultarBotones();
+    window.onload = Proveedor();
     
     function OcultarBotones(){
         document.getElementById('btn').style.display = 'none';
@@ -178,6 +176,16 @@
            console.log(select);
            window.location.assign("modificar_producto/?variable1="+select);           
     };
+    
+    function Proveedor(){
+        var pro = document.getElementsByClassName("proveedores");
+        for (var i = 0; i < pro.length; i++) {
+            if(pro[i].innerHTML === "[[${producto.proveedor}]]"){            
+                var nombre = document.getElementsByClassName("proveedores-nombre")[i].innerHTML;
+                document.getElementById("prov").innerHTML = nombre;                
+            }
+        }        
+    }
     
   </script>
    </body>

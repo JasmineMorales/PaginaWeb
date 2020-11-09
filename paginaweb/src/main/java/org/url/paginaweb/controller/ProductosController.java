@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.url.paginaweb.modelo.Producto;
 import org.url.paginaweb.service.ProductService;
@@ -38,22 +40,25 @@ public class ProductosController {
     }*/
     
     @GetMapping("/Productos/agregar_producto")
-    public String getAddProductPage(Model model){
+    public String getAddProductPage(@ModelAttribute Producto producto, Model model){
         List proveedores = productService.getAllProveedores();
         model.addAttribute("proveedores", proveedores);
         List tipoproductos = productService.getAllTipos();
         model.addAttribute("tipoproductos", tipoproductos);
+        model.addAttribute("producto", producto);
         return("/Productos/agregarProducto");
     }
     
-           /* @PostMapping("/Productos/agregar_producto")
+    @PostMapping("/Productos/agregar_producto")
     public String postAddProductPage(@ModelAttribute Producto producto, Model model){
         model.addAttribute("producto", producto);
-        System.out.println(producto.getNombre());
-        System.out.println(producto.getPrecio());
+         List proveedores = productService.getAllProveedores();
+        model.addAttribute("proveedores", proveedores);
+        List tipoproductos = productService.getAllTipos();
+        model.addAttribute("tipoproductos", tipoproductos);
         productService.postProduct(producto);
-        model.addAttribute("productos", productService.getAllProducts().getResults());
-        return("/Productos/agregarProducto");}*/
+        return("/Productos/agregarProducto");
+    }
 
         
             @GetMapping("/Productos/producto")
@@ -63,6 +68,8 @@ public class ProductosController {
         model.addAttribute("producto", producto);
        List comentarios = productService.getAllComentarios();
        model.addAttribute("comentarios", comentarios);
+       List proveedores = productService.getAllProveedores();
+       model.addAttribute("proveedores", proveedores);
         return("/Productos/producto");
     }
     
@@ -71,6 +78,10 @@ public class ProductosController {
         model.addAttribute("id", id);
         Producto producto = productService.getProductID(id);
         model.addAttribute("producto", producto);
+        List proveedores = productService.getAllProveedores();
+        model.addAttribute("proveedores", proveedores);
+        List tipoproductos = productService.getAllTipos();
+        model.addAttribute("tipoproductos", tipoproductos);
         return("/Productos/modificarProducto");
     }
 }

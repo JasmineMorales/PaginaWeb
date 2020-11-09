@@ -22,8 +22,9 @@ body{
     cursor: pointer;
   }
   
-  p{
+  p, h5{
       opacity: 0;
+      display: none;
   }
   
   .contenedor-producto:hover{

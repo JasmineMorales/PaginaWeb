@@ -13,43 +13,55 @@
            <h2>AGREGAR PRODUCTO</h2>
         </div>
         <div class= "contenedor-campos">
-            <form>
+            <form action="#" th:action="@{/Productos/agregar_producto}" th:object="${producto}" method="post">
                 <div class="form-group">
                   <label for="exampleFormControlInput1">Nombre</label>
-                  <input type="text" class="form-control" id="nombre-p" placeholder="Ingrese nombre de producto" style="background-color: #DEF2F1;">
+                  <input type="text" class="form-control" id="nombre-p" placeholder="Ingrese nombre de producto" style="background-color: #DEF2F1;" th:field="*{nombre}"/>
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Precio</label>
-                    <input type="text" class="form-control" id="precio" placeholder="Ingrese precio de producto" style="background-color: #DEF2F1;">
+                    <input type="text" class="form-control" id="precio" placeholder="Ingrese precio de producto" style="background-color: #DEF2F1;" th:field="*{precio}"/>
                 </div>
+                
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Tipo</label><br>
-                    <select class="form-control" style="background-color: #DEF2F1;">
-                        <option class="form-control" disabled selected="">Seleccione un tipo de producto</option>
-                        <option class="form-control" th:each='tipoproducto: ${tipoproductos}'>[[${tipoproducto.categoria}]]</option>                        
+                    <select id="tipo" class="form-control" style="background-color: #DEF2F1;" th:field="*{tipoProducto}"/>
+                        <option value="0" class="form-control" selected="">Seleccione un tipo de producto</option>
+                       
                     </select>
                 </div>
+                
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Proveedor</label><br>
-                    <select class="form-control" style="background-color: #DEF2F1;">
-                        <option class="form-control" disabled selected="">Seleccione un proveedor</option>
-                        <option class="form-control" th:each='proveedor: ${proveedores}'>[[${proveedor.nombre}]]</option>                        
+                    <select class="form-control" style="background-color: #DEF2F1;" th:field="*{proveedor}">
+                        <option value="0" class="form-control" disabled selected="">Seleccione un proveedor</option>
+                        <option class="form-control" th:each='proveedor: ${proveedores}' th:value='${proveedor.id}'>[[${proveedor.nombre}]]</option>                        
                     </select>
                 </div>
                 
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Descripción</label>
-                <textarea class="form-control" id="des" placeholder="Ingrese descripción de producto" style="background-color: #DEF2F1;">
+                <textarea class="form-control" id="des" placeholder="Ingrese descripción de producto" style="background-color: #DEF2F1;" th:field="*{descripcion}"/>
                 </textarea>
                 </div>
                                 
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Disponibilidad</label>
-                    <select class="form-control" style="background-color: #DEF2F1;">
-                        <option class="form-control" disabled selected="">Seleccione una opción</option>
-                        <option class="form-control">Habilitado</option>                        
-                        <option class="form-control">Deshabilitado</option>                        
-                    </select>
+                    <div class= "contenedor-tipo row justify-content-around">
+                    
+                    <div class="metodo-pago form-check col-4">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="true" th:field="*{disponibilidad}"/>
+                        <label class="form-check-label" for="exampleRadios1">
+                          HABILITADO
+                        </label>
+                      </div>
+                      <div class="metodo-pago form-check col-4">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="false" th:field="*{disponibilidad}"/>
+                        <label class="form-check-label" for="exampleRadios2">
+                          DESHABILITADO
+                        </label>
+                      </div>
+                      </div>
                 </div>
                 
                 <div class="form-group">
@@ -64,10 +76,17 @@
               </form>
        </div>
        <div class="seccion-btn">
-         <a class="btn btn btn-outline-danger" type="submit" href="/Productos/productos">CANCELAR</a>
-         <button class="btn btn btn-outline-success" type="submit" href="/Productos/productos">GUARDAR</button>
+         <input class="btn btn btn-outline-danger" type="reset" value="CANCELAR"/>
+         <input class="btn btn btn-outline-success" type="submit" onclick="Tipo()" value="GUARDAR"/>
        </div>
     </div>
         <footer th:replace="Plantillas/plantilla :: footer"></footer>
+        <script>
+            function Tipo(){
+                var select = document.getElementById('tipo');
+                var selectedOption = this.options[select.selectedIndex];
+                console.log(selectedOption.value);
+            };
+        </script>
     </body>
 </html>
