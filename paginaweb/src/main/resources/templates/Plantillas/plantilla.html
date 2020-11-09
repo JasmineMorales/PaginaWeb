@@ -82,8 +82,6 @@ and open the template in the editor.
                                     Envios
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownVentas">
-                                    <a class="dropdown-item" th:href="@{/envios/estado-envio}" sec:authorize="hasAnyRole('ROLE_CLIENT')">Estado Envio</a>
-                                    <a class="dropdown-item" th:href="@{/envios/estado-envio-repartidor}" sec:authorize="hasAnyRole('ROLE_REPART','ROLE_ADMIN')">Estado Envio</a>
                                     <a class="dropdown-item" th:href="@{/envios/busqueda}" sec:authorize="isAuthenticated()">Busqueda</a>
                                 </div>
                             </li>
