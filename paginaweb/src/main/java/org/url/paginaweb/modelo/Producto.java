@@ -39,7 +39,7 @@ public class Producto implements Serializable {
     @NotNull
     private Boolean disponibilidad;
     
-    private Integer tipoProducto;
+    private Integer tipo_producto;
     
     private Integer proveedor;
     
