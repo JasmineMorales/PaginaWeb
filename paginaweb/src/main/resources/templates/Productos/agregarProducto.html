@@ -23,10 +23,11 @@
                     <input type="text" class="form-control" id="precio" placeholder="Ingrese precio de producto" style="background-color: #DEF2F1;" th:field="*{precio}"/>
                 </div>
                 
+                
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Tipo</label><br>
-                    <select id="tipo" class="form-control" style="background-color: #DEF2F1;" th:field="*{tipoProducto}"/>
-                        <option value="0" class="form-control" selected="">Seleccione un tipo de producto</option>
+                    <select id="tipo" class="form-control" style="background-color: #DEF2F1;" th:field="*{tipo_producto}"/>
+                        <option th:value="1" class="form-control" disabled selected="">Seleccione un tipo de producto</option>
                        
                     </select>
                 </div>
@@ -34,8 +35,9 @@
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Proveedor</label><br>
                     <select class="form-control" style="background-color: #DEF2F1;" th:field="*{proveedor}">
-                        <option value="0" class="form-control" disabled selected="">Seleccione un proveedor</option>
-                        <option class="form-control" th:each='proveedor: ${proveedores}' th:value='${proveedor.id}'>[[${proveedor.nombre}]]</option>                        
+                       <!-- <option value="" class="form-control" disabled selected="">Seleccione un proveedor</option>-->
+                       <option class="form-control" th:each='proveedor: ${proveedores}' th:value='${proveedor.id}'>[[${proveedor.nombre}]]</option>   
+                       
                     </select>
                 </div>
                 
@@ -50,13 +52,13 @@
                     <div class= "contenedor-tipo row justify-content-around">
                     
                     <div class="metodo-pago form-check col-4">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="true" th:field="*{disponibilidad}"/>
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="true" th:field="*{disponibilidad}" th:value="true"/>
                         <label class="form-check-label" for="exampleRadios1">
                           HABILITADO
                         </label>
                       </div>
                       <div class="metodo-pago form-check col-4">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="false" th:field="*{disponibilidad}"/>
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="false" th:field="*{disponibilidad}" th:value="false"/>
                         <label class="form-check-label" for="exampleRadios2">
                           DESHABILITADO
                         </label>
@@ -76,16 +78,14 @@
               </form>
        </div>
        <div class="seccion-btn">
-         <input class="btn btn btn-outline-danger" type="reset" value="CANCELAR"/>
-         <input class="btn btn btn-outline-success" type="submit" onclick="Tipo()" value="GUARDAR"/>
+           <input class="btn btn btn-outline-danger" onclick="Regresar()" type="reset"  value="CANCELAR"/>
+         <input class="btn btn btn-outline-success" type="submit" value="GUARDAR"/>
        </div>
     </div>
         <footer th:replace="Plantillas/plantilla :: footer"></footer>
         <script>
-            function Tipo(){
-                var select = document.getElementById('tipo');
-                var selectedOption = this.options[select.selectedIndex];
-                console.log(selectedOption.value);
+            function Regresar(){
+               window.history.back(); 
             };
         </script>
     </body>

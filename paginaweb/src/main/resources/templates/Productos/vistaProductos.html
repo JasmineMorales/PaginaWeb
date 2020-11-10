@@ -45,7 +45,7 @@
           </div>
     </div>
   </div>
-    <div class="seccion-btn" style="clear:both"><br><a class="btn btn-outline-success" typu="button" href="/Productos/agregar_producto">AGREGAR PRODUCTO</a></div>
+    <div class="seccion-btn" style="clear:both"><br><a class="btn btn-outline-success" typu="button" href="/Productos/agregar_producto" sec:authorize="hasAnyRole('ROLE_ADMIN')">AGREGAR PRODUCTO</a></div>
 
   <footer th:replace="Plantillas/plantilla :: footer"></footer>
   <script>
