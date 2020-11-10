@@ -60,7 +60,9 @@ public class ComprasController {
     public String getCarritoPage(@RequestParam(name = "variable1", required = true, defaultValue = "1") int id, Model model) {
         //obtengo el carro segun el id
         try {
-            Carrito carro = compraService.GetCarroe(id);
+            Carrito c2= compraService.GetCarros();
+            //Carrito carro = compraService.GetCarroe(id);
+            Carrito carro = compraService.GetCarroe(c2.getId());
             //obtengo los detalles del carro
             List<DetalleCarro> detalles = compraService.GetDetalle();
             //Solo los detalles del carro
@@ -70,6 +72,7 @@ public class ComprasController {
             model.addAttribute("detalles", detallesC);
             float total = Calcular(detallesC);
             model.addAttribute("total", total);
+            model.addAttribute("id", c2.getId());
             return ("/Compras/carrito");
         } catch (Exception e) {
             return ("/Compras/NoHayCarro");

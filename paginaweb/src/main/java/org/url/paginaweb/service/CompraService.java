@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import org.url.paginaweb.modelo.ArregloCarrito;
 import org.url.paginaweb.modelo.ArregloDetalleCarro;
 import org.url.paginaweb.modelo.ArregloRepartidor;
 import org.url.paginaweb.modelo.ArregloVenta;
@@ -89,5 +90,24 @@ public class CompraService {
         ArregloVenta response1 = restTemplate.getForObject(url, ArregloVenta.class);
         List<Venta> respuesta = response1.getResults();
         return respuesta;
+    }
+    
+        public Carrito GetCarros() {
+        List<Carrito> response1 = null;
+        Carrito c = null;
+        //Esto cambiarlo, porque este pide por medio del id del carro, que en realidad no tenemos
+        String url = "http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/carro/";
+        ArregloCarrito response = restTemplate.getForObject(url, ArregloCarrito.class);
+        if (response.getCount() == 0) {
+            c = new Carrito();
+            c.setUsuario(1);//cambiar esto a id de usuario
+            c.setId(1);
+            String url2 = "http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/carro/";
+            Carrito result = restTemplate.postForObject(url2, c, Carrito.class);
+        } else {
+            response1 = response.getResults();
+            c = response1.get(0);
+        }
+        return c;
     }
 }

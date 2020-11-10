@@ -86,16 +86,18 @@
                     
             </nav>
         </section>
+        <a type="text" id="id" th:text="${id}" style="display: none;"></a>
     </div><br><br><br>
     <footer th:replace="Plantillas/plantilla :: footer"></footer>
     <script>
         function Getparametro() {
             const queryString = window.location.search;
             const urlParams = new URLSearchParams(queryString);
-            const variable = urlParams.get('variable1')
+            //const variable = urlParams.get('variable1')
+            var variable = document.getElementById("id");
             location.replace("../pago/?variable1=" + variable)
             //console.log(variable);
-            
+            //location.replace("pago/")
             
         }   
     </script>
