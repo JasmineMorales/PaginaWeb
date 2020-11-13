@@ -90,7 +90,7 @@ public class ProductosController {
     @PostMapping("/Productos/producto")
     public String greetingSubmit(@ModelAttribute DetalleCarroC detalle, Model model) throws JsonProcessingException {
                 
-                detalle.setCantidad(0);
+                detalle.setCantidad(detalle.getCantidad());
                 detalle.setId(1);
                 detalle.setSubtotal(0f);
                
