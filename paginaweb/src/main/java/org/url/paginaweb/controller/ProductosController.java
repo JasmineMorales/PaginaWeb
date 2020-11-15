@@ -63,9 +63,10 @@ public class ProductosController {
         
             @GetMapping("/Productos/producto")
     public String getProductListPage(@RequestParam(name="variable1", required=true, defaultValue = "1") int id, Model model){
-        model.addAttribute("id", id);
-        Producto producto = productService.getProductID(id);
-        model.addAttribute("producto", producto);
+       model.addAttribute("id", id);
+       
+       Producto producto = productService.getProductID(id);
+       model.addAttribute("producto", producto);
        List comentarios = productService.getAllComentarios();
        model.addAttribute("comentarios", comentarios);
        List proveedores = productService.getAllProveedores();
