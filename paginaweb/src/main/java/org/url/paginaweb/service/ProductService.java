@@ -72,4 +72,11 @@ public class ProductService {
         Producto result = restTemplate.postForObject(url, producto, Producto.class);
         System.out.println(result);
     }
+    
+    public void postProveedor(Proveedor proveedor){
+        String url = "http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/proveedores/";
+        Proveedor result = restTemplate.postForObject(url, proveedor, Proveedor.class);
+        
+    
+    }
 }
