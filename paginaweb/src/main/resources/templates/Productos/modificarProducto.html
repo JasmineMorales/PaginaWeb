@@ -2,91 +2,87 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
-    
-    >
+      >
     <head th:replace="Plantillas/plantilla :: head" >
         <title>Modificar Producto</title>
         <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">   
     </head>
     <header th:replace="Plantillas/plantilla :: header"></header>
     <body>
         <div  class="container">
-       
-    <div class="contenedor-titulo">
-           <h2>MODIFICAR PRODUCTO</h2>
+            <div class="contenedor-titulo">
+                <h2>MODIFICAR PRODUCTO</h2>
+            </div>
+            <div class= "contenedor-campos">
+                <p  id="id">
+                    [[${producto.id}]]
+                </p>
+                <form name="form" action="#" th:action="@{/Productos/producto/modificar_producto/?variable1=} + ${producto.id}" th:object="${producto}" method="post">
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Nombre</label>
+                        <input name="nombre" type="text" class="form-control" id="nombre-p" placeholder="Nombre" style="background-color: #DEF2F1;" th:field="*{nombre}">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Precio</label>
+                        <input name="precio" type="text" class="form-control" id="precio" placeholder="Precio" style="background-color: #DEF2F1; "th:field="*{precio}">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Tipo</label><br>
+                            <select id="tipo" class="form-control" style="background-color: #DEF2F1;" th:field="*{tipo_producto}"/>
+                                <option th:value="${tipoproducto1.id}"  th:each="tipoproducto1 : ${tipoproductos}" class="form-control">[[${tipoproducto1.categoria}]]</option>
+                            </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Proveedor</label><br>
+                            <select id="proveedor" class="form-control" style="background-color: #DEF2F1;" th:field="*{proveedor}">
+                                <option class="form-control" th:each='proveedor: ${proveedores}' th:value='${proveedor.id}'>[[${proveedor.nombre}]]</option>
+                            </select>
+                    </div>
+                
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Descripción</label>
+                        <textarea name="descripcion" class="form-control" id="des" placeholder="Ingrese descripción de producto" style="background-color: #DEF2F1;" th:field="*{descripcion}">
+                        </textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Disponibilidad</label>
+                        <div class= "contenedor-tipo row justify-content-around">
+                            <div class="metodo-pago form-check col-4">
+                                <input class="form-check-input" type="radio" name="exampleRadios" id="habilitado" value="1" th:field="*{disponibilidad}" th:value="true">
+                                    <label class="form-check-label" for="exampleRadios1">
+                                        HABILITADO
+                                    </label>
+                            </div>
+                            <div class="metodo-pago form-check col-4">
+                                <input class="form-check-input" type="radio" name="exampleRadios" id="inhabilitado" value="2" th:field="*{disponibilidad}" th:value="false">
+                                    <label class="form-check-label" for="exampleRadios2">
+                                        DESHABILITADO
+                                    </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Imagen</label><br>
+                            <label class="nuestroinput">
+                                Seleccionar imagen
+                                <input type="file" id="img" accept=".jpeg, .jpg, .png"/>
+                            </label>
+                    </div>
+                    <div class="seccion-btn">
+                        <button type="button" onclick="Modificar()" class="btn btn-outline-danger">CANCELAR</button>
+                        <input class="btn btn btn-outline-success" onclick="Alerta()" type="submit" value="GUARDAR"/>
+                    </div>
+                </form>
+            </div>
         </div>
-        <div class= "contenedor-campos">
-            <p  id="id">
-                [[${producto.id}]]
-            </p>
-            <form name="form">
-                <div class="form-group">
-                  <label for="exampleFormControlInput1">Nombre</label>
-                  <input name="nombre" type="text" class="form-control" id="nombre-p" placeholder="Nombre" style="background-color: #DEF2F1;">
-                </div>
-                <div class="form-group">
-                    <label for="exampleFormControlInput1">Precio</label>
-                    <input name="precio" type="text" class="form-control" id="precio" placeholder="Precio" style="background-color: #DEF2F1;">
-                </div>
-                <div class="form-group">
-                    <label for="exampleFormControlInput1">Tipo</label><br>
-                    <select id="tipo" class="form-control" style="background-color: #DEF2F1;">
-                        <option class="form-control" disabled selected="">Seleccione un tipo de producto</option>
-                        <option class="form-control" th:each='tipoproducto: ${tipoproductos}'>[[${tipoproducto.categoria}]]</option>                        
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="exampleFormControlInput1">Proveedor</label><br>
-                    <select id="proveedor" class="form-control" style="background-color: #DEF2F1;">
-                        <option class="form-control" disabled selected="">Seleccione un proveedor</option>
-                        <option class="form-control" th:each='proveedor: ${proveedores}' value="[${proveedor.id}]]">[[${proveedor.nombre}]]</option>                        
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="exampleFormControlInput1">Descripción</label>
-                <textarea name="descripcion" class="form-control" id="des" placeholder="Ingrese descripción de producto" style="background-color: #DEF2F1;">
-                </textarea>
-                </div>
-                
-                <div class="form-group">
-                    <label for="exampleFormControlInput1">Disponibilidad</label>
-                    <div class= "contenedor-tipo row justify-content-around">
-                    
-                    <div class="metodo-pago form-check col-4">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="habilitado" value="1">
-                        <label class="form-check-label" for="exampleRadios1">
-                          HABILITADO
-                        </label>
-                      </div>
-                      <div class="metodo-pago form-check col-4">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="inhabilitado" value="2">
-                        <label class="form-check-label" for="exampleRadios2">
-                          DESHABILITADO
-                        </label>
-                      </div>
-                      </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="exampleFormControlInput1">Imagen</label><br>
-                    <label class="nuestroinput">   
-                        Seleccionar imagen
-                        <input type="file" id="img" accept=".jpeg, .jpg, .png"/>
-                    </label>
-                    
-                </div>
-                
-              </form>
-       </div>
-       <div class="seccion-btn">
-           <button type="button" onclick="Modificar()" class="btn btn-outline-danger">CANCELAR</button>
-         <button type="button" class="btn btn-outline-success">GUARDAR</button>
-       </div>
-    </div>
         <footer th:replace="Plantillas/plantilla :: footer"></footer>
         <script>
             window.onload = Cargar;
+            
+            function Alerta(){
+              window.alert("¡Producto modificado!"); 
+            };
             
             function Modificar(){
                 var select= parseInt(document.getElementsByTagName('p')[0].innerHTML);
@@ -99,8 +95,7 @@
                document.form.nombre.value = "[[${producto.nombre}]]";
                document.form.precio.value = "[[${producto.precio}]]";
                document.form.descripcion.value = "[[${producto.descripcion}]]";
-               Proveedores();            
-               TipoProducto();            
+               Proveedores();             
                Habilitado();
            };
             
@@ -127,19 +122,6 @@
                 }
             };
             
-            function TipoProducto(){
-                var tipo = document.getElementById("tipo");
-                if(tipo.length > 1){
-                    for (var j = 0; j < tipo.length; j++) {
-                        if(j.toString() === "[[${producto.tipoProducto}]]"){
-                            tipo.options.item(j).selected = 'selected';
-                        }
-                    }
-                }
-                else{
-                    tipo.options.item(0).selected = 'selected';
-                }
-            };
             
         </script>
     </body>

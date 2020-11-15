@@ -17,7 +17,7 @@
                             <h2>AGREGAR PRODUCTO</h2>
                         </div>
                         <div class= "contenedor-campos">
-                            <form action="#" th:action="@{/Productos/agregar_producto}" th:object="${producto}" method="post">
+                            <form action="#" th:action="@{/Productos/productos}" th:object="${producto}" method="post">
                                 <div class="form-group">
                                     <label for="exampleFormControlInput1">Nombre</label>
                                     <input type="text" class="form-control" id="nombre-p" placeholder="Ingrese nombre de producto" style="background-color: #DEF2F1;" th:field="*{nombre}"/>
@@ -31,7 +31,7 @@
                                 <div class="form-group">
                                     <label for="exampleFormControlInput1">Tipo</label><br>
                                         <select id="tipo" class="form-control" style="background-color: #DEF2F1;" th:field="*{tipo_producto}"/>
-                                        <option th:value="0" class="form-control" disabled selected="">Seleccione un tipo de producto</option>
+                                        
                                         <option th:value="${tipoproducto1.id}"  th:each="tipoproducto1 : ${tipoproductos}" class="form-control">[[${tipoproducto1.categoria}]]</option>
 
                                         </select>
@@ -40,7 +40,7 @@
                                 <div class="form-group">
                                     <label for="exampleFormControlInput1">Proveedor</label><br>
                                         <select class="form-control" style="background-color: #DEF2F1;" th:field="*{proveedor}">
-                                            <!-- <option value="" class="form-control" disabled selected="">Seleccione un proveedor</option>-->
+                                            
                                             <option class="form-control" th:each='proveedor: ${proveedores}' th:value='${proveedor.id}'>[[${proveedor.nombre}]]</option>   
 
                                         </select>
@@ -81,7 +81,7 @@
                                 </div>
                                 <div class="seccion-btn">
                                     <input class="btn btn btn-outline-danger" onclick="Regresar()" type="reset"  value="CANCELAR"/>
-                                    <input class="btn btn btn-outline-success" type="submit" value="GUARDAR"/>
+                                    <input class="btn btn btn-outline-success" onclick="Alerta()" type="submit" value="GUARDAR"/>
                                 </div>
                             </form>
                         </div>
@@ -91,8 +91,11 @@
                     <script>
                         function Regresar() {
                             window.history.back();
-                        }
-                        ;
+                        };
+                        
+                        function Alerta(){
+              window.alert("¡Producto guardado!"); 
+            };
                     </script>
                 </body>
                 </html>

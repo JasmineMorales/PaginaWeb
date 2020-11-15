@@ -1,6 +1,8 @@
 package org.url.paginaweb.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,6 +32,13 @@ public class ProductService {
         Producto respuesta = restTemplate.getForObject(url, Producto.class);
         return respuesta;
     }
+
+    /*public List getComentarioID(int id) {
+        String url = "http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/comentario/" + id + "/";
+        ArregloComentario response1 = restTemplate.getForObject(url, ArregloComentario.class);
+        List<Comentario> respuesta = response1.getResults();
+        return respuesta;
+    }*/
 
     public List getAllProducts() {
         String url1 = "http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/producto/";
@@ -67,12 +76,21 @@ public class ProductService {
         System.out.println(result);
     }
     
-    public void putProduct(Producto producto){
-        String url = "http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/producto/";
-        Producto result = restTemplate.postForObject(url, producto, Producto.class);
+    public void postComentario(Comentario comentario){
+        String url = "http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/comentario/";
+        comentario.setUsuario(1);
+        Comentario result = restTemplate.postForObject(url, comentario, Comentario.class);
         System.out.println(result);
     }
     
+    public void putProduct(Producto producto, Integer id){
+        /*HashMap<String, Integer> params = new HashMap<String, Integer>();
+        params.put("id", producto.getId());*/
+        
+        String url = "http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/producto/" + id + "/";
+        restTemplate.put(url, producto);
+        System.out.println(url);
+    }
     public void postProveedor(Proveedor proveedor){
         String url = "http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/proveedores/";
         Proveedor result = restTemplate.postForObject(url, proveedor, Proveedor.class);

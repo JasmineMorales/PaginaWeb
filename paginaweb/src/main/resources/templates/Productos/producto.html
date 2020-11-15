@@ -17,9 +17,12 @@
     <div class="producto-vista" style="float: left;">
         <h5 class="proveedores" th:each='proveedor: ${proveedores}'>[[${proveedor.id}]]</h5>                        
         <h5 class="proveedores-nombre" th:each='proveedor: ${proveedores}'>[[${proveedor.nombre}]]</h5>                        
+        
         <p  id="id">
            [[${producto.id}]]
         </p>
+        
+            
       <img class="img" src="[[${producto.imagen}]]">
       <div class="valoraciones-p">
           <button class="star5" onclick="changeColor(this)">
@@ -73,25 +76,30 @@
     <br>
     <div class="comentarios" style="clear:both;">
         <h1 class="titulo">Comentarios</h1>
+        <form onsubmit="Recargar()" name="form" action="#" th:action="@{/Productos/producto/?variable1=} + ${producto.id}" th:object="${comentario}" method="post">
+            <input name="producto" class="invisible" type="text" th:field="*{producto}"/>
     <div class="comentario">
-        <textarea class="textarea-inicial" onclick="MostrarBotones()" placeholder="¡Nos encantaría saber tu opinión sobre este producto!"></textarea>
+        <textarea class="textarea-inicial" th:field="*{texto}" onclick="MostrarBotones()" placeholder="¡Nos encantaría saber tu opinión sobre este producto!"></textarea>
         <span class="sub-com">
             <button type="button" id="btn" onclick="OcultarBotones()" class="btn btn-outline-info btn-sm" style="margin-right: 8px">CANCELAR</button>
-            <button type="button" id="btn2" class="btn btn-outline-secondary btn-sm" style="margin-right: 8px">COMENTAR</button>            
+            <input type="submit" id="btn2" class="btn btn-outline-secondary btn-sm" style="margin-right: 8px" value="COMENTAR"/>           
         </span>
-        <div disabled class="textarea-secundarios" th:each='comentario: ${comentarios}'>
-            <h4 class="user">User[[${comentario.usuario}]]</h4>
-            <h4 class="date">[[${comentario.fecha}]]</h4>
-            <h4 class="text">[[${comentario.texto}]]</h4>
+        </form>
+        <div disabled class="textarea-secundarios" th:each='comentario1: ${comentarios}'>
+            <h4 class="user">User[[${comentario1.usuario}]]</h4>
+            <h4 class="date">[[${comentario1.fecha}]]</h4>
+            <h4 class="text">[[${comentario1.texto}]]</h4>
         </div>
     </div>
+        
     </div>
   </div>
 
   <footer th:replace="Plantillas/plantilla :: footer"></footer>
   <script> 
-      
+      window.onload = Cargar;
       $(document).ready(function(){
+          
        var fecha = document.getElementsByClassName('date');
           for(var i=0; i<fecha.length; i++){
               var fecha_select=new Date(fecha[i].innerHTML); 
@@ -105,8 +113,18 @@
           }
     });
     
+    function Recargar(){
+        if (window.history.replaceState) { // verificamos disponibilidad
+    window.history.replaceState(null, null, window.location.href);
+}
+    };
+    
+    function Cargar(){
+        document.form.producto.value = "[[${producto.id}]]";
+        Proveedor();
+    };
+    
     $(document).ready = OcultarBotones();
-    window.onload = Proveedor();
     
     function OcultarBotones(){
         document.getElementById('btn').style.display = 'none';
@@ -189,7 +207,7 @@
                 document.getElementById("prov").innerHTML = nombre;                
             }
         }        
-    }
+    };
     
   </script>
    </body>

@@ -9,13 +9,18 @@ import java.util.List;
 import javax.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.url.paginaweb.modelo.Comentario;
 import org.url.paginaweb.modelo.Producto;
 import org.url.paginaweb.modelo.Proveedor;
 import org.url.paginaweb.service.ProductService;
@@ -34,6 +39,8 @@ public class ProductosController {
     public String getProductPage(Model model){
         List productos = productService.getAllProducts();
         model.addAttribute("productos", productos);
+        List proveedores = productService.getAllProveedores();
+       model.addAttribute("proveedores", proveedores);
         return("/Productos/vistaProductos");
     }
            
@@ -62,18 +69,31 @@ public class ProductosController {
         productService.postProduct(producto);
         return("/Productos/agregarProducto");
     }
-
-        
+            
             @GetMapping("/Productos/producto")
-    public String getProductListPage(@RequestParam(name="variable1", required=true, defaultValue = "1") int id, Model model){
+    public String getProductListPage(@ModelAttribute Comentario comentario, @RequestParam(name="variable1", required=true, defaultValue = "1") int id, Model model){
        model.addAttribute("id", id);
        
        Producto producto = productService.getProductID(id);
        model.addAttribute("producto", producto);
        List comentarios = productService.getAllComentarios();
        model.addAttribute("comentarios", comentarios);
+       model.addAttribute("comentario", comentario);
        List proveedores = productService.getAllProveedores();
        model.addAttribute("proveedores", proveedores);
+        return("/Productos/producto");
+    }
+            
+            @PostMapping("/Productos/producto")
+    public String postProductListPage(@ModelAttribute Comentario comentario, @RequestParam(name="variable1", required=true, defaultValue = "1") int id, Model model){
+       model.addAttribute("id", id);
+       
+       Producto producto = productService.getProductID(id);
+       model.addAttribute("producto", producto);
+       model.addAttribute("comentario", comentario);
+       List proveedores = productService.getAllProveedores();
+       model.addAttribute("proveedores", proveedores);
+       productService.postComentario(comentario);
         return("/Productos/producto");
     }
     
@@ -88,6 +108,25 @@ public class ProductosController {
         model.addAttribute("tipoproductos", tipoproductos);
         return("/Productos/modificarProducto");
     }
+    
+            @PostMapping("/Productos/producto/modificar_producto")
+    public String putModProduct(@RequestParam(name="variable1", required=true, defaultValue = "1") int id, Model model){
+        model.addAttribute("id", id);
+        Producto producto = productService.getProductID(id);
+        model.addAttribute("producto", producto);
+        List proveedores = productService.getAllProveedores();
+        model.addAttribute("proveedores", proveedores);
+        List tipoproductos = productService.getAllTipos();
+        model.addAttribute("tipoproductos", tipoproductos);
+        productService.putProduct(producto, id);
+    }
+        return("/Productos/modificarProducto");
+    
+   /* @PutMapping("/Productos/producto/modificar_producto/{id}")
+    public String saveResource(@RequestBody Producto producto, @PathVariable("id") Integer id) {
+        productService.putProduct(producto, id);
+    return("/Productos/modificarProducto");
+}*/
     
     @GetMapping("/proveedores/registro")
     public String registroProveedor(Model model){

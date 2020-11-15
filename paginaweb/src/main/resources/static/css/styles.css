@@ -22,7 +22,7 @@ body{
     cursor: pointer;
   }
   
-  p, h5{
+  p, h5, .invisible{
       opacity: 0;
       display: none;
   }
