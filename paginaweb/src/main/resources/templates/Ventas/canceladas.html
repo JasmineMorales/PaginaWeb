@@ -4,6 +4,7 @@
 
 
 <head th:replace="Plantillas/plantilla :: head">
+    <title></title>
 </head>
 
 <body>
@@ -11,12 +12,12 @@
     </header>
     <div class="conteiner">
         <section>
-            <h1 class="aps-color-1">Ventas canceladas</h1>
+            <h2 class="aps-color-1">Ventas canceladas</h2>
         </section>
-    </div><br>
+    </div><br></br>
     <div class="conteiner">
         <section>
-            <ul class="nav nav-pills aps-bg-2" id="lista">
+            <ul class="nav nav-pills aps-bg-2" id="lista" style="width: 100%">
                 <li class="nav-item">
                     <a class=" nav-link  aps-color-5" href="index">Todas</a>
                 </li>
@@ -31,20 +32,20 @@
                 </li>
             </ul>
         </section>
-    </div><br>
+    </div><br></br>
     <div class="container">
         <section>
             <h3 class="aps-color-1" style="text-align: left;">
                 Todas tus ventas canceladas
             </h3>
         </section>
-    </div><br><br>
+    </div><br></br><br></br>
     <div class="container-fluid">
         <form>
             <div class="container  ">
 
                 <select class="custom-select aps-color-1 aps-bg-5" id="orden">
-                    <option selected>Ordenar por</option>
+                    <option selected="">Ordenar por</option>
                     <option value="1" onclick="sortTableDate(1,'hl')">Mas recientes</option>
                     <option value="2" onclick="sortTableDate(1,'lh')">Mas antiguas</option>
                     <option value="3" onclick="sortTableVAL(4,'hl')">Mayor-menor</option>
@@ -75,7 +76,7 @@
                 </tbody>
             </table>
         </section>
-    </div><br><br><br>
+    </div><br></br><br></br><br></br>
     <footer th:replace="Plantillas/plantilla :: footer"></footer>
     <script>
         Select_row();

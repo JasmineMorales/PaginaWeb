@@ -3,6 +3,7 @@
     xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
 
 <head th:replace="Plantillas/plantilla :: head">
+    <title></title>
 </head>
 
 <body onload="Getparametro()">
@@ -10,12 +11,12 @@
     </header>
     <div class="conteiner">
         <section>
-            <h1 class="aps-color-1">Ventas</h1>
+            <h2 class="aps-color-1">Ventas</h2>
         </section>
-    </div><br>
+    </div><br></br>
     <div class="conteiner">
         <section>
-            <ul class="nav nav-pills aps-bg-2" id="lista">
+            <ul class="nav nav-pills aps-bg-2" id="lista" style="width: 100%">
                 <li class="nav-item">
                     <a class=" nav-link  aps-color-5 " href="../index">Todas</a>
                 </li>
@@ -30,15 +31,15 @@
                 </li>
             </ul>
         </section>
-    </div><br>
+    </div><br></br>
     <div class="container">
         <section>
             <h3 class="aps-color-1" style="text-align: left;">
-                Venta seleccionada <br>
+                Venta seleccionada <br></br>
                 Aun no hay productos
             </h3>
         </section>
-    </div><br><br>
+    </div><br></br><br></br>
 
     <div class="container ">
         <table class="table aps-bg-4" style="width: 250px;">
@@ -59,7 +60,7 @@
                 </thead>
             </table>
         </div>
-    </div><br>
+    </div><br></br>
     
     <div class="container ">
         <table class="table aps-bg-4" style="width: 250px;">
