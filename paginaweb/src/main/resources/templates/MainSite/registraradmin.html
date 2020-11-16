@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head th:replace="Plantillas/plantilla :: head">
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </head>
+    <body>
+        <header th:replace="Plantillas/plantilla :: header"></header>
+
+        <form th:action="@{/administrador/registrar}" method="post" th:object="${admin}">
+
+            <div class="container">
+                <div class="mx-auto mt-5">
+                    <div class="card">
+                        <div class="card-header text-white text-center" style="background-color: #2b7a78">
+                            <h3 class="mt-2">Registro de Administrador</h3>
+                        </div>
+                        <div class="card-header" style="background-color: #3aafa9">
+                            <h4 class="mt-2">Información Usuario</h4>
+                        </div>
+                        <div class="card-body" style="background-color: #def2f1">
+                            <div class="form-group">
+                                <label for="nombre" class="font-weight-bold" style="color: #17252a">
+                                    Usuario
+                                </label>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="nombre1"><i class="fas fa-user-tag"></i></span>
+                                    </div>
+                                    <input type="text" name="nombre" class="form-control" aria-label="Username" aria-describedby="nombre1" placeholder="Nombre" th:field="*{usuario}"/>
+                                </div>
+                                <span th:if="${#fields.hasErrors('usuario')}" th:errors="*{usuario}" class="font-italic ml-3 " style="color: #900c3f">Error Nombre</span>
+                            </div> 
+                        </div>
+                        <div class="card-header" style="background-color: #3aafa9">
+                            <h4 class="mt-2">Información de la Cuenta</h4>
+                        </div>
+                        <div class="card-body" style="background-color: #def2f1">
+                            <div class="form-group">
+                                <label for="correo" class="font-weight-bold" style="color: #17252a">
+                                    Correo
+                                </label>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="correo1"><i class="far fa-envelope"></i></span>
+                                    </div>
+                                    <input type="text" name="correo" class="form-control" aria-label="Correo" aria-describedby="correo1" placeholder="mail@mail.com" th:field="*{correo}"/>
+                                </div>
+                                <span th:if="${#fields.hasErrors('correo')}" th:errors="*{correo}" class="font-italic ml-3 " style="color: #900c3f" >Error Nombre</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="contrasenia" class="font-weight-bold" style="color: #17252a">
+                                    Contraseña
+                                </label>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="correo1"><i class="fas fa-key"></i></span>
+                                    </div>
+                                    <input type="password" name="contrasenia" class="form-control" aria-label="Password" aria-describedby="password1" th:field="*{password}" />
+                                </div>
+                                <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="font-italic ml-3 " style="color: #900c3f">Error Nombre</span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <button type="submit" class="btn btn-outline-success btn-block">Registrar</button>
+                            <a class="btn btn-outline-danger mt-2 btn-block" th:href="@{/}">Cancelar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </body>
+</html>

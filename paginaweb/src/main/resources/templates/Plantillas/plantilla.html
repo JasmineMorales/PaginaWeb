@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head th:fragment="head">
+        <title>Web App</title>
+        <meta charset="UTF-8"/>
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+        <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}" />
+        <link rel="stylesheet" href="/css/estiloproyecto.css" />
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    </head>
+
+    <body>
+        <header th:fragment="header">
+            <nav class=" navbar navbar-expand-lg navbar-light p-1 " style="background-color: #def2f1">
+                <div class="container">
+                    <a th:href="@{/}" class="navbar-brand" style="color: #17252a">
+                        Cuenteretes APS
+                    </a>
+                    <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item px-2"  sec:authorize="!isAuthenticated()">
+                                <a th:href="@{/}" class="nav-link active" style="color: #17252a">Inicio</a>
+                            </li>
+                            <li class="nav-item px-2"  sec:authorize="!isAuthenticated()">
+                                <a th:href="@{/usuarios/registro}" class="nav-link active" style="color: #17252a">Quiero Registrarme</a>
+                            </li>
+                            <li class="nav-item px-2"  sec:authorize="!isAuthenticated()">
+                                <a th:href="@{/repartidor/registro}" class="nav-link active" style="color: #17252a">Quiero ser repartidor</a>
+                            </li>
+                            <li class="nav-item dropdown" sec:authorize="hasAnyRole('ROLE_CLIENT')">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownVentas" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Compras
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownVentas">
+                                    <a class="dropdown-item" th:href="@{/Compras/index}">Pagina Principal</a>
+                                    <a class="dropdown-item" th:href="@{/Compras/carrito}">Carrito</a>
+                                    <a class="dropdown-item" th:href="@{/Compras/pago}">Pago</a>
+                                    <a class="dropdown-item" th:href="@{/Compras/compraRealizada}">Compras Realizadas</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown" sec:authorize="hasAnyRole('ROLE_ADMIN')">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownVentas" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Ventas
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownVentas">
+                                    <a class="dropdown-item" th:href="@{/Ventas/index}">Pagina Principal</a>
+                                    <a class="dropdown-item" th:href="@{/Ventas/canceladas}">Canceladas</a>
+                                    <a class="dropdown-item" th:href="@{/Ventas/enespera}">En Espera</a>
+                                    <a class="dropdown-item" th:href="@{/Ventas/entregadas}">Entregadas</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown" sec:authorize="hasAnyRole('ROLE_CLIENT','ROLE_ADMIN')">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownVentas" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Productos
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownVentas">
+                                    <a class="dropdown-item" th:href="@{/Productos/productos}" sec:authorize="hasAnyRole('ROLE_CLIENT','ROLE_ADMIN')">Ver Productos</a>
+                                    <a class="dropdown-item" th:href="@{/Productos/agregarProducto}" sec:authorize="hasAnyRole('ROLE_ADMIN')">Agregar Productos</a>
+                                    <a class="dropdown-item" th:href="@{/proveedores/registro}" sec:authorize="hasAnyRole('ROLE_ADMIN')">Registrar Proveedor</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown" sec:authorize="isAuthenticated()">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownVentas" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Envios
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownVentas">
+                                    <a class="dropdown-item" th:href="@{/envios/busqueda}" sec:authorize="isAuthenticated()">Busqueda</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown" sec:authorize="hasAnyRole('ROLE_CLIENT','ROLE_ADMIN')">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownVentas" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Pagos y Devoluciones
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownVentas">
+                                    <a class="dropdown-item" th:href="@{/pagos/metodo-pago}" sec:authorize="hasAnyRole('ROLE_ADMIN')">Metodos de pago</a>
+                                    <a class="dropdown-item" th:href="@{/pagos/agregar-metodo-pago}" sec:authorize="hasAnyRole('ROLE_ADMIN')">Agregar Metodo de Pago</a>
+                                    <a class="dropdown-item" th:href="@{/pagos/devolucion}" sec:authorize="hasAnyRole('ROLE_CLIENT')">Solicitar Devoluciones</a>
+                                    <a class="dropdown-item" th:href="@{/pagos/devolucion-aceptada}" sec:authorize="hasAnyRole('ROLE_ADMIN')">Estado de Devolucion</a>
+                                </div>
+                            </li>
+                            
+                            <li class="nav-item mr-3 nav-item dropdown" sec:authorize="isAuthenticated()">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-user"></i>
+                                    <span >Bienvenido</span>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdwonMenuLink">
+                                    <a class="dropdown-item" th:href="@{/administrador/registro}" sec:authorize="hasAnyRole('ROLE_ADMIN')">Registrar Administrador</a>
+                                    <form method="POST" th:action="@{/logout}">
+                                        <a href="#" onclick="this.parentNode.submit();" class="dropdown-item">
+                                            <i class="fas fa-user-times"></i> Salir
+                                        </a>
+                                    </form>
+                                    
+                                </div>
+                            </li>
+                            <li class="nav-item px-2" sec:authorize="!isAuthenticated()">
+                                <a th:href="@{/login}" class="nav-link active">Iniciar Sesion</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </nav>
+        </header>
+        <footer th:fragment="footer" class="text-white p-5 aps-bg-3">
+            <div class="container">
+                <div class="row mx-md-1">
+                    <div class="col px-md-5">
+                        <p class="text-lg-left">
+                            <span class="font-weight-bold" >Sitios mas visitados</span>
+                            <br/><a class="ml-4 alert-link font-weight-light" style="color: #f5f5f5" th:href="@{/}">Pagina Principal</a>
+                            <br/><a class="ml-4 alert-link font-weight-light" style="color: #f5f5f5" th:href="@{/Productos/productos}" sec:authorize="hasAnyRole('ROLE_CLIENT','ROLE_ADMIN')">Ventas</a>
+                            <br/><a class="ml-4 alert-link font-weight-light" style="color: #f5f5f5" th:href="@{/Compras/index}" sec:authorize="hasAnyRole('ROLE_CLIENT')">Compras</a>
+                            <br/><a class="ml-4 alert-link font-weight-light" style="color: #f5f5f5" th:href="@{/Productos/productos}" sec:authorize="hasAnyRole('ROLE_CLIENT','ROLE_ADMIN')">Productos</a>
+                        </p>
+                        
+                    </div>
+                    <div class="col">
+                        <p class="text-lg-left">
+                            <span class="font-weight-bold" >Preguntas Frecuentes</span>
+                            <br/><a class="ml-4 alert-link font-weight-light" style="color: #f5f5f5" th:href="@{/repartidor/registro}" sec:authorize="!isAuthenticated()">Quiero Ser Repartidor</a>
+                            <br/><a class="ml-4 alert-link font-weight-light" style="color: #f5f5f5" th:href="@{/usuarios/registro}" sec:authorize="!isAuthenticated()">Quiero Registrarme en la App</a>
+                        </p>
+                    </div>
+                    <div class="col">
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>
