@@ -98,5 +98,30 @@ public class ProductService {
         restTemplate.put(url, producto);
         System.out.println(url);
     }
+    public Carrito GetCarros() {
+        List<Carrito> response1 = null;
+        Carrito c = null;
+        //Esto cambiarlo, porque este pide por medio del id del carro, que en realidad no tenemos
+        String url = "http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/carro/";
+        ArregloCarrito response = restTemplate.getForObject(url, ArregloCarrito.class);
+        if (response.getCount() == 0) {
+            c = new Carrito();
+            c.setUsuario(1);//cambiar esto a id de usuario
+            c.setId(1);
+            String url2 = "http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/carro/";
+            Carrito result = restTemplate.postForObject(url2, c, Carrito.class);
+        } else {
+            response1 = response.getResults();
+            c = response1.get(0);
+        }
+        return c;
+    }
+
+    public void SetDetalleCarro(DetalleCarroC carro1) throws JsonProcessingException {
+        String url = "http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/detallecarro/";
+
+        DetalleCarroC result = restTemplate.postForObject(url, carro1, DetalleCarroC.class);
+
+    }
     
 }
