@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+
+<head th:replace="Plantillas/plantilla :: head">
+    <title></title>
+</head>
+
+<body>
+    <header th:replace="Plantillas/plantilla :: header">
+    </header>
+    <div class="conteiner">
+        <section>
+            <h2 class="aps-color-1">Compras</h2>
+        </section>
+    </div><br></br>
+    <div class="conteiner">
+        <section>
+            <ul class="nav nav-pills aps-bg-2" id="lista" style="width: 100%">
+                <li class="nav-item">
+                    <a class=" nav-link  aps-color-5 active" href="#" style="background-color: #53aca9;">Principal</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link aps-color-5" href="carrito">Carrito</a>
+                </li>
+                <!-- <li class="nav-item">
+                    <a class="nav-link aps-color-5" href="pago">Pago</a>
+                </li> -->
+            </ul>
+        </section>
+    </div>
+    <footer th:replace="Plantillas/plantilla :: footer"></footer>
+</body>
+
+</html>

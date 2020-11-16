@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+
+<head th:replace="Plantillas/plantilla :: head">
+    <title></title>
+</head>
+
+<body>
+    <header th:replace="Plantillas/plantilla :: header">
+    </header>
+    <div class="conteiner">
+        <section>
+            <h2 class="aps-color-1">Ventas</h2>
+        </section>
+    </div><br></br>
+    <div class="conteiner">
+        <section>
+            <ul class="nav nav-pills aps-bg-2" style="width: 100%">
+                <li class="nav-item">
+                    <a class=" nav-link  aps-color-5 " href="index" 
+                    style="background-color: #53aca9;">Todas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link aps-color-5" href="canceladas">Canceladas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link aps-color-5" href="entregadas">Entregadas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link aps-color-5" href="enespera">En espera</a>
+                </li>
+            </ul>
+        </section>
+    </div><br></br>
+    <div class="container">
+        <section>
+            <h3 class="aps-color-1" style="text-align: left;">
+                No hay ventas
+            </h3>
+        </section>
+    </div><br></br><br></br>
+    <div class="container-fluid">
+        <form>
+            <div class="container">
+
+                <select class="custom-select aps-color-1 aps-bg-5" id="orden">
+                    <option selected="">Ordenar por</option>
+                    <option value="1" onclick="sortTableDate(1,'hl')">Mas recientes</option>
+                    <option value="2" onclick="sortTableDate(1,'lh')">Mas antiguas</option>
+                    <option value="3" onclick="sortTableVAL(4,'hl')">Mayor-menor</option>
+                    <option value="3" onclick="sortTableVAL(4,'lh')">Menor-mayor</option>
+                </select>
+
+            </div>
+        </form>
+        <section class="container">
+            <table class="table table-striped tabla1" id="Tabla">
+                <thead class="ht1">
+                    <tr>
+                        <th class="th1" scope="col">ID</th>
+                        <th class="th1" scope="col">Fecha</th>
+                        <th class="th1" scope="col">Estado</th>
+                        <th class="th1" scope="col">Repartidor</th>
+                        <th class="th1" scope="col">Sub total</th>
+                    </tr>
+                </thead>
+            </table>
+        </section>
+    </div><br></br><br></br><br></br>
+    <footer th:replace="Plantillas/plantilla :: footer"></footer>
+
+</body>
+
+</html>

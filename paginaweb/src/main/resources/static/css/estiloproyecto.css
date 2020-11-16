@@ -1,0 +1,676 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Oct 6, 2020, 10:14:00 AM
+    Author     : marcos
+*/
+
+.aps-bg-1{
+    background-color: #17252A;
+}
+.aps-bg-2{
+    background-color: #2b7a78;
+}
+.aps-bg-3{
+    background-color: #3aafa9;
+}
+.aps-bg-4{
+    background-color: #def2f1;
+}
+.aps-bg-5{
+    background-color: #feffff;
+}
+.aps-bg-6{
+ background-color: #f5f5f5;
+}
+.aps-color-1{
+   color: #17252A;
+}
+.aps-color-2{
+    color: #2b7a78;
+}
+.aps-color-3{
+    color: #3aafa9;
+}
+.aps-color-4{
+    color: #def2f1;
+}
+.aps-color-5{
+    color: #feffff;
+}
+.aps-color-6{
+    color: #f5f5f5;
+}
+/* CSS PARA TABLAS DE COMPRA Y VENTA */
+.ht1 .th1 {
+    
+    border: 5px solid #2b7a78;
+    ;
+    border-bottom-style: solid;
+    border-top-style: none;
+    border-right-style: none;
+    border-left-style: none;
+
+}
+
+.tabla1 tr:nth-child(even) {
+    background-color: #DEF2F1;
+}
+.tabla1 tr:nth-child(odd) {
+    background-color: #f5f5f5;
+}
+.mm{
+    color:#2b7a78;
+}
+.tabla2 tr:nth-child(even) {
+    background-color: #DEF2F1;
+}
+.ht2 .th2 {
+
+    border: 3px solid #2b7a78;
+    background-color: #2b7a78;
+    border-style: solid;
+}
+.box {
+    float: left;
+    width: 33.33%;
+    padding: 50px;
+}
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+ /*PAGOS CSS*/
+ .body2 {
+    background-color: #f5f5f5;
+}
+
+.h1-form {
+    font-size: 10rem;
+}
+
+.icono-usuario {
+    width: 50px;
+    height: 40px;
+}
+.cuenta{
+    background-color: rgba(43, 122, 120, .8);
+    border-radius: 25px;
+    color: #feffff;
+    text-align: center;
+    padding-top: 5px;
+    margin-right: 15px;
+    margin-bottom: 10px;
+}
+
+.contenedor-titulo {
+    background-color: #333333;
+    color: #DEF2F1;
+    border-radius: 25px;
+    height: 75px;
+    margin: 20px 30px;
+    text-align: center;
+    padding-top: 15px;
+  }
+
+  .contenedor-titulo h2 {
+      font-weight: 600;
+      font-size: xx-large;
+  } 
+  .seccion-btn {
+    text-align: right;
+    margin: 10px 10px;
+}
+.radiobtn {
+    background-color: #DEF2F1;
+    margin: 20px 0;
+    font-size: x-large;
+    border-radius: 25px;
+    font-weight: 600;
+    width: 500px;
+    height: 60px;
+    text-align: center;
+    padding-top: 10px;
+}
+.contenedor-campos {
+    color: #2B7A78;
+    margin: 20px 30px;
+    font-size: large;
+    font-weight: 600;
+}
+.seccion-btn {
+    text-align: right;
+    margin: 10px 30px;
+}
+.contenedor-tipo{
+    text-align: center;
+}
+
+.contenedor-tipo input {
+    margin-top: 5px 0;
+}
+
+.metodo-pago {
+    background-color: #DEF2F1;
+    border-radius: 5px;
+    height: 28px;
+}
+
+/*CSS PRODUCTOS*/
+
+.contenedor{
+    background-color: #F5F5F5;
+    min-height: 100%;
+}
+
+.body{
+    height: 100%;
+    margin:0;
+    padding:0;    
+}
+
+.contenedor-producto {
+    margin-top: 10px;
+    margin-left: 10px;
+    background-color: #FAFAFA;
+    border: 4px solid #DEF2F1;
+    border-radius: 10px;
+    width: 320px;
+    height: 450px;
+    float:left;
+    position: relative;
+    cursor: pointer;
+  }
+  
+ .invisible{
+      opacity: 0;
+      display: none;
+  }
+  
+  .contenedor-producto:hover{
+      border: 4px solid #d5eae9;
+  }
+  
+  .add-cart{
+      position: absolute;
+      bottom: 5%;
+      left: 45%;
+  }
+  
+  .sub-com{
+      float: right;
+      margin-top: 5px;
+      margin-bottom: 15px;
+  }
+  
+  .producto-vista{
+      background-color: #FAFAFA;
+      border: 4px solid #DEF2F1;
+      border-radius: 10px;
+      width: 50%;
+      height: 450px;
+      margin-left: 24px;
+      margin-right: 10px;
+      margin-top: 24px;
+      margin-bottom: 10px;
+      padding: 20px 20px;
+      position: relative;
+  }
+  
+  .producto-caracteristicas {
+    background-color: #FAFAFA;
+    border: 4px solid #DEF2F1;
+    border-radius: 10px;
+    width: 45%;
+    height: 450px;
+    margin-top: 24px;
+    padding: 20px 20px;
+    position: relative;
+  }
+
+  .titulo {
+    color: #17252A;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 24px;
+    line-height: 44px;
+    width: 462px;
+    text-align: left;
+    margin-left: 10px;
+  }
+
+.nombre {
+    color: #17252A;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 26px;
+    line-height: 5px;
+    text-align: left;
+    margin-left: 20px; 
+    position: absolute;
+    top: 70%;
+  }
+
+  .precio {
+    color: #17252A;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 23px;
+    line-height: 5px;
+    text-align: left;
+    margin-left: 20px;
+    position: absolute;
+    top: 78%;
+  }
+  
+  .proveedor{
+    color: #17252A;    
+    opacity: 0.7;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 21px;
+    line-height: 5px;
+    text-align: left;
+    margin-left: 20px;
+    position: absolute;
+    top: 85%;
+  }
+
+  .valoracion {
+    opacity: 0.29;
+    width: 40px;
+    height: 36px;
+  }
+
+  .valoraciones{
+      position: absolute;
+      top:55%;
+      left: 25%;
+  }  
+
+  .img{
+      margin-top: 15px;
+      margin-left: 30%;
+      max-width: 100%;
+      height: auto;
+      border-radius: 5px;
+  }
+
+  .textarea-inicial {
+  background-color: rgb(222, 242, 241, 0.3);
+  border: 4px solid rgb(222, 242, 241, 0.3);
+  border-radius: 10px;
+  width: 99%;
+  height: 198px;
+  font-size: 16px;
+  font-family: Roboto Condensed;
+  color: rgb(23, 37, 42, 0.4);
+  font-weight: bold;
+  padding: 10px;
+  }
+  
+   
+  .textarea-inicial::placeholder, .textarea-secundarios::placeholder{
+      color: #17252A;
+      font-family: Roboto Condensed;
+      font-size: 16px;
+      line-height: 33px;
+      text-align: left;
+      color: rgb(23, 37, 42, 0.3);
+      font-weight: bold;
+  }
+  
+  .textarea-inicial:focus{
+      outline: none;
+      border:4px solid rgb(23, 37, 42, 0.05);
+  }
+  
+  .textarea-secundarios{
+      background-color: rgb(222, 242, 241, 0.7);
+      border: 4px solid rgb(222, 242, 241, 0.7);
+      border-radius: 10px;
+      margin: 10px 5px; 
+      clear: both;
+      padding: 10px;
+  }
+  
+  .text{
+      font-size: 16px;
+      font-family: Roboto Condensed;
+      color: rgb(23, 37, 42, 0.6);
+      font-weight: bold;
+      margin-top:5px;
+      margin-left: 5px;
+  }
+  
+  .user{
+      font-size: 18px;
+      font-family: 'Ubuntu', sans-serif;
+      color: rgb(23, 37, 42, 0.8);
+      margin-left: 5px;
+      display: inline;
+  }
+  
+  .date{
+      font-size: 14px;
+      font-family: 'Ubuntu', sans-serif;
+      color: rgb(23, 37, 42, 0.4);  
+      display: inline;
+      margin-left: 5px;
+  }
+
+  .titulo-p{
+    color: #17252A;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 24px;
+    line-height: 5px;
+    text-align: left;
+    margin-left: 30px;
+    margin-top: 24px;
+  }
+  
+  :root {
+    --color-inactivo: #5f5050;
+    --color-hover: #ffa400;
+}
+  
+  .valoraciones-p{
+      position: absolute;
+      bottom:40%;
+      left: 40%;
+      display: flex;
+      flex-direction: row-reverse;
+  }  
+  
+  .valoraciones-p button {
+    background-color: initial;
+    border: 0;
+    color: var(--color-inactivo);
+    transition: 1s all;
+}
+
+.valoraciones-p button:hover {
+    cursor: pointer;
+    color: var(--color-hover);
+    transform: rotate(360deg);
+}
+
+.valoraciones-p button:focus{
+    outline: none;
+}
+
+button:nth-child(1):hover ~ button {
+    color: var(--color-hover);
+    transform: rotate(360deg);
+}
+button:nth-child(2):hover ~ button {
+    color: var(--color-hover);
+    transform: rotate(360deg);
+}
+button:nth-child(3):hover ~ button {
+    color: var(--color-hover);
+    transform: rotate(360deg);
+}
+button:nth-child(4):hover ~ button {
+    color: var(--color-hover);
+    transform: rotate(360deg);
+}
+button:nth-child(5):hover ~ button {
+    color: var(--color-hover);
+    transform: rotate(360deg);
+}
+
+  
+  .nombre-p{
+    color: #17252A;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 24px;
+    line-height: 5px;
+    text-align: left;
+    margin-left: 30px;
+    position: absolute;
+    bottom: 29%;
+    rigth: 0px;
+  }
+  
+  .precio-p{
+    color: #17252A;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 22px;
+    line-height: 5px;
+    text-align: left;
+    margin-left: 30px;
+    position: absolute;
+    bottom: 22%;
+    rigth: 0px;
+  }
+
+  .proveedor-p{
+    color: #17252A;    
+    opacity: 0.7;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 21px;
+    line-height: 5px;
+    text-align: left;
+    margin-left: 30px;
+    position: absolute;    
+    bottom: 16%;
+    rigth: 0px;
+  }
+   
+   .unidades {
+    color: #2B7A78;
+    font-family: Roboto Condensed;
+    font-size: 20px;
+    line-height: 5px;
+    text-align: left;
+    margin-left: 30px;
+    position: absolute;
+    bottom: 10%;
+    rigth: 0px;
+  }
+  
+ .lista {
+  color: #17252A;
+  font-family: Roboto Condensed;
+  font-size: 18px;
+  line-height: 36px;
+  width: 462px;
+  text-align: left;
+  margin-top: 20px;
+}
+
+.compra{
+    margin-left: 60%;
+    margin-top: 54%;
+    padding-right: 5px;
+}
+
+.comentarios {
+  background-color: #FAFAFA;
+  border: 4px solid #DEF2F1;
+  border-radius: 5px;
+  width: 96%;
+  height: 90%;
+  margin-left: 24px;
+  margin-bottom: 10px;
+  padding: 20px;
+}
+
+.boton{
+    font-family: Roboto Condensed;
+}
+
+input[type="file"]{
+    display:none;
+ }
+ 
+.nuestroinput{
+    border: 4px solid #DEF2F1;
+    border-radius: 5px;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-size: 16px;
+    color: rgb(23, 38, 42, 0.8);
+    font-weight: lighter;
+ }
+ /*envios*/ 
+ 
+.icono-usuario {
+    width: 50px;
+    height: 40px;
+}
+
+.icono-refresh {
+    width: 32px;
+    height: 32px;
+    color: #333333;
+    margin-bottom: 20px;
+}
+.contenedor-envios{
+    background-color: rgba(58,175,169, .57);
+    border-radius: 41px;
+    padding: 20px;
+}
+
+.estados svg {
+    width: 90px;
+    height: 90px;
+}
+
+.barra {
+    margin: 10px 50px;
+
+}
+
+.cuenta{
+    background-color: rgba(43, 122, 120, .8);
+    border-radius: 25px;
+    color: #feffff;
+    text-align: center;
+    padding-top: 5px;
+    margin-right: 15px;
+    margin-bottom: 10px;
+}
+
+.estados div {
+    text-align: center;
+}
+
+.espacio {
+    height: 150px;
+}
+
+.radio-group {
+    margin: 30px 0;
+}
+
+.radio-container {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+ /* Customize the label (the container) */
+ .radio-container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* Hide the browser's default radio button */
+  .radio-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  /* Create a custom radio button */
+  .checkmark {
+    position: absolute;
+    top: -100px;
+    left: 100px;
+    height: 100px;
+    width: 100px;
+    background-color: #DEF2F1;
+    border-radius: 50%;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .radio-container:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+  
+  /* When the radio button is checked, add a blue background */
+  .radio-container input:checked ~ .checkmark {
+    background-color: #333333;
+  }
+  
+  /* Create the indicator (the dot/circle - hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the indicator (dot/circle) when checked */
+  .radio-container input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the indicator (dot/circle) */
+  .radio-container .checkmark:after {
+    top: 10px;
+    left: 10px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #333333;
+  } 
+
+  .seccion-btn {
+      text-align: right;
+      margin: 10px 10px;
+  }
+
+  .search-icono {
+    width: 40px;
+    height: 40px;
+  }
+  .contenedor-busqueda {
+      text-align: end;
+      margin: 10px 0px;
+  }
+  .contenedor-titulo {
+    background-color: #333333;
+    color: #DEF2F1;
+    border-radius: 25px;
+    height: 75px;
+    margin: 20px 30px;
+    text-align: center;
+    padding-top: 15px;
+  }
+
+  .contenedor-titulo h2 {
+      font-weight: 700;
+      font-size: xx-large;
+  }
+
+  .barra-busqueda {
+
+    margin: 50px 30px ;
+
+  }
+   
