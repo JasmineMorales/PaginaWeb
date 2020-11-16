@@ -11,19 +11,19 @@
       </style>
 </head>
 <header th:replace="Plantillas/plantilla :: header"></header>
-<body>
+<body class="body body2">
   <div class="contenedor">
       <div class="contenedor-producto" th:each='producto: ${productos}'>
         <a href="/Productos/producto/"></a>
         <img class="img" src="[[${producto.imagen}]]"> 
             
-        <p  id="id">
+        <p class="invisible" id="id">
            [[${producto.id}]]
           </p>
         <h1 class="nombre">
            [[${producto.nombre}]]
           </h1>
-        <h1 class="proveedor" id="prov">
+        <h1 class="proveedor " id="prov">
           </h1>
             
           <h2 class="precio">
@@ -38,7 +38,7 @@
           </div>
     </div>
   </div>
-    <div class="seccion-btn" style="clear:both"><br><a class="btn btn-outline-success" typu="button" href="/Productos/agregar_producto" sec:authorize="hasAnyRole('ROLE_ADMIN')">AGREGAR PRODUCTO</a></div>
+    <div class="seccion-btn" style="clear:both"><br><a class="btn btn-outline-success" type="button" href="/Productos/agregar_producto" sec:authorize="hasAnyRole('ROLE_ADMIN')">AGREGAR PRODUCTO</a></div>
 
   <footer th:replace="Plantillas/plantilla :: footer"></footer>
   <script>
