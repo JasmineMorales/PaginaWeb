@@ -11,12 +11,12 @@
     </header>
     <div class="conteiner">
         <section>
-            <h1 class="aps-color-1">Carrito de compra</h1>
+            <h2 class="aps-color-1">Carrito de compra</h2>
         </section>
     </div><br>
     <div class="conteiner">
         <section>
-            <ul class="nav nav-pills aps-bg-2" id="lista">
+            <ul class="nav nav-pills aps-bg-2" id="lista" style="width: 100%">
                 <li class="nav-item">
                     <a class=" nav-link aps-color-5  " href="index">Principal</a>
                 </li>
@@ -76,10 +76,7 @@
     <div class="container">
         <section class="container">
             <nav style="text-align: center;">
-                <button type="button" style="position: absolute; left: 17%;" class="btn btn-outline-primary">Continuar
-                    comprando</button>
-                <button type="button" style="position: absolute; left: 57%;"
-                    class="btn btn-outline-danger">Cancelar</button>
+
                 <a type="button" style="position: absolute; left: 67%;"
                     class="btn btn-outline-success" onclick="Getparametro()">Checkout</a>
                     
@@ -94,8 +91,8 @@
             const queryString = window.location.search;
             const urlParams = new URLSearchParams(queryString);
             //const variable = urlParams.get('variable1')
-            var variable = document.getElementById("id");
-            location.replace("../pago/?variable1=" + variable)
+            var variable = document.getElementById("id").textContent;
+            location.replace("pago/?variable1=" + variable)
             //console.log(variable);
             //location.replace("pago/")
             
