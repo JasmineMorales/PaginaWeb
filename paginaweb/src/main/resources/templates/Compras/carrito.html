@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+
+<head th:replace="Plantillas/plantilla :: head">
+    <script src="https://kit.fontawesome.com/d69832d361.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header th:replace="Plantillas/plantilla :: header">
+    </header>
+    <div class="conteiner">
+        <section>
+            <h1 class="aps-color-1">Carrito de compra</h1>
+        </section>
+    </div><br>
+    <div class="conteiner">
+        <section>
+            <ul class="nav nav-pills aps-bg-2" id="lista">
+                <li class="nav-item">
+                    <a class=" nav-link aps-color-5  " href="index">Principal</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link aps-color-5 active" style="background-color: #53aca9;" href="#">Carrito</a>
+                </li>
+                <!-- <li class="nav-item">
+                    <a class="nav-link aps-color-5" href="pago">Pago</a>
+                </li> -->
+            </ul>
+        </section>
+    </div><br>
+    <div class="container">
+        <section>
+            <h3 class="aps-color-1" style="text-align: center;">
+                Productos de carrito
+            </h3>
+        </section>
+    </div><br><br>
+
+    <div class="container-fluid">
+        <section class="container">
+            <table class="table table-striped tabla1">
+                <thead class="ht1">
+                    <tr>
+                        <th class="th1" scope="col">Producto</th>
+                        <th class="th1" scope="col">Cantidad</th>
+                        <th class="th1" scope="col">Precio por unidad</th>
+                        <th class="th1" scope="col">Sub total</th>
+                    </tr>
+                </thead>
+                <tbody th:each="ven : ${detalles}" >
+                    <tr>
+                        <td th:text="${ven.nombreProducto}" ></td>
+                        <td th:text="${ven.cantidad}"></td>
+                        <td th:text="${ven.precio}"></td>
+                        <td th:text="${ven.subtotal}"></td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </section>
+        <section>
+            <div class="container">
+                <p style="position: absolute; left: 67%;">
+                    <samp>Total</samp>&nbsp &nbsp &nbsp  &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <samp th:text="${total}"></samp>
+                </p><br>
+            </div>
+            <div class="container">
+                <canvas class="aps-color-2 container" height="0" style="border: 2px solid">
+
+                </canvas>
+            </div>
+        </section>
+    </div><br><br><br>
+    <div class="container">
+        <section class="container">
+            <nav style="text-align: center;">
+                <button type="button" style="position: absolute; left: 17%;" class="btn btn-outline-primary">Continuar
+                    comprando</button>
+                <button type="button" style="position: absolute; left: 57%;"
+                    class="btn btn-outline-danger">Cancelar</button>
+                <a type="button" style="position: absolute; left: 67%;"
+                    class="btn btn-outline-success" onclick="Getparametro()">Checkout</a>
+                    
+                    
+            </nav>
+        </section>
+        <a type="text" id="id" th:text="${id}" style="display: none;"></a>
+    </div><br><br><br>
+    <footer th:replace="Plantillas/plantilla :: footer"></footer>
+    <script>
+        function Getparametro() {
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            //const variable = urlParams.get('variable1')
+            var variable = document.getElementById("id");
+            location.replace("../pago/?variable1=" + variable)
+            //console.log(variable);
+            //location.replace("pago/")
+            
+        }   
+    </script>
+</body>
+
+
+</html>
