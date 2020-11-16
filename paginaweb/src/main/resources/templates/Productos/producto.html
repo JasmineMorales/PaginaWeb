@@ -13,12 +13,12 @@
 </head>
 <header th:replace="Plantillas/plantilla :: header"></header>
 
-<body>
+<body class="body body2">
     <div class="contenedor">
         <div class="producto-vista" style="float: left;">
-            <h5 class="proveedores" th:each='proveedor: ${proveedores}'>[[${proveedor.id}]]</h5>
-            <h5 class="proveedores-nombre" th:each='proveedor: ${proveedores}'>[[${proveedor.nombre}]]</h5>
-            <p id="id">
+            <h5 class="proveedores invisible" th:each='proveedor: ${proveedores}'>[[${proveedor.id}]]</h5>
+            <h5 class="proveedores-nombre invisible" th:each='proveedor: ${proveedores}'>[[${proveedor.nombre}]]</h5>
+            <p class="invisible" id="id">
                 [[${producto.id}]]
             </p>
             <img class="img" src="[[${producto.imagen}]]">
@@ -69,14 +69,14 @@
                         d="M504.717 320H211.572l6.545 32h268.418c15.401 0 26.816 14.301 23.403 29.319l-5.517 24.276C523.112 414.668 536 433.828 536 456c0 31.202-25.519 56.444-56.824 55.994-29.823-.429-54.35-24.631-55.155-54.447-.44-16.287 6.085-31.049 16.803-41.548H231.176C241.553 426.165 248 440.326 248 456c0 31.813-26.528 57.431-58.67 55.938-28.54-1.325-51.751-24.385-53.251-52.917-1.158-22.034 10.436-41.455 28.051-51.586L93.883 64H24C10.745 64 0 53.255 0 40V24C0 10.745 10.745 0 24 0h102.529c11.401 0 21.228 8.021 23.513 19.19L159.208 64H551.99c15.401 0 26.816 14.301 23.403 29.319l-47.273 208C525.637 312.246 515.923 320 504.717 320zM408 168h-48v-40c0-8.837-7.163-16-16-16h-16c-8.837 0-16 7.163-16 16v40h-48c-8.837 0-16 7.163-16 16v16c0 8.837 7.163 16 16 16h48v40c0 8.837 7.163 16 16 16h16c8.837 0 16-7.163 16-16v-40h48c8.837 0 16-7.163 16-16v-16c0-8.837-7.163-16-16-16z">
                     </path>
                 </svg>
-                <button type="button" class="btn btn-outline-dark" onclick="Modificar()" style="margin-right: 8px"
+                <button type="button" class="btn btn-outline-dark boton" onclick="Modificar()" style="margin-right: 8px"
                     sec:authorize="hasAnyRole('ROLE_ADMIN')">MODIFICAR PRODUCTO</button>
                 <form action="#" method="post" th:action="@{/Productos/producto}" th:object="${dt}">
                     <input type="text" class="form-control" id="carro"  th:field="*{carro}" style="display: none;">
                     <label>Ingrese cantidad</label>
                     <input type="text" class="form-control" id="cantidad"  th:field="*{cantidad}" >
                     <input type="text" class="form-control" id="producto"  th:field="*{producto}" style="display: none;">
-                    <button type="submit" class="btn btn-outline-dark" style="margin-right: 8px"
+                    <button type="submit" class="btn btn-outline-dark boton" style="margin-right: 8px"
                         sec:authorize="hasAnyRole('ROLE_CLIENT')">AGREGAR AL CARRITO</button>
                     <a class="btn btn-outline-success" type="button" href="/Productos/productos">REGRESAR</a>
                 </form>
@@ -92,9 +92,9 @@
                 <textarea class="textarea-inicial" onclick="MostrarBotones()"
                     placeholder="¡Nos encantaría saber tu opinión sobre este producto!"></textarea>
                 <span class="sub-com">
-                    <button type="button" id="btn" onclick="OcultarBotones()" class="btn btn-outline-info btn-sm"
+                    <button type="button" id="btn" onclick="OcultarBotones()" class="btn btn-outline-info btn-sm boton"
                         style="margin-right: 8px">CANCELAR</button>
-                    <button type="button" id="btn2" class="btn btn-outline-secondary btn-sm"
+                    <button type="button" id="btn2" class="btn btn-outline-secondary btn-sm boton"
                         style="margin-right: 8px">COMENTAR</button>
                 </span>
                 <div disabled class="textarea-secundarios" th:each='comentario: ${comentarios}'>
