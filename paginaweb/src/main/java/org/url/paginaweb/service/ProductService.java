@@ -82,7 +82,12 @@ public class ProductService {
         Comentario result = restTemplate.postForObject(url, comentario, Comentario.class);
         System.out.println(result);
     }
+    public void postProveedor(Proveedor proveedor){
+        String url = "http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/proveedores/";
+        Proveedor result = restTemplate.postForObject(url, proveedor, Proveedor.class);
+        
     
+    }
     public void putProduct(Producto producto, Integer id){
         /*HashMap<String, Integer> params = new HashMap<String, Integer>();
         params.put("id", producto.getId());*/
@@ -91,10 +96,5 @@ public class ProductService {
         restTemplate.put(url, producto);
         System.out.println(url);
     }
-    public void postProveedor(Proveedor proveedor){
-        String url = "http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/proveedores/";
-        Proveedor result = restTemplate.postForObject(url, proveedor, Proveedor.class);
-        
     
-    }
 }
