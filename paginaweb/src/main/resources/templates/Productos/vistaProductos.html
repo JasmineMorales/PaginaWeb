@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+    
+    lang="en">
+<head th:replace="Plantillas/plantilla :: head">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&family=Ubuntu&display=swap');
+      </style>
+</head>
+<header th:replace="Plantillas/plantilla :: header"></header>
+<body>
+  <div class="contenedor">
+      <div class="contenedor-producto" th:each='producto: ${productos}'>
+        <a href="/Productos/producto/"></a>
+        <img class="img" src="[[${producto.imagen}]]"> 
+            
+        <p  id="id">
+           [[${producto.id}]]
+          </p>
+        <h1 class="nombre">
+           [[${producto.nombre}]]
+          </h1>
+        <h1 class="proveedor" id="prov">
+          </h1>
+            
+          <h2 class="precio">
+            GTQ[[${producto.precio}]]
+          </h2>
+          <div class="valoraciones">
+              <i class="fas fa-star fa-lg star1"></i>
+              <i class="fas fa-star fa-lg star2"></i>
+              <i class="fas fa-star fa-lg star3"></i>
+              <i class="fas fa-star fa-lg star4"></i>
+              <i class="fas fa-star fa-lg star5"></i>
+          </div>
+    </div>
+  </div>
+    <div class="seccion-btn" style="clear:both"><br><a class="btn btn-outline-success" typu="button" href="/Productos/agregar_producto" sec:authorize="hasAnyRole('ROLE_ADMIN')">AGREGAR PRODUCTO</a></div>
+
+  <footer th:replace="Plantillas/plantilla :: footer"></footer>
+  <script>
+      
+      window.onload = Color;
+      $(document).ready(function(){
+       $(".contenedor-producto").click(function(){
+           var select= parseInt(this.getElementsByTagName('p')[0].innerHTML);
+           console.log(select);
+           location.replace("producto/?variable1="+select);
+           
+      });
+    });
+         
+    function Color(){
+        var tam = document.getElementsByClassName('star1').length;
+        for(var i=0; i<tam; i++){
+            document.getElementsByClassName('star1')[i].style.color="#ffa400";
+            document.getElementsByClassName('star2')[i].style.color="#ffa400";
+            document.getElementsByClassName('star3')[i].style.color="#ffa400";
+            document.getElementsByClassName('star4')[i].style.color="#ffa400";
+        }
+    };
+    
+  </script>
+</body>
+</html>
