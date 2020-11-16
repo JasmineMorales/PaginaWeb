@@ -119,8 +119,8 @@ public class ProductosController {
         List tipoproductos = productService.getAllTipos();
         model.addAttribute("tipoproductos", tipoproductos);
         productService.putProduct(producto, id);
-    }
         return("/Productos/modificarProducto");
+    }
     
    /* @PutMapping("/Productos/producto/modificar_producto/{id}")
     public String saveResource(@RequestBody Producto producto, @PathVariable("id") Integer id) {
