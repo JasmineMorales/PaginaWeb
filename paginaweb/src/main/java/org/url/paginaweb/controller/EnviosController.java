@@ -35,31 +35,27 @@ public class EnviosController {
     
     @GetMapping("/envios/estado-envio")
     public String getEnviosEstados() {
-        return("/envios/envio");
+        return("envios/envio");
     };
     @GetMapping("/envios/estado-envio-repartidor")
     public String getEnviosEstadosRepartidor(@ModelAttribute Envio envio, Model model) {
         model.addAttribute("envio", envio);
-        return("/envios/envioRepartidor");
+        return("envios/envioRepartidor");
     };
     
     @PostMapping("/envios/estado-envio-repartidor")
     public String putEnviosEstadosRepartidor(@ModelAttribute Envio envio, Model model) {
-        System.out.println("**********************************************************************");
-        System.out.println(envio.getEstado());
-        System.out.println(envio.getId());
-
         
         Envio respuesta = service.putEnvio(envio.getId(), envio);
         
         model.addAttribute("envio", envio);
-        return("/envios/envioRepartidor");
+        return("envios/envioRepartidor");
     };
     @GetMapping("/envios/busqueda")
     public String getBusqueda(@ModelAttribute enviosBusqueda enviosBusqueda, Model model) {
         model.addAttribute("enviosBusqueda", enviosBusqueda);
         
-        return("/envios/busqueda");
+        return("envios/busqueda");
     };
     @PostMapping("/envios/busqueda")
     public String postBusqueda(@ModelAttribute Envio envio, Model model, Authentication user){
@@ -70,13 +66,13 @@ public class EnviosController {
         
         switch(tipo){
             case MainsiteService.ADMIN:
-                return("/envios/envioRepartidor");
+                return("envios/envioRepartidor");
             case MainsiteService.CLIENTE:
-                return("/envios/envio");
+                return("envios/envio");
             case MainsiteService.REPARTIDOR:
-                return("/envios/envioRepartidor");
+                return("envios/envioRepartidor");
             default:
-                return("/envios/envio");
+                return("envios/envio");
         }
         
     };
