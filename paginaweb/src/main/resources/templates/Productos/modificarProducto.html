@@ -4,11 +4,10 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <head th:replace="Plantillas/plantilla :: head" >
         <title>Modificar Producto</title>
-        <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+        <meta charset="UTF-8" />
     </head>
-    <header th:replace="Plantillas/plantilla :: header"></header>
     <body class="body body2">
+    <header th:replace="Plantillas/plantilla :: header"></header>
         <div  class="container">
             <div class="contenedor-titulo">
                 <h2>MODIFICAR PRODUCTO</h2>
@@ -20,7 +19,7 @@
                 <form name="form" action="#" th:action="@{/Productos/producto/modificar_producto/?variable1=} + ${producto.id}" th:object="${producto}" method="post">
                     <div class="form-group">
                         <label for="exampleFormControlInput1">Nombre</label>
-                        <input name="nombre" type="text" class="form-control" id="nombre-p" placeholder="Nombre" style="background-color: #DEF2F1;" th:field="*{nombre}">
+                        <input name="nombre" type="text" class="form-control" id="nombre-p" placeholder="Nombre" style="background-color: #DEF2F1;" th:field="*{nombre}"/>
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlInput1">Precio</label>
