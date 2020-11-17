@@ -47,7 +47,7 @@ public class ProductosController {
         System.out.println("************");
         Carrito carro = productService.GetCarros();
 
-        return ("/Productos/vistaProductos");
+        return ("Productos/vistaProductos");
     }
 
     /*@GetMapping("Productos/modificar_producto")
@@ -61,7 +61,7 @@ public class ProductosController {
         List tipoproductos = productService.getAllTipos();
         model.addAttribute("tipoproductos", tipoproductos);
         model.addAttribute("producto", producto);
-        return ("/Productos/agregarProducto");
+        return ("Productos/agregarProducto");
     }
 
     @PostMapping("/Productos/agregar_producto")
@@ -72,7 +72,7 @@ public class ProductosController {
         List tipoproductos = productService.getAllTipos();
         model.addAttribute("tipoproductos", tipoproductos);
         productService.postProduct(producto);
-        return ("/Productos/agregarProducto");
+        return ("Productos/agregarProducto");
     }
 
     @GetMapping("/Productos/producto")
@@ -91,7 +91,7 @@ public class ProductosController {
         dt.setCantidad(0);
         dt.setProducto(producto.getId());
         model.addAttribute("dt", dt);
-        return ("/Productos/producto");
+        return ("Productos/producto");
     }
 
     @PostMapping("/Productos/producto")
@@ -102,7 +102,7 @@ public class ProductosController {
                 detalle.setSubtotal(0f);
                
         productService.SetDetalleCarro(detalle);
-        return ("/Productos/vistaProductos");
+        return ("Productos/vistaProductos");
     }
 
     @GetMapping("/Productos/producto/modificar_producto")
@@ -114,7 +114,7 @@ public class ProductosController {
         model.addAttribute("proveedores", proveedores);
         List tipoproductos = productService.getAllTipos();
         model.addAttribute("tipoproductos", tipoproductos);
-        return ("/Productos/modificarProducto");
+        return ("Productos/modificarProducto");
     }
     
             @PostMapping("/Productos/producto/modificar_producto")
@@ -127,7 +127,7 @@ public class ProductosController {
         List tipoproductos = productService.getAllTipos();
         model.addAttribute("tipoproductos", tipoproductos);
         productService.putProduct(producto, id);
-        return("/Productos/modificarProducto");
+        return("Productos/modificarProducto");
     }
     
    /* @PutMapping("/Productos/producto/modificar_producto/{id}")
@@ -140,14 +140,14 @@ public class ProductosController {
     public String registroProveedor(Model model){
         var proveedor = new Proveedor();
         model.addAttribute("proveedor", proveedor);
-        return "/Proveedores/registro";
+        return "Proveedores/registro";
     }
     
     @PostMapping("/proveedores/registrar")
     public String registrarProveedor(@Valid Proveedor proveedor, Errors errores, Model model){
         if(errores.hasErrors()){
             model.addAttribute("proveedor", proveedor);
-            return "/Proveedores/registro";
+            return "Proveedores/registro";
         }
         productService.postProveedor(proveedor);
         return "redirect:/";

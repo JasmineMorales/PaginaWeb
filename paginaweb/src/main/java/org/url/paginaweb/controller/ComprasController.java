@@ -42,18 +42,18 @@ public class ComprasController {
 
     @GetMapping("/Compras/index")
     public String getCompraPage() {
-        return ("/Compras/index");
+        return ("Compras/index");
     }
 
     @GetMapping("/Compras/confirmar")
     public String confirmarCompra() {
-        return ("/Compras/confirmarCompra");
+        return ("Compras/confirmarCompra");
     }
 
     @GetMapping("/Compras/compraRealizada")
     public String realizadaCompra() {
 
-        return ("/Compras/compraRealizada");
+        return ("Compras/compraRealizada");
     }
 
     @GetMapping("/Compras/carrito")
@@ -73,9 +73,9 @@ public class ComprasController {
             float total = Calcular(detallesC);
             model.addAttribute("total", total);
             model.addAttribute("id", c2.getId());
-            return ("/Compras/carrito");
+            return ("Compras/carrito");
         } catch (Exception e) {
-            return ("/Compras/NoHayCarro");
+            return ("Compras/NoHayCarro");
         }
 
     }
@@ -137,9 +137,9 @@ public class ComprasController {
             //ELIMINAR EL CARRO
             compraService.deleteCarrito(venta.getId());
 
-            return ("/Compras/compraRealizada");
+            return ("Compras/compraRealizada");
         } catch (Exception e) {
-            return ("/Compras/index");
+            return ("Compras/index");
         }
     }
 
@@ -157,9 +157,9 @@ public class ComprasController {
             float total = Calcular(detallesC);
             model.addAttribute("total", total);
             model.addAttribute("venta", new VentaC());
-            return ("/Compras/pagocompra");
+            return ("Compras/pagocompra");
         } catch (Exception e) {
-            return ("/Compras/NoHayCarro");
+            return ("Compras/NoHayCarro");
         }
 
     }
