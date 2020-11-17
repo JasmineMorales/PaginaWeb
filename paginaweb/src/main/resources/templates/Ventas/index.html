@@ -101,8 +101,8 @@
                     // msg = 'The ID of the company is: ' + rowSelected.cells[0].innerHTML;
                     // sel el val sel row msg += '\nThe cell value is: ' + this.innerHTML;
                     //alert(typeof(seleccionado));
-                    location.replace("seleccionada/?variable1=" + seleccionado)
-                }
+                    location.replace("seleccionada/?variable1=" + seleccionado);
+                };
             }
 
         }
@@ -111,7 +111,7 @@
             table = document.getElementById("Tabla");
             switching = true;
             var res = 0;
-            res = tipo.localeCompare('hl')
+            res = tipo.localeCompare('hl');
             /*Make a loop that will continue until
             no switching has been done:*/
             while (switching) {
@@ -129,7 +129,7 @@
                     y = rows[i + 1].getElementsByTagName("TD")[n];
                     //check if the two rows should switch place:
 
-                    if (res == 0) {
+                    if (res === 0) {
                         if (Number(x.innerHTML) < Number(y.innerHTML)) {
                             //if so, mark as a switch and break the loop:
                             shouldSwitch = true;
@@ -159,7 +159,7 @@
             table = document.getElementById("Tabla");
             switching = true;
             var res = 0;
-            res = tipo.localeCompare('hl')
+            res = tipo.localeCompare('hl');
             /*Make a loop that will continue until
             no switching has been done:*/
             while (switching) {
@@ -178,7 +178,7 @@
                     //check if the two rows should switch place:
                     var v1 = Date.parse(x.innerHTML);
                     var v2 = Date.parse(y.innerHTML);
-                    if (res == 0) {
+                    if (res === 0) {
                         if (v1 < v2) {
                             
                             //if so, mark as a switch and break the loop:
