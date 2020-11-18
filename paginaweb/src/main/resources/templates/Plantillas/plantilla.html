@@ -73,7 +73,7 @@ and open the template in the editor.
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownVentas">
                                     <a class="dropdown-item" th:href="@{/Productos/productos}" sec:authorize="hasAnyRole('ROLE_CLIENT','ROLE_ADMIN')">Ver Productos</a>
-                                    <a class="dropdown-item" th:href="@{/Productos/agregarProducto}" sec:authorize="hasAnyRole('ROLE_ADMIN')">Agregar Productos</a>
+                                    <a class="dropdown-item" th:href="@{/Productos/agregar_producto}" sec:authorize="hasAnyRole('ROLE_ADMIN')">Agregar Productos</a>
                                     <a class="dropdown-item" th:href="@{/proveedores/registro}" sec:authorize="hasAnyRole('ROLE_ADMIN')">Registrar Proveedor</a>
                                 </div>
                             </li>
