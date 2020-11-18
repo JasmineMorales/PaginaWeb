@@ -16,7 +16,8 @@
                 <p  id="id">
                     [[${producto.id}]]
                 </p>
-                <form name="form" action="#" th:action="@{/Productos/producto/modificar_producto/?variable1=} + ${producto.id}" th:object="${producto}" method="post">
+                <form name="form" action="#" th:action="@{/Productos/producto/modificando_producto/} " th:object="${producto}" method="post">
+                    <input type="hidden" th:field="*{id}" th:value="${producto.id}" />
                     <div class="form-group">
                         <label for="exampleFormControlInput1">Nombre</label>
                         <input name="nombre" type="text" class="form-control" id="nombre-p" placeholder="Nombre" style="background-color: #DEF2F1;" th:field="*{nombre}"/>
