@@ -72,7 +72,7 @@ public class ProductosController {
         List tipoproductos = productService.getAllTipos();
         model.addAttribute("tipoproductos", tipoproductos);
         productService.postProduct(producto);
-        return ("redirect:/Productos/agregar_roducto");
+        return ("redirect:/Productos/agregar_producto");
     }
 
     @GetMapping("/Productos/producto")
