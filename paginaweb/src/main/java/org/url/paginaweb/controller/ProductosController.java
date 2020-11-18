@@ -72,7 +72,7 @@ public class ProductosController {
         List tipoproductos = productService.getAllTipos();
         model.addAttribute("tipoproductos", tipoproductos);
         productService.postProduct(producto);
-        return ("Productos/agregarProducto");
+        return ("redirect:/Productos/agregar_roducto");
     }
 
     @GetMapping("/Productos/producto")
@@ -105,10 +105,10 @@ public class ProductosController {
         return ("Productos/vistaProductos");
     }
 
-    @GetMapping("/Productos/producto/modificar_producto")
-    public String getModProduct(@RequestParam(name = "variable1", required = true, defaultValue = "1") int id, Model model) {
-        model.addAttribute("id", id);
-        Producto producto = productService.getProductID(id);
+    @GetMapping("/Productos/producto/modificar_producto/{id}")
+    public String getModProduct(Producto producto , Model model) {
+        model.addAttribute("id", producto.getId());
+        producto = productService.getProductID(producto.getId());
         model.addAttribute("producto", producto);
         List proveedores = productService.getAllProveedores();
         model.addAttribute("proveedores", proveedores);
@@ -117,17 +117,11 @@ public class ProductosController {
         return ("Productos/modificarProducto");
     }
     
-            @PostMapping("/Productos/producto/modificar_producto")
-    public String putModProduct(@RequestParam(name="variable1", required=true, defaultValue = "1") int id, Model model){
-        model.addAttribute("id", id);
-        Producto producto = productService.getProductID(id);
-        model.addAttribute("producto", producto);
-        List proveedores = productService.getAllProveedores();
-        model.addAttribute("proveedores", proveedores);
-        List tipoproductos = productService.getAllTipos();
-        model.addAttribute("tipoproductos", tipoproductos);
-        productService.putProduct(producto, id);
-        return("Productos/modificarProducto");
+            @PostMapping("/Productos/producto/modificando_producto")
+    public String putModProduct(Producto producto, Model model){
+        log.info("Product1"  + producto.toString());
+        productService.putProduct(producto, producto.getId());
+        return("redirect:/Productos/productos");
     }
     
    /* @PutMapping("/Productos/producto/modificar_producto/{id}")

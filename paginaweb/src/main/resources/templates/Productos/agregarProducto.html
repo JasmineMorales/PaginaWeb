@@ -14,7 +14,7 @@
                 <h2>AGREGAR PRODUCTO</h2>
             </div>
             <div class= "contenedor-campos">
-                <form action="#" th:action="@{/Productos/productos}" th:object="${producto}" method="post">
+                <form action="#" th:action="@{/Productos/agregar_producto}" th:object="${producto}" method="post">
                     <div class="form-group">
                         <label for="exampleFormControlInput1">Nombre</label>
                         <input type="text" class="form-control" id="nombre-p" placeholder="Ingrese nombre de producto" style="background-color: #DEF2F1;" th:field="*{nombre}"/>
