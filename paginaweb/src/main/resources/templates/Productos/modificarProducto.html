@@ -13,7 +13,7 @@
                 <h2>MODIFICAR PRODUCTO</h2>
             </div>
             <div class= "contenedor-campos">
-                <p  id="id">
+                <p class="invisible" id="id">
                     [[${producto.id}]]
                 </p>
                 <form name="form" action="#" th:action="@{/Productos/producto/modificando_producto/} " th:object="${producto}" method="post">

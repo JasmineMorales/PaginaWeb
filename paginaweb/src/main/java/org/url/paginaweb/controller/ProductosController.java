@@ -20,8 +20,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.url.paginaweb.modelo.Carrito;
+import org.url.paginaweb.modelo.Comentario;
 import org.url.paginaweb.modelo.DetalleCarro;
 import org.url.paginaweb.modelo.DetalleCarroC;
 import org.url.paginaweb.modelo.Producto;
@@ -76,12 +80,13 @@ public class ProductosController {
     }
 
     @GetMapping("/Productos/producto")
-    public String getProductListPage(@RequestParam(name = "variable1", required = true, defaultValue = "1") int id, Model model) {
+    public String getProductListPage(@RequestParam(name = "variable1", required = true, defaultValue = "1") int id,@ModelAttribute Comentario comentario, Model model) {
         model.addAttribute("id", id);
         Producto producto = productService.getProductID(id);
         model.addAttribute("producto", producto);
         List comentarios = productService.getAllComentarios();
         model.addAttribute("comentarios", comentarios);
+        model.addAttribute("comentario", comentario);
         List proveedores = productService.getAllProveedores();
         model.addAttribute("proveedores", proveedores);
         DetalleCarroC dt = new DetalleCarroC();
@@ -95,14 +100,27 @@ public class ProductosController {
     }
 
     @PostMapping("/Productos/producto")
-    public String greetingSubmit(@ModelAttribute DetalleCarroC detalle, Model model) throws JsonProcessingException {
+    public String greetingSubmit(@ModelAttribute DetalleCarroC detalle, @RequestParam(name="variable1", required=true, defaultValue = "1") int id, Model model) throws JsonProcessingException {
                 
                 detalle.setCantidad(detalle.getCantidad());
                 detalle.setId(1);
                 detalle.setSubtotal(0f);
-               
-        productService.SetDetalleCarro(detalle);
+                
+                productService.SetDetalleCarro(detalle);
         return ("Productos/vistaProductos");
+    }
+
+    @RequestMapping(value="/Productos/producto", params ="action=save", method = RequestMethod.POST)
+   // @ResponseBody
+    public String submit(@ModelAttribute Comentario comentario, @RequestParam(name="variable1", required=true, defaultValue = "1") int id, Model model) throws JsonProcessingException {
+                model.addAttribute("id", id);
+                Producto producto = productService.getProductID(id);
+       model.addAttribute("producto", producto);
+       model.addAttribute("comentario", comentario);
+       List proveedores = productService.getAllProveedores();
+       model.addAttribute("proveedores", proveedores);
+                productService.postComentario(comentario);
+        return ("Productos/producto");
     }
 
     @GetMapping("/Productos/producto/modificar_producto/{id}")

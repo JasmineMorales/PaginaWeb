@@ -132,4 +132,11 @@ public class ProductService {
 
     }
     
+    public void postComentario(Comentario comentario){
+        String url = "http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/comentario/";
+        comentario.setUsuario(1);
+        Comentario result = restTemplate.postForObject(url, comentario, Comentario.class);
+        System.out.println(result);
+    }
+    
 }
