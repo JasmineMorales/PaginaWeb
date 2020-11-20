@@ -93,8 +93,9 @@
             <h1 class="titulo">Comentarios</h1>
             
             <div class="comentario">
-                <form name="form" action="#" th:action="@{/Productos/producto/?variable1=} + ${producto.id}" th:object="${comentario}" method="post">
-                    <input name="producto" class="invisible" type="text" th:field="*{producto}"/>
+                <form name="form" action="#" th:action="@{/Productos/producto/comentario/} + ${producto.id}" th:object="${comentario}" method="post">
+                   
+                <input name="producto" class="invisible" type="text" th:field="*{producto}"/>
                 <textarea class="textarea-inicial" th:field="*{texto}"  onclick="MostrarBotones()"
                     placeholder="¡Nos encantaría saber tu opinión sobre este producto!"></textarea>
                 <span class="sub-com">

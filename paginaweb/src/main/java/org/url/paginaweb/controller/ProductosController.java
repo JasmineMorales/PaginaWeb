@@ -110,17 +110,11 @@ public class ProductosController {
         return ("Productos/vistaProductos");
     }
 
-    @RequestMapping(value="/Productos/producto", params ="action=save", method = RequestMethod.POST)
-   // @ResponseBody
-    public String submit(@ModelAttribute Comentario comentario, @RequestParam(name="variable1", required=true, defaultValue = "1") int id, Model model) throws JsonProcessingException {
-                model.addAttribute("id", id);
-                Producto producto = productService.getProductID(id);
-       model.addAttribute("producto", producto);
-       model.addAttribute("comentario", comentario);
-       List proveedores = productService.getAllProveedores();
-       model.addAttribute("proveedores", proveedores);
-                productService.postComentario(comentario);
-        return ("Productos/producto");
+    @PostMapping(value="/Productos/producto/comentario/{producto}")
+    public String submit(Comentario comentario) throws JsonProcessingException {
+        log.info("Comentario"  + comentario.toString());
+        productService.postComentario(comentario);
+        return ("redirect:/Productos/producto/?variable1="+Integer.toString(comentario.getProducto()));
     }
 
     @GetMapping("/Productos/producto/modificar_producto/{id}")
