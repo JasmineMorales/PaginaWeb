@@ -65,6 +65,7 @@ public class ProductService {
         String url1 = "http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/tipodeproducto/";
         ArregloTipoProducto response1 = restTemplate.getForObject(url1, ArregloTipoProducto.class);
         List<TipoProducto> respuesta = response1.getResults();
+        
         return respuesta;
     }
 
@@ -72,6 +73,15 @@ public class ProductService {
         String url1 = "http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/comentario/";
         ArregloComentario response1 = restTemplate.getForObject(url1, ArregloComentario.class);
         List<Comentario> respuesta = response1.getResults();
+        while(!(response1.getNext() == null))
+        {
+            url1 = response1.getNext();
+            response1 = restTemplate.getForObject(url1, ArregloComentario.class);
+            for(Comentario tmp : response1.getResults()){
+                respuesta.add(tmp);
+            }
+            log.info(response1.getNext());
+        }
         return respuesta;
     }
 
@@ -130,6 +140,13 @@ public class ProductService {
 
         DetalleCarroC result = restTemplate.postForObject(url, carro1, DetalleCarroC.class);
 
+    }
+    
+    public void postComentario(Comentario comentario){
+        String url = "http://ec2-54-214-157-22.us-west-2.compute.amazonaws.com/api/v1.0/comentario/";
+        comentario.setUsuario(1);
+        Comentario result = restTemplate.postForObject(url, comentario, Comentario.class);
+        System.out.println(result);
     }
     
 }

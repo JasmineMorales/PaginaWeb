@@ -75,13 +75,13 @@
 -->                <a class="btn btn-outline-dark boton" style="margin-right: 8px" th:href="@{/Productos/producto/modificar_producto/} + ${producto.id}"
                     sec:authorize="hasAnyRole('ROLE_ADMIN')">MODIFICAR PRODUCTO</a>
                 <form action="#" method="post" th:action="@{/Productos/producto}" th:object="${dt}">
-                    <input type="text" class="form-control" id="carro"  th:field="*{carro}" style="display: none;">
-                    <label>Ingrese cantidad</label>
-                    <input type="text" class="form-control" id="cantidad"  th:field="*{cantidad}" >
+                    <input type="text" class="form-control" id="carro" th:field="*{carro}" style="display: none;">
+                    <label sec:authorize="hasAnyRole('ROLE_CLIENT')">Ingrese cantidad</label>
+                    <input type="text" sec:authorize="hasAnyRole('ROLE_CLIENT')" class="form-control" id="cantidad"  th:field="*{cantidad}" >
                     <input type="text" class="form-control" id="producto"  th:field="*{producto}" style="display: none;">
                     <button type="submit" class="btn btn-outline-dark boton" style="margin-right: 8px"
                         sec:authorize="hasAnyRole('ROLE_CLIENT')">AGREGAR AL CARRITO</button>
-                    <a class="btn btn-outline-success" type="button" href="/Productos/productos">REGRESAR</a>
+                    <a class="btn btn-outline-success boton" type="button" href="/Productos/productos">REGRESAR</a>
                 </form>
 
 
@@ -91,21 +91,28 @@
         <br>
         <div class="comentarios" style="clear:both;">
             <h1 class="titulo">Comentarios</h1>
+            
             <div class="comentario">
-                <textarea class="textarea-inicial" onclick="MostrarBotones()"
+                <form name="form" action="#" th:action="@{/Productos/producto/comentario/} + ${producto.id}" th:object="${comentario}" method="post">
+                   
+                <input name="producto" class="invisible" type="text" th:field="*{producto}"/>
+                <textarea class="textarea-inicial" th:field="*{texto}"  onclick="MostrarBotones()"
                     placeholder="¡Nos encantaría saber tu opinión sobre este producto!"></textarea>
                 <span class="sub-com">
                     <button type="button" id="btn" onclick="OcultarBotones()" class="btn btn-outline-info btn-sm boton"
                         style="margin-right: 8px">CANCELAR</button>
-                    <button type="button" id="btn2" class="btn btn-outline-secondary btn-sm boton"
-                        style="margin-right: 8px">COMENTAR</button>
+                    <button name="action" value="save" type="submit" id="btn2" class="btn btn-outline-secondary btn-sm boton"
+                           style="margin-right: 8px">SAVE</button>
                 </span>
+                </form>
                 <div disabled class="textarea-secundarios" th:each='comentario: ${comentarios}'>
                     <h4 class="user">User[[${comentario.usuario}]]</h4>
                     <h4 class="date">[[${comentario.fecha}]]</h4>
                     <h4 class="text">[[${comentario.texto}]]</h4>
                 </div>
+            
             </div>
+            
         </div>
     </div>
 
@@ -127,7 +134,7 @@
         });
 
         $(document).ready = OcultarBotones();
-        window.onload = Proveedor();
+        window.onload = Cargar();
 
         function OcultarBotones() {
             document.getElementById('btn').style.display = 'none';
@@ -138,6 +145,11 @@
             document.getElementById('btn').style.display = 'inline';
             document.getElementById('btn2').style.display = 'inline';
         };
+        
+        function Cargar(){
+        document.form.producto.value = "[[${producto.id}]]";
+        Proveedor();
+    };
 
         function changeColor(x) {
             x.style.color = "#ffa400";
@@ -209,7 +221,7 @@
                     document.getElementById("prov").innerHTML = nombre;
                 }
             }
-        }
+        };
 
     </script>
 </body>
