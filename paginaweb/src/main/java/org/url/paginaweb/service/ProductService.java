@@ -80,7 +80,6 @@ public class ProductService {
             for(Comentario tmp : response1.getResults()){
                 respuesta.add(tmp);
             }
-            log.info(response1.getNext());
         }
         return respuesta;
     }
